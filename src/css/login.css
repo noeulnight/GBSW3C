@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: #f8f8f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-form {
+    width: 1280px;
+    height: 700px;
+    border: 1px solid #DEE2E6;
+    background: #ffffff;
+    border-radius: 10px;
+    display: flex;
+    position: relative;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    background: url(../img/logo.png);
+    background-size: 100% 100%;
+}
+
+.login-box {
+    width: 800px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-box form {
+    width: 400px;
+    text-align: center;
+}
+
+.login-box form h1 {
+    font-size: 20px;
+    color: #495057;
+    margin-bottom: 40px;
+    font-weight: 600;
+}
+
+.login-box form input {
+    width: 100%;
+    height: 50px;
+    border: none;
+    outline: none;
+    border: 1px solid #DEE2E6;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 0px 20px;
+}
+
+.login-box form input::placeholder {
+    color: #DEE2E6;
+}
+
+.login-box form .login-btn {
+    margin-top: 20px;
+    border: none;
+    background: #0C8BC6;
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.sub-box {
+    width: 480px;
+    height: 100%;
+    background: linear-gradient(#0C8BC6, #64BAE1);
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+}
+
+.sub-box .box {
+    text-align: center;
+    color: #fff;
+    width: 280px;
+}
+
+.box h1 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.box p {
+    margin: 30px 0 20px 0;
+    font-size: .8rem;
+}
+
+.box button {
+    color: #fff;
+    background: none;
+    border: 2px solid #fff;
+    width: 200px;
+    height: 50px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+

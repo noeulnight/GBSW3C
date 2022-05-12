@@ -14,7 +14,7 @@ body {
     justify-content: center;
 }
 
-.login-form {
+.loginForm {
     width: 1280px;
     height: 700px;
     border: 1px solid #DEE2E6;
@@ -30,11 +30,10 @@ body {
     position: absolute;
     top: 40px;
     left: 40px;
-    background: url(../img/logo.png);
-    background-size: 100% 100%;
+    size: 100% 100%;
 }
 
-.login-box {
+.loginBox {
     width: 800px;
     height: 100%;
     display: flex;
@@ -42,19 +41,19 @@ body {
     justify-content: center;
 }
 
-.login-box form {
+.loginBox form {
     width: 400px;
     text-align: center;
 }
 
-.login-box form h1 {
+.loginBox form h1 {
     font-size: 20px;
     color: #495057;
     margin-bottom: 40px;
     font-weight: 600;
 }
 
-.login-box form input {
+.loginBox form input {
     width: 100%;
     height: 50px;
     border: none;
@@ -65,11 +64,11 @@ body {
     padding: 0px 20px;
 }
 
-.login-box form input::placeholder {
+.loginBox form input::placeholder {
     color: #DEE2E6;
 }
 
-.login-box form .login-btn {
+.loginBox form .loginBtn {
     margin-top: 20px;
     border: none;
     background: #0C8BC6;
@@ -78,7 +77,7 @@ body {
     cursor: pointer;
 }
 
-.sub-box {
+.subBox {
     width: 480px;
     height: 100%;
     background: linear-gradient(#0C8BC6, #64BAE1);
@@ -87,7 +86,7 @@ body {
     justify-content: center;    
 }
 
-.sub-box .box {
+.subBox .box {
     text-align: center;
     color: #fff;
     width: 280px;
@@ -113,3 +112,34 @@ body {
     cursor: pointer;
 }
 
+@media (max-width: 428px)
+{
+    body {
+        width: 600px;
+        background: #f8f8f8;
+        align-items: center;
+        justify-content: center;
+    }
+    .logo {
+        position: absolute;
+        top: 20px;
+        left: 200px;
+    }
+    .loginForm {
+        display: inline-block;
+        width: 450px;
+        top: 100px;
+    }
+    .loginBox {
+        width: 450px;
+        height: 500px;
+    }
+    .loginBox form input {
+        width: 300px;
+    }
+    .subBox {
+        width: 450px;
+        height: 250px;
+        border-radius: 0 0 10px 10px;
+    }
+}

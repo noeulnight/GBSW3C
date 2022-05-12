@@ -1,5 +1,6 @@
 import React from "react";
-import Login from "./pages/login.js";
+import Login from "./pages/Login.js";
+import Student from './pages/Student'
 
 function App () {
   return (

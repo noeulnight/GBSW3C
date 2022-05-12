@@ -19,7 +19,7 @@ body {
     height: 700px;
     border: 1px solid #DEE2E6;
     background: #ffffff;
-    border-radius: 10px;
+    border-radius: 10px 10px 0 0;
     display: flex;
     position: relative;
 }
@@ -115,30 +115,42 @@ body {
 @media (max-width: 428px)
 {
     body {
-        width: 600px;
+        position: fixed;
+        width: 100%;
+        height: 100%;
         background: #f8f8f8;
-        align-items: center;
-        justify-content: center;
     }
     .logo {
         position: absolute;
-        top: 20px;
-        left: 200px;
+        text-align: center;
+        top: 40px;
+        left: 42%;
     }
     .loginForm {
+        position: absolute;
         display: inline-block;
-        width: 450px;
-        top: 100px;
+        width: 80%;
+        height: 420px;
+        left: 10%;
+        top: 15px;
     }
     .loginBox {
-        width: 450px;
-        height: 500px;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+    form {
+        position: absolute;
+        width: 100%;
+        top: 100px;
     }
     .loginBox form input {
-        width: 300px;
+        width: 250px;
     }
     .subBox {
-        width: 450px;
+        position: absolute;
+        top: 420px;
+        width: 100%;
         height: 250px;
         border-radius: 0 0 10px 10px;
     }

@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Noto Sans KR', sans-serif;
+
+  body {
+    min-height: 100vh;
+    background: #f8f8f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .loginForm {
+      width: 1280px;
+      height: 700px;
+      border: 1px solid #DEE2E6;
+      background: #ffffff;
+      border-radius: 10px 10px 0 0;
+      display: flex;
+      position: relative;
+
+      .logo {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        top: 40px;
+        left: 40px;
+        size: 100% 100%;
+      }
+      
+      .loginBox {
+        width: 800px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    
+        form {
+          width: 400px;
+          text-align: center;
+  
+          h1 {
+            font-size: 20px;
+            color: #495057;
+            margin-bottom: 40px;
+            font-weight: 600;
+          }
+  
+          input {
+            width: 100%;
+            height: 50px;
+            border: none;
+            outline: none;
+            border: 1px solid #DEE2E6;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            padding: 0px 20px;
+
+            &::placeholder {
+              color: #DEE2E6;
+            }
+          }
+          .loginBtn {
+            margin-top: 20px;
+            border: none;
+            background: #0C8BC6;
+            color: #ffffff;
+            font-weight: 600;
+            cursor: pointer;
+          }
+        }
+      }
+      .subBox {
+        width: 480px;
+        height: 100%;
+        background: linear-gradient(#0C8BC6, #64BAE1);
+        display: flex;
+        align-items: center;
+        justify-content: center;    
+
+        .box {
+          text-align: center;
+          color: #fff;
+          width: 280px;
+
+          h1 {
+            font-size: 20px;
+            font-weight: 600;
+          }
+
+          p {
+            margin: 30px 0 20px 0;
+            font-size: .8rem;
+          }
+
+          button {
+            color: #fff;
+            background: none;
+            border: 2px solid #fff;
+            width: 200px;
+            height: 50px;
+            border-radius: 5px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media (max-width: 428px)
+{
+  body {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #f8f8f8;
+  }
+  .logo {
+    position: absolute;
+    text-align: center;
+    top: 40px;
+    left: 42%;
+  }
+  .loginForm {
+    position: absolute;
+    display: inline-block;
+    width: 80%;
+    height: 420px;
+    left: 10%;
+    top: 15px;
+  }
+  .loginBox {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  form {
+    position: absolute;
+    width: 100%;
+    top: 100px;
+  }
+  .loginBox form input {
+    width: 250px;
+  }
+  .subBox {
+    position: absolute;
+    top: 420px;
+    width: 100%;
+    height: 250px;
+    border-radius: 0 0 10px 10px;
+  }
+}

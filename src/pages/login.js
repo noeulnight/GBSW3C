@@ -2,12 +2,21 @@ import React, { useState } from "react";
 import styles from '../css/Login.module.scss'
 import logo from '../img/logo.png'
 
-const Login = () => {
+const Login = ({ isLogin }) => {
   const [ id, setId ] = useState('');
   const [ pw, setPw ] = useState('');
 
-  const onSubmit = () => {
-    
+  const onSubmit = (e) => {
+    e.preventDefault()
+    if(id == 'aaa') {
+      if(pw =='aaa') {
+        isLogin(true)
+      } else {
+        alert("아이디 혹은 비밀번호가 틀렸습니다.")
+      }
+    } else {
+      alert("아이디 혹은 비밀번호가 틀렸습니다.")
+    }
   }
 
   return (

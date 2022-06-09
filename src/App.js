@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import Login from "./pages/Login.js";
 import { Route, Routes } from 'react-router-dom';
+import Login from "./pages/Login.js";
 import Navigation from "./components/Navigation.js";
+import Header from "./components/Header.js";
+import useSessionStorage from "./components/UseSessionStorage.js";
 
 function App () {
-  const [ login, isLogin ] = useState(false)
+  const [ login, isLogin ] = useSessionStorage("login", false)
 
   if(!login) {
-    return (  
+    return (
       <div>
         <Login isLogin={isLogin}/>
       </div> 
@@ -15,6 +17,7 @@ function App () {
   } else if(login) {
     return (
       <div>
+        <Header />
         <Navigation />
         <Routes>
           <Route path="/" element={<Navigation />} />

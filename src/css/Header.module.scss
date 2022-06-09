@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Roboto:wght@300;400;500;700;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: 'Noto Sans KR', sans-serif;
+  
+  .container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    .header {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 64px;
+      background: #fff;
+      border-bottom: 1px solid #f1f1f1;
+  
+      .logo {
+        font-family: 'Roboto', sans-serif;
+        color: #191919;
+        width: 256px;
+        height: 64px;
+        padding-left: 24px;
+        font-size: 1.3rem;
+        font-weight: 900;
+        line-height: 64px;
+      }
+  
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between  ;
+        width: calc(100% - 256px);
+        height: 64px;
+        padding: 0 24px;
+  
+        .toggle {
+          width: 24px;
+          height: 24px;
+          // background: url(../images/그룹\ 117@2x.png) 50% 50% / cover; 
+        }
+  
+        .search {
+          position: relative;
+          width: 600px;
+          height: 46px;
+          color: #ACB2CB;
+  
+          input {
+            width: 100%;
+            height: 100%;
+            border-radius: 30px;
+            border: none;
+            outline: none;
+            background: #F1F1F5;
+            padding-left: 59px;
+  
+            &::placeholder {
+              color: #ACB2CB;
+            }
+          }
+  
+          .AiOutlineSearch {
+            position: absolute;
+            line-height: 46px;
+            left: 24px;
+            top: 15px;
+            size: 30px;
+          }
+        }
+  
+        .mode {
+          width: 28px;
+          height: 28px;
+          // background: url(../images/그룹\ 115@2x.png) 50% 50% / cover;
+        }
+      }
+    }
+  }
+}

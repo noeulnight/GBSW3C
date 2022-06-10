@@ -3,11 +3,10 @@ import { Link } from "react-router-dom"
 import useSessionStorage from "./UseSessionStorage"
 import styles from '../css/Navigation.module.scss'
 import profile from '../img/profile.png'
+import Chart from "./Chart"
 
 const Navigation = ( {grade} ) => {
   const [active, setActive] = useSessionStorage("active", 1)
-  
-  console.log('grade : ' + grade)
 
   if ( grade == 0) {
     return (
@@ -30,6 +29,7 @@ const Navigation = ( {grade} ) => {
               <Link to="" onClick={() => setActive(4)}><li className={active === 4 ? styles.checked : null}><p>프로필</p></li></Link>
             </ul>
           </div>
+          <div className={styles.chart}><Chart /></div>
           <div className={styles.outBox}>
             <div><Link to="">비밀번호 재설정</Link></div>
             <div><Link to="">로그아웃</Link></div>

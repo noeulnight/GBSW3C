@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from '../css/Login.module.scss'
 import logo from '../img/logo.png'
 
-const Login = ({ isLogin }) => {
+const Login = ({ isLogin, setGrade }) => {
   const [ id, setId ] = useState('');
   const [ pw, setPw ] = useState('');
 
@@ -11,6 +11,21 @@ const Login = ({ isLogin }) => {
     if(id == 'aaa') {
       if(pw =='aaa') {
         isLogin(true)
+        setGrade(0);
+      } else {
+        alert("아이디 혹은 비밀번호가 틀렸습니다.")
+      }
+    } else if(id == 'bbb') {
+      if(pw =='bbb') {
+        isLogin(true)
+        setGrade(1);
+      } else {
+        alert("아이디 혹은 비밀번호가 틀렸습니다.")
+      }
+    } else if(id == 'ccc') {
+      if(pw =='ccc') {
+        isLogin(true)
+        setGrade(2);
       } else {
         alert("아이디 혹은 비밀번호가 틀렸습니다.")
       }

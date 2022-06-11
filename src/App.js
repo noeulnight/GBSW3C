@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Route, Routes } from 'react-router-dom';
 import Login from "./pages/Login";
-import Main from './pages/main'
+import Main from './pages/Main'
 import Navigation from "./components/Navigation";
 import Header from "./components/Header";
 import useSessionStorage from "./components/UseSessionStorage";

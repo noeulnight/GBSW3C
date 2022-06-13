@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Route, Routes } from 'react-router-dom';
 import Login from "./pages/Login";
 import Main from './pages/Main'
@@ -8,8 +8,9 @@ import useSessionStorage from "./components/UseSessionStorage";
 
 function App () {
   const [ login, isLogin ] = useSessionStorage("login", false)
-  const [ grade, setGrade ] = useSessionStorage("grade", 0);
-
+  const [ grade, setGrade ] = useSessionStorage("grade", 0)
+  const [ mode, setMode ] = useSessionStorage("mode", 'light')
+  
   if(!login) {
     return (
       <div>
@@ -17,10 +18,10 @@ function App () {
       </div> 
     )
   } else if(login) {
-    if(true){
+    if(true){ // grade에 따라서 바꾸기
       return (
         <div>
-          <Header />
+          <Header mode={mode} setMode={setMode} />
           <Navigation grade={grade}/>
           <Routes>
             <Route path="/" element={<Main grade={grade} />} />

@@ -16,8 +16,8 @@ const main = () => {
               <input type="text" />
             </div>
             <div className={styles.btn}>
-              <label className={styles.left} for=""><BsChevronLeft /></label>
-              <label className={styles.right} for=""><BsChevronRight /></label>
+              <label className={styles.left}><BsChevronLeft /></label>
+              <label className={styles.right}><BsChevronRight /></label>
             </div>
           </div>
         </div>

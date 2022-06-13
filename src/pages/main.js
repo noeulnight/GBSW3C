@@ -1,5 +1,6 @@
 import React from "react";
-import { BsChevronLeft, BsChevronRight, BsChevronDown, BsPlus } from 'react-icons/bs'
+import { AiOutlineFile } from 'react-icons/ai'
+import { BsChevronLeft, BsChevronRight, BsChevronDown } from 'react-icons/bs'
 import styles from '../css/Main.module.scss'
 
 const main = () => {
@@ -13,7 +14,7 @@ const main = () => {
           <div>
             <div className={styles.page}>
               <span>페이지</span>
-              <input type="text" />
+              <input type="text" defaultValue="1" /> / 1
             </div>
             <div className={styles.btn}>
               <label className={styles.left}><BsChevronLeft /></label>
@@ -26,7 +27,7 @@ const main = () => {
             <div className={styles.listHeader}>
               <div>신청 리스트</div>
               <div>
-                  <span><BsPlus />추가신청</span>
+                  <span>+ 추가신청</span>
                   <span className={styles.btn}>전체보기<BsChevronDown /></span>
               </div>
             </div>
@@ -82,9 +83,7 @@ const main = () => {
                   </td>
                   <td>40%</td>
                   <td>
-                    <div className={styles.file}>
-                        
-                    </div>
+                    <AiOutlineFile className={styles.file} />
                   </td>
                   <td>2022-04-25</td>
                 </tr>

@@ -12,33 +12,60 @@ const Header = ({ mode, setMode }) => {
       setMode('light')
     }
   }
-  
-  return (
-    <div>
-      <div className={styles.container}>
-        <div className={styles.header}>
-        <input type="checkbox" id="mode" name="mode" onChange={CheckChange} />
-          <div className={styles.logo}>Gbsw Logo</div>
-            <div className={styles.topbar}>
-              <div className={styles.toggle}>
-                  
+  if(mode == 'light') {
+    return (
+      <div>
+        <div className={styles.light_container}>
+          <div className={styles.light_header}>
+          <input type="checkbox" id="mode" name="mode" onChange={CheckChange} />
+            <div className={styles.light_logo}>Gbsw Logo</div>
+              <div className={styles.light_topbar}>
+                <div className={styles.light_toggle}>
+                    
+                </div>
+                <div className={styles.light_search}>
+                <label>
+                  <input type="text" placeholder="Search here" className={styles.light_input} />
+                  <AiOutlineSearch className={styles.light_AiOutlineSearch}/>
+                </label>
               </div>
-              <div className={styles.search}>
-              <label>
-                <input type="text" placeholder="Search here" />
-                <AiOutlineSearch className={styles.AiOutlineSearch}/>
+              <label htmlFor="mode">
+                <div className={styles.light_mode}>
+
+                </div>
               </label>
             </div>
-            <label htmlFor="mode">
-              <div className="mode">
-                <FaHornbill />
-              </div>
-            </label>
           </div>
         </div>
       </div>
-    </div>
-  )
+    )
+  } else if(mode == 'dark') {
+    return(
+      <div className={styles.dark_container}>
+          <div className={styles.dark_header}>
+          <input type="checkbox" id="mode" name="mode" onChange={CheckChange} />
+            <div className={styles.dark_logo}>Gbsw Logo</div>
+              <div className={styles.dark_topbar}>
+                <div className={styles.dark_toggle}>
+                    
+                </div>
+                <div className={styles.dark_search}>
+                <label>
+                  <input type="text" placeholder="Search here" className={styles.dark_input}/>
+                  <AiOutlineSearch className={styles.dark_AiOutlineSearch}/>
+                </label>
+              </div>
+              <label htmlFor="mode">
+                <div className={styles.dark_mode}>
+                  
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+      
+    )
+  }
 }
 
 export default Header

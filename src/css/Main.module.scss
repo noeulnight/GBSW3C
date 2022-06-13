@@ -9,11 +9,17 @@
   font-family: 'Noto Sans KR', sans-serif;
 
   .main {
-    margin-top: 20px;
-    margin-left: 280px;
-    width: calc(100% - 304px);
+    position: absolute;
+    bottom: 85%;
+    right: 3.5%;
+    width: calc(100% - 204px);
+    
 
     .title {
+      position: absolute;
+      width: 90%;
+      bottom: 10px;
+      right: 0;
       font-size: 1.35rem;
       font-weight: bold;
       color: #191919;
@@ -63,7 +69,7 @@
     .page {
       input {
         color: #8993A7;
-        width: 30px;
+        width: 35px;
         height: 24px;
         padding: 10px;
         outline: none;
@@ -75,10 +81,12 @@
     }
 
     .listBox {
+      position: absolute;
+      right: 0;
+      top: 0;
       padding: 0 24px;
-      margin-top: 18px;
-      width: 100%;
-      height: 876px;
+      width: 90%;
+      height: 770px;
       border-radius: 4px;
       background: #fff;
       transition: all .5s;
@@ -128,19 +136,33 @@
       width: 100%;
       border-collapse: collapse;
 
+      thead,
+      tbody {
+          width: 100%;
+          height: 60px;
+      }
+
+
       thead {
-        width: 100%;
-        height: 60px;
         color: #ACB2CB;
         font-size: .875rem;
         background: #F3F5F7;
         border-left: 24px solid #F3F5F7;
         border-right: 24px solid #F3F5F7;
+
+        tr {
+
+          td:nth-child(6) {
+            width: 38%;
+          }
+
+          td:nth-child(8) {
+            text-align: right;
+          } 
+        }
       }
 
       tbody {
-        width: 100%;
-        height: 60px;
         border-left: 24px solid transparent;
         border-right: 24px solid transparent;
         color: #ACB2CB;
@@ -186,7 +208,6 @@
             .file {
               width: 28px;
               height: 34px;
-              // background: url(../images/그룹\ 216@2x.png) 50% 50% / cover;
             }
           }
           

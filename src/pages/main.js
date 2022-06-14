@@ -3,7 +3,49 @@ import { AiOutlineFile } from 'react-icons/ai'
 import { BsChevronLeft, BsChevronRight, BsChevronDown } from 'react-icons/bs'
 import styles from '../css/Main.module.scss'
 
-const main = ({ mode }) => {
+const Main = ({ mode }) => {
+
+  const items = {
+    header: ['번호', '신청인', '학과', '영역', '분류', '달성률', '파일'],
+    data: [
+      {
+        number: '0001',
+        name: '2204김무일', 
+        department: '소프트웨어개발과', 
+        area: '실무역량', 
+        classification1: '자격증', 
+        classification2: '정보처리기능사', 
+        achievement_rate: '25%', 
+        file: <AiOutlineFile />, 
+        date: '2022-04-25' 
+      },
+      {
+        number: '0001',
+        name: '2204김무일', 
+        department: '소프트웨어개발과', 
+        area: '실무역량', 
+        classification1: '자격증', 
+        classification2: '정보처리기능사', 
+        achievement_rate: '25%', 
+        file: <AiOutlineFile />, 
+        date: '2022-04-25' 
+      },
+      {
+        number: '0001',
+        name: '2204김무일', 
+        department: '소프트웨어개발과', 
+        area: '실무역량', 
+        classification1: '자격증', 
+        classification2: '정보처리기능사', 
+        achievement_rate: '25%', 
+        file: <AiOutlineFile />, 
+        date: '2022-04-25' 
+      },
+      
+    ]
+  }
+
+
   if(mode == 'light') {
     return (
       <div>
@@ -35,60 +77,28 @@ const main = ({ mode }) => {
               <table>
                 <thead>
                   <tr>
-                    <td>번호</td>
-                    <td>신청인</td>
-                    <td>과명</td>
-                    <td>영역</td>
-                    <td>분류</td>
-                    <td>달성률</td>
-                    <td>파일</td>
+                    {items.header.map((item) => {
+                      return <td>{item}</td>  
+                    })}
                     <td>신청일<BsChevronDown /></td>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td>0001</td>
-                    <td>2204김무일</td>
-                    <td>소프트웨어개발과</td>
-                    <td>실무역량</td>
-                    <td>
-                        <p>자격증</p>정보처리기능사
-                    </td>
-                    <td>25%</td>
-                    <td></td>
-                    <td>2022-04-25</td>
-                  </tr>
-                </tbody>
-                <tbody>
-                  <tr>
-                    <td>0002</td>
-                    <td>2204김무일</td>
-                    <td>소프트웨어개발과</td>
-                    <td>실무역량</td>
-                    <td>
-                        <p>자격증</p>리눅스마스터
-                    </td>
-                    <td>25%</td>
-                    <td></td>
-                    <td>2022-04-25</td>
-                  </tr>
-                </tbody>
-                <tbody>
-                  <tr>
-                    <td>0003</td>
-                    <td>2204김무일</td>
-                    <td>소프트웨어개발과</td>
-                    <td>실무역량</td>
-                    <td>
-                      <p>프로젝트 산출물</p>자율형 프로젝트
-                    </td>
-                    <td>40%</td>
-                    <td>
-                      <AiOutlineFile className={styles.light_file} />
-                    </td>
-                    <td>2022-04-25</td>
-                  </tr>
-                </tbody>
+                {items.data.map((item) => {
+                  return (
+                    <tbody>
+                      <tr>
+                        <td>{item.number}</td>
+                        <td>{item.name}</td>
+                        <td>{item.department}</td>
+                        <td>{item.area}</td>
+                        <td>{item.classification1} <br /> {item.classification2}</td>
+                        <td>{item.achievement_rate}</td>
+                        <td>{item.file}</td>
+                        <td>{item.date}</td>
+                      </tr>
+                    </tbody>
+                  )
+                })}
               </table>
             </div>
           </div>
@@ -126,60 +136,28 @@ const main = ({ mode }) => {
               <table>
                 <thead>
                   <tr>
-                    <td>번호</td>
-                    <td>신청인</td>
-                    <td>과명</td>
-                    <td>영역</td>
-                    <td>분류</td>
-                    <td>달성률</td>
-                    <td>파일</td>
+                    {items.header.map((item) => {
+                      return <td>{item}</td>  
+                    })}
                     <td>신청일<BsChevronDown /></td>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td>0001</td>
-                    <td>2204김무일</td>
-                    <td>소프트웨어개발과</td>
-                    <td>실무역량</td>
-                    <td>
-                        <p>자격증</p>정보처리기능사
-                    </td>
-                    <td>25%</td>
-                    <td></td>
-                    <td>2022-04-25</td>
-                  </tr>
-                </tbody>
-                <tbody>
-                  <tr>
-                    <td>0002</td>
-                    <td>2204김무일</td>
-                    <td>소프트웨어개발과</td>
-                    <td>실무역량</td>
-                    <td>
-                        <p>자격증</p>리눅스마스터
-                    </td>
-                    <td>25%</td>
-                    <td></td>
-                    <td>2022-04-25</td>
-                  </tr>
-                </tbody>
-                <tbody>
-                  <tr>
-                    <td>0003</td>
-                    <td>2204김무일</td>
-                    <td>소프트웨어개발과</td>
-                    <td>실무역량</td>
-                    <td>
-                      <p>프로젝트 산출물</p>자율형 프로젝트
-                    </td>
-                    <td>40%</td>
-                    <td>
-                      <AiOutlineFile className={styles.dark_file} />
-                    </td>
-                    <td>2022-04-25</td>
-                  </tr>
-                </tbody>
+                {items.data.map((item) => {
+                  return (
+                    <tbody>
+                      <tr>
+                        <td>{item.number}</td>
+                        <td>{item.name}</td>
+                        <td>{item.department}</td>
+                        <td>{item.area}</td>
+                        <td>{item.classification1} <br /> {item.classification2}</td>
+                        <td>{item.achievement_rate}</td>
+                        <td>{item.file}</td>
+                        <td>{item.date}</td>
+                      </tr>
+                    </tbody>
+                  )
+                })}
               </table>
             </div>
           </div>
@@ -189,4 +167,4 @@ const main = ({ mode }) => {
   }
 }
 
-export default main
+export default Main

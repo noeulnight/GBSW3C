@@ -12,6 +12,12 @@ function App () {
   const [ grade, setGrade ] = useSessionStorage("grade", 0)
   const [ mode, setMode ] = useSessionStorage("mode", 'light')
   
+  if(mode == 'dark') {
+    document.body.className = 'dark_body' 
+  } else if(mode == 'light'){
+    document.body.className = 'light_body'
+  }
+
   if(!login) {
     return (
       <div>

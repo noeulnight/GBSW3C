@@ -8,12 +8,6 @@ import Chart from "./Chart"
 const Navigation = ({ grade, mode }) => {
   const [active, setActive] = useSessionStorage("active", 1)
 
-  if(mode == 'dark') {
-    document.body.className = 'dark_body' 
-  } else if(mode == 'light'){
-    document.body.className = 'light_body'
-  }
-
   if(mode == 'light') { // 라이트 모드
     if ( grade == 0) {
       return (

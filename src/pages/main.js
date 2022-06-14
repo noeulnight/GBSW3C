@@ -77,15 +77,15 @@ const Main = ({ mode }) => {
               <table>
                 <thead>
                   <tr>
-                    {items.header.map((item) => {
-                      return <td>{item}</td>  
+                    {items.header.map((item, index) => {
+                      return <td key={index}>{item}</td>  
                     })}
                     <td>신청일<BsChevronDown /></td>
                   </tr>
                 </thead>
-                {items.data.map((item) => {
+                {items.data.map((item, index) => {
                   return (
-                    <tbody>
+                    <tbody key={index}>
                       <tr>
                         <td>{item.number}</td>
                         <td>{item.name}</td>
@@ -136,15 +136,15 @@ const Main = ({ mode }) => {
               <table>
                 <thead>
                   <tr>
-                    {items.header.map((item) => {
-                      return <td>{item}</td>  
+                    {items.header.map((item, index) => {
+                      return <td key={index}>{item}</td>  
                     })}
                     <td>신청일<BsChevronDown /></td>
                   </tr>
                 </thead>
-                {items.data.map((item) => {
+                {items.data.map((item, index) => {
                   return (
-                    <tbody>
+                    <tbody key={index}>
                       <tr>
                         <td>{item.number}</td>
                         <td>{item.name}</td>

@@ -7,10 +7,10 @@
   text-decoration: none;
   box-sizing: border-box;
   font-family: 'Noto Sans KR', sans-serif;
-  
-  #mode {
-    display: none;
-  }  
+
+  input[id="mode"]{
+    display: none
+  }
 
   // Light Mode
   .light_container {

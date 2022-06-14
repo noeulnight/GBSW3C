@@ -9,7 +9,14 @@
   body {
     display: flex;
 
-    .navigation {
+    .chart {
+      position: absolute;
+      left: -50px;
+      bottom: 130px;
+    }
+
+    // 라이트 모드
+    .light_navigation {
       background: #fff;
       left: 0;
       bottom: 0;
@@ -18,7 +25,7 @@
       position: absolute;
       border-left: #e3e3e3;
 
-      .logo {
+      .light_logo {
         font-family: 'Roboto', sans-serif;
         width: 100%;
         height: 64px;
@@ -29,14 +36,14 @@
         border-bottom: 1px solid #f1f1f1;
       }
 
-      .title {
+      .light_title {
         width: 100%;
         height: 80px;
         display: flex;
         align-items: center;
       }
       
-      .profile {
+      .light_profile {
         position: absolute;
         width: 100%;
         height: 100px;
@@ -68,12 +75,12 @@
         }
       }
   
-      .list {
+      .light_list {
         top: 170px;
         position: absolute;
         width: 100%;
   
-        .tag {
+        .light_tag {
           display: inline-block;
           align-items: center;
           color: #adabab;
@@ -107,7 +114,7 @@
         }
       }
       
-      .checked {
+      .light_checked {
         color: #191919;
   
         &::before {
@@ -125,14 +132,8 @@
           color: #0684C4;
         }
       }
-      
-      .chart {
-        position: absolute;
-        left: -50px;
-        bottom: 130px;
-      }
 
-      .outBox {
+      .light_outBox {
         position: absolute;
         bottom: 0;
         width: 100%;
@@ -155,6 +156,148 @@
         }
       }   
     }
-    
+    // 다크 모드
+    .dark_navigation {
+      background: #2F3146;
+      left: 0;
+      bottom: 0;
+      width: 256px;
+      height: 100%;
+      position: absolute;
+      border-left: #e3e3e3;
+
+      .dark_logo {
+        font-family: 'Roboto', sans-serif;
+        width: 100%;
+        height: 64px;
+        padding-left: 24px;
+        font-size: 1.3rem;
+        font-weight: 900;
+        line-height: 64px;
+        color: #fff;
+        border-bottom: 1px solid #2A2C42;
+      }
+
+      .dark_title {
+        width: 100%;
+        height: 80px;
+        display: flex;
+        align-items: center;
+      }
+      
+      .dark_profile {
+        position: absolute;
+        width: 100%;
+        height: 100px;
+
+        img {
+          position: absolute;
+          top: 25px;
+          left: 25px;
+          border-radius: 50%; 
+          width: 50px;
+          height: 50px;
+        }
+
+        div {
+          position: absolute;
+          left: 90px;
+          top: 30px;
+
+          h4 {
+            font-size: 0.875rem;
+            color: #fff;
+          }
+  
+          span {
+            font-size: 0.85rem;
+            color: #6F738E;
+          }
+          
+        }
+      }
+  
+      .dark_list {
+        top: 170px;
+        position: absolute;
+        width: 100%;
+  
+        .dark_tag {
+          display: inline-block;
+          align-items: center;
+          color: #6F738E;
+          font-size: 14px;
+          margin-top: 10px;
+          margin-left: 20px;
+          margin-bottom: 10px;
+        }
+  
+        a {
+          text-decoration: none;
+        }
+  
+        ul li {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          height: 46px;
+          font-size: 14px;
+          color: #505050;
+          position: relative;
+          cursor: pointer;
+           
+          &:hover {
+            background: #383850;
+          }
+  
+          p {
+            color: #8C8EA0;
+            margin-left: 40px;
+          }
+        }
+      }
+      
+      #dark_checked {
+        color: #191919;
+  
+        &::before {
+          position: absolute;
+          width: 5px;
+          height: 40px;
+          background: #0684C4;
+          content: '';
+          border-radius: 0 9px 9px 0;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        
+        p {
+          color: #0684c4;
+        }
+      }
+
+      .dark_outBox {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        line-height: 50px;
+        padding-left: 24px;
+  
+        div {
+          width: 100%;
+          height: 50px;
+          color: #8C8EA0;
+          font-size: .875rem;
+          font-weight: 500;
+  
+          a {
+            color: #ACB2CB;
+            font-size: .875rem;
+            font-weight: 500;
+            text-decoration: none;
+          }
+        }
+      }   
+    }
   }
 }

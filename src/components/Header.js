@@ -1,7 +1,6 @@
 import React from "react";
 import { AiOutlineSearch } from 'react-icons/ai'
 import styles from '../css/Header.module.scss'
-import { FaHornbill } from "react-icons/fa";
 
 const Header = ({ mode, setMode }) => {
 
@@ -17,7 +16,9 @@ const Header = ({ mode, setMode }) => {
       <div>
         <div className={styles.light_container}>
           <div className={styles.light_header}>
-          <input type="checkbox" id="mode" name="mode" onChange={CheckChange} />
+            <div className={styles.modeBtn}>
+              <input type="checkbox" id="mode" name="mode" onChange={CheckChange} />
+            </div>
             <div className={styles.light_logo}>Gbsw Logo</div>
               <div className={styles.light_topbar}>
                 <div className={styles.light_toggle}>

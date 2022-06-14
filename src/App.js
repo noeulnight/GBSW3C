@@ -22,7 +22,7 @@ function App () {
       return (
         <div>
           <Header mode={mode} setMode={setMode} />
-          <Navigation grade={grade}/>
+          <Navigation grade={grade} mode={mode}/>
           <Routes>
             <Route path="/" element={<Main grade={grade} />} />
           </Routes>

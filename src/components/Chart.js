@@ -31,14 +31,24 @@ const options = {
   }
 }
 
-const Chart = () => {
-  return (
-    <div style={{ textAlign: 'center' }}>
-      <Doughnut data={data} options={options}  style={{ width: '350px' }} />
-      <p style={{ position: 'relative', display: 'inline-block', bottom: '110px', color: '#191919' }}>1000점 </p><br />
-      <p style={{ position: 'relative', display: 'inline-block', bottom: '110px', fontSize: '13px', color: '#ACB2CB' }}>50% </p>
-    </div>
-  )
+const Chart = ({ mode }) => {
+  if(mode == 'light') {
+    return (
+      <div style={{ textAlign: 'center' }}>
+        <Doughnut data={data} options={options}  style={{ width: '350px' }} />
+        <p style={{ position: 'relative', display: 'inline-block', bottom: '110px', color: '#191919' }}>1000점 </p><br />
+        <p style={{ position: 'relative', display: 'inline-block', bottom: '110px', fontSize: '13px', color: '#ACB2CB' }}>50% </p>
+      </div>
+    )
+  } else {
+    return (
+      <div style={{ textAlign: 'center' }}>
+        <Doughnut data={data} options={options}  style={{ width: '350px' }} />
+        <p style={{ position: 'relative', display: 'inline-block', bottom: '110px', color: '#fff' }}>1000점 </p><br />
+        <p style={{ position: 'relative', display: 'inline-block', bottom: '110px', fontSize: '13px', color: '#ACB2CB' }}>50% </p>
+      </div>
+    )
+  }
 }
 
 export default Chart;

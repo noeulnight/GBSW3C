@@ -8,6 +8,12 @@ import Chart from "./Chart"
 const Navigation = ({ grade, mode }) => {
   const [active, setActive] = useSessionStorage("active", 1)
 
+  if(mode == 'dark') {
+    document.body.className = 'dark_body' 
+  } else if(mode == 'light'){
+    document.body.className = 'light_body'
+  }
+
   if(mode == 'light') { // 라이트 모드
     if ( grade == 0) {
       return (
@@ -26,7 +32,7 @@ const Navigation = ({ grade, mode }) => {
               <ul>  
                 <Link to="" onClick={() => setActive(1)}><li className={active === 1 ? styles.light_checked : null}><p>신청 리스트</p></li></Link>
                 <Link to="" onClick={() => setActive(2)}><li className={active === 2 ? styles.light_checked : null}><p>명예의 전당</p></li></Link>
-                <Link to="" onClick={() => setActive(3)}><li className={active === 3 ? styles.light_checked : null}><p>3C 인증제</p></li></Link>
+                <Link to="" onClick={() => setActive(3)}><li cklassName={active === 3 ? styles.light_checked : null}><p>3C 인증제</p></li></Link>
                 <Link to="" onClick={() => setActive(4)}><li className={active === 4 ? styles.light_checked : null}><p>프로필</p></li></Link>
               </ul>
             </div>

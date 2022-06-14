@@ -42,29 +42,30 @@ const Header = ({ mode, setMode }) => {
     )
   } else if(mode == 'dark') {
     return(
-      <div className={styles.dark_container}>
-          <div className={styles.dark_header}>
-          <input type="checkbox" id="mode" name="mode" onChange={CheckChange} />
-            <div className={styles.dark_logo}>Gbsw Logo</div>
-              <div className={styles.dark_topbar}>
-                <div className={styles.dark_toggle}>
-                    
+      <div>
+        <div className={styles.dark_container}>
+            <div className={styles.dark_header}>
+            <input type="checkbox" id="mode" name="mode" onChange={CheckChange} />
+              <div className={styles.dark_logo}>Gbsw Logo</div>
+                <div className={styles.dark_topbar}>
+                  <div className={styles.dark_toggle}>
+                      
+                  </div>
+                  <div className={styles.dark_search}>
+                  <label>
+                    <input type="text" placeholder="Search here" className={styles.dark_input}/>
+                    <AiOutlineSearch className={styles.dark_AiOutlineSearch}/>
+                  </label>
                 </div>
-                <div className={styles.dark_search}>
-                <label>
-                  <input type="text" placeholder="Search here" className={styles.dark_input}/>
-                  <AiOutlineSearch className={styles.dark_AiOutlineSearch}/>
+                <label htmlFor="mode">
+                  <div className={styles.dark_mode}>
+                    
+                  </div>
                 </label>
               </div>
-              <label htmlFor="mode">
-                <div className={styles.dark_mode}>
-                  
-                </div>
-              </label>
             </div>
           </div>
-        </div>
-      
+      </div>
     )
   }
 }

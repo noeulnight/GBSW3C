@@ -8,7 +8,7 @@
   box-sizing: border-box;
   font-family: 'Noto Sans KR', sans-serif;
 
-  .main {
+  .light_main {
     position: absolute;
     margin-right: 1.3%;
     right: 0;
@@ -16,7 +16,7 @@
     width: calc(100% - 304px);    
     height: 91%;
 
-    .title {
+    .light_title {
       position: absolute;
       width: 100%;
       font-size: 1.35rem;
@@ -26,10 +26,6 @@
       align-items: center;
       justify-content: space-between;
 
-      div > span {
-        color: #0684c4;
-      }
-
       div:nth-child(2) {
         display: flex;
         color: #8993A7;
@@ -37,10 +33,10 @@
         font-weight: 400;
       }
 
-      .btn {
+      .light_btn {
         margin-left: 18px;
 
-        .left {
+        .light_left {
           text-align: center;
           line-height: 24px;
           display: inline-block;
@@ -50,7 +46,7 @@
           border-radius: 3px;
       }
 
-        .right {
+        .light_right {
           text-align: center;
           line-height: 24px;
           display: inline-block;
@@ -65,7 +61,7 @@
       }
     }
 
-    .page {
+    .light_page {
       input {
         color: #8993A7;
         width: 35px;
@@ -79,7 +75,7 @@
       }
     }
 
-    .listBox {
+    .light_listBox {
       position: absolute;
       right: 0;
       bottom: 0;
@@ -90,9 +86,9 @@
       background: #fff;
       transition: all .5s;
 
-      .Box {
+      .light_Box {
 
-        .listHeader {
+        .light_listHeader {
           color: #191919;
           font-size: .875rem;
           font-weight: 500;
@@ -107,7 +103,7 @@
               color: #0684c4;
             }
 
-            .btn {
+            .light_btn {
               margin-left: 24px;
               color: #8993A7;
               display: inline-block;
@@ -117,7 +113,7 @@
               height: 36px;
               border: 1px solid #ACB2CB;
               border-radius: 3px;
-              margin-left: 5px;
+              margin-left: 18px;
             }
           }
 
@@ -204,7 +200,217 @@
 
           td:nth-child(7) {
 
-            .file {
+            .light_file {
+              width: 28px;
+              height: 34px;
+            }
+          }
+          
+          td:last-child {
+            text-align: right;
+            margin-left: 5px;
+          }
+        }
+      }
+    }
+  }
+  // 다크모드
+  .dark_main {
+    position: absolute;
+    margin-right: 1.3%;
+    right: 0;
+    bottom: 0;
+    width: calc(100% - 304px);    
+    height: 91%;
+
+    .dark_title {
+      position: absolute;
+      width: 100%;
+      font-size: 1.35rem;
+      font-weight: bold;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      div:nth-child(2) {
+        display: flex;
+        color: #8993A7;
+        font-size: .875rem;
+        font-weight: 400;
+      }
+
+      .dark_btn {
+        margin-left: 18px;
+
+        .dark_left {
+          text-align: center;
+          line-height: 24px;
+          display: inline-block;
+          width: 24px;
+          height: 24px;
+          background: #fff;
+          border-radius: 3px;
+          background-color: #2F3146;
+          color: #6F738E;
+      }
+
+        .dark_right {
+          text-align: center;
+          line-height: 24px;
+          display: inline-block;
+          width: 24px;
+          height: 24px;
+          background: #fff;
+          border-radius: 3px;
+          margin-left: 10px;
+          background: #0684c4;
+          color: #2B2E44;
+        }
+      }
+    }
+
+    .dark_page {
+      input {
+        color: #8993A7;
+        background-color: #2F3146;
+        width: 35px;
+        height: 24px;
+        padding: 10px;
+        outline: none;
+        border: 1px solid #6F738E;
+        margin-left: 11px;
+        margin-right: 5px;
+        border-radius: 3px;
+      }
+    }
+
+    .dark_listBox {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      padding: 0 24px;
+      width: 100%;
+      height: 94%;
+      border-radius: 4px;
+      background: #2F3146;
+      transition: all .5s;
+
+      .dark_Box {
+
+        .dark_listHeader {
+          color: #fff;
+          font-size: .875rem;
+          font-weight: 500;
+          height: 62px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          div {
+
+            span:nth-child(1) {
+              color: #0684c4;
+            }
+
+            .dark_btn {
+              margin-left: 24px;
+              color: #8993A7;
+              display: inline-block;
+              text-align: center;
+              line-height: 35px;
+              width: 100px;
+              height: 36px;
+              border: 1px solid #ACB2CB;
+              border-radius: 3px;
+              margin-left: 18px;
+            }
+          }
+
+          div:nth-child(2) {
+
+            span:nth-child(1) {
+              margin-right: 5px;
+            }
+          }
+        }
+      }
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+
+      thead,
+      tbody {
+          width: 100%;
+          height: 60px;
+      }
+
+
+      thead {
+        color: #6F738E;
+        font-size: .875rem;
+        background: #2B2E44;
+        border-left: 24px solid #2B2E44;
+        border-right: 24px solid #2B2E44;
+
+        tr {
+
+          td:nth-child(6) {
+            width: 38%;
+          }
+
+          td:nth-child(8) {
+            text-align: right;
+          } 
+        }
+      }
+
+      tbody {
+        border-left: 24px solid transparent;
+        border-right: 24px solid transparent;
+        color: #ACB2CB;
+        font-size: .875rem;
+
+        tr {
+
+          td:nth-child(1) {
+            color: #0684c4;
+            font-weight: 500;
+            width: 82px;
+          }
+
+          td:nth-child(2) {
+            color: #8993A7;
+            width: 120px;
+          }
+
+          td:nth-child(3) {
+            width: 163px;
+          }
+
+          td:nth-child(4) {
+            width: 102px;
+          }
+
+          td:nth-child(5) {
+            width: 134px;
+            font-size: .85rem;
+
+            p {
+              color: #8993A7;
+              font-size: .875rem;
+            }
+          }
+          
+          td:nth-child(6) {
+            width: 760px;
+          }
+
+          td:nth-child(7) {
+
+            .dark_file {
               width: 28px;
               height: 34px;
             }

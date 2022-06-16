@@ -1,14 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 import { AiOutlineFile, AiOutlineClose, AiOutlineCheck } from 'react-icons/ai'
 import { BsChevronLeft, BsChevronRight, BsChevronDown } from 'react-icons/bs'
 import styles from '../css/TeacherMain.module.scss'
 
 const TeacherMain = ({ mode }) => {
-  const items = {
-    header: [<input type='checkbox' style={{marginTop: '5px', width: "22px", height: '22px'}} />, '신청인', '학과', '영역', '분류', '달성률', '파일'],
-    data: [
+  const [fullCheched, setFullchecked] = useState(false)
+  const [items, setItems] = useState([
       {
-        id: "2204",
         name: '2204김무일', 
         department: '소프트웨어개발과', 
         area: '실무역량', 
@@ -16,7 +14,8 @@ const TeacherMain = ({ mode }) => {
         classification2: '정보처리기능사', 
         achievement_rate: '25%', 
         file: <AiOutlineFile size={24} />, 
-        date: '2022-04-25' 
+        date: '2022-04-25',
+        checked: false
       },
       {
         name: '2204김무일', 
@@ -26,7 +25,8 @@ const TeacherMain = ({ mode }) => {
         classification2: '정보처리기능사', 
         achievement_rate: '25%', 
         file: <AiOutlineFile size={24} />, 
-        date: '2022-04-25' 
+        date: '2022-04-25',
+        checked: false
       },
       {
         name: '2204김무일', 
@@ -36,10 +36,20 @@ const TeacherMain = ({ mode }) => {
         classification2: '정보처리기능사', 
         achievement_rate: '25%', 
         file: <AiOutlineFile size={24} />, 
-        date: '2022-04-25' 
+        date: '2022-04-25' ,
+        checked: false
       },
-      
-    ]
+    ])
+
+  const onCheck = (index) => () => {
+    items[index].checked = !items[index].checked
+    setItems([...items])
+    setFullchecked(false)
+  }
+  
+  const onFullCheck = () => {
+    setItems([...items.map((v) => ({ ...v, checked: !fullCheched }))])
+    setFullchecked(!fullCheched)
   }
 
   return (
@@ -73,18 +83,22 @@ const TeacherMain = ({ mode }) => {
             <table>
               <thead className={mode === 'light' ? styles.light_thead : styles.dark_thead}>
                 <tr>
-                  {items.header.map((item, index) => {
-                    return <td key={index}>{item}</td>  
-                  })}
+                  <td><input checked={fullCheched} onChange={onFullCheck} type='checkbox' style={{marginTop: '5px', width: "22px", height: '22px'}} /></td>
+                  <td>신청일</td>
+                  <td>학과</td>
+                  <td>영역</td>
+                  <td>분류</td>
+                  <td>달성률</td>
+                  <td>파일</td>
                   <td>신청일<BsChevronDown style={{position: 'relative', left: '3px', top: '2px'}}/></td>
                 </tr>
               </thead>
-              {items.data.map((item, index) => {
+              {items.map((item, index) => {
                 return (
                   <tbody key={index}>
                     <tr>
                       <td> 
-                        <input type='checkbox' style={{marginTop: '5px', width: "22px", height: '22px'}} value={item.number} onChange={() => onChange(id)} />
+                        <input type='checkbox' style={{marginTop: '5px', width: "22px", height: '22px'}} onChange={onCheck(index)} checked={item.checked} />
                       </td>
                       <td>{item.name}</td>
                       <td>{item.department}</td>

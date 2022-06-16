@@ -1,10 +1,11 @@
 import React from "react";
 import styles from './App.css'
 import { Route, Routes } from 'react-router-dom';
-import Login from "./pages/Login";
-import Main from './pages/Main'
 import Navigation from "./components/Navigation";
 import Header from "./components/Header";
+import Login from "./pages/Login";
+import StudentMain from './pages/StudentMain'
+import TeacherMain from "./pages/TeacherMain";
 import useSessionStorage from "./components/UseSessionStorage";
 
 function App () {
@@ -25,13 +26,33 @@ function App () {
       </div> 
     )
   } else if(login) {
-    if(true){ // grade에 따라서 바꾸기
+    if(grade == 0){ // grade에 따라서 바꾸기
       return (
         <div>
           <Header mode={mode} setMode={setMode} />
-          <Navigation grade={grade} mode={mode}/>
+          <Navigation grade={grade} mode={mode} />
           <Routes>
-            <Route path="/" element={<Main grade={grade} mode={mode} />} />
+            <Route path="/" element={<StudentMain mode={mode} />} />
+          </Routes>
+        </div>
+      )
+    } else if (grade == 1) {
+      return (
+        <div>
+          <Header mode={mode} setMode={setMode} />
+          <Navigation grade={grade} mode={mode} />
+          <Routes>
+            <Route path="/" element={<TeacherMain mode={mode} />} />
+          </Routes>
+        </div>
+      )
+    } else if (grade == 2) {
+      return (
+        <div>
+          <Header mode={mode} setMode={setMode} />
+          <Navigation grade={grade} mode={mode} />
+          <Routes>
+            <Route path="/" element={<TeacherMain mode={mode} />} />
           </Routes>
         </div>
       )

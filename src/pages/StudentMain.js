@@ -1,13 +1,12 @@
 import React from "react";
+import ProgressBar from "@ramonak/react-progress-bar";
 import { AiOutlineFile, AiOutlinePlus, AiOutlineCheck } from 'react-icons/ai'
 import { BsChevronLeft, BsChevronRight, BsChevronDown } from 'react-icons/bs'
 import styles from '../css/StudentMain.module.scss'
 
 const StudentMain = ({ mode }) => {
 
-  const items = {
-    header: ['번호', '신청인', '학과', '영역', '분류', '달성률', '파일'],
-    data: [
+  const items = [
       {
         number: '0001',
         name: '2204김무일', 
@@ -15,38 +14,37 @@ const StudentMain = ({ mode }) => {
         area: '실무역량', 
         classification1: '자격증', 
         classification2: '정보처리기능사', 
-        achievement_rate: '25%', 
+        achievement_rate1: "25%",
+        achievement_rate2: <ProgressBar completed={25} height={'13px'} width={'200px'} labelSize={'0px'} bgColor={'rgba(6, 132, 196, 0.77)'} borderRadius={'3px'} baseBgColor={mode === 'light' ? '#f1f1f1' : '#383850'} />,
         file: <AiOutlineFile size={24} />, 
         date: '2022-04-25' 
       },
       {
-        number: '0001',
+        number: '0002',
         name: '2204김무일', 
         department: '소프트웨어개발과', 
         area: '실무역량', 
         classification1: '자격증', 
-        classification2: '정보처리기능사', 
-        achievement_rate: '25%', 
+        classification2: '리눅스마스터', 
+        achievement_rate1: "25%",
+        achievement_rate2: <ProgressBar completed={25} height={'13px'} width={'200px'} labelSize={'0px'} bgColor={'rgba(6, 132, 196, 0.77)'} borderRadius={'3px'} baseBgColor={mode === 'light' ? '#f1f1f1' : '#383850'} />,
         file: <AiOutlineFile size={24} />, 
         date: '2022-04-25' 
       },
       {
-        number: '0001',
+        number: '0003',
         name: '2204김무일', 
         department: '소프트웨어개발과', 
-        area: '실무역량', 
-        classification1: '자격증', 
-        classification2: '정보처리기능사', 
-        achievement_rate: '25%', 
+        area: '도전역량', 
+        classification1: '프로젝트 산출물', 
+        classification2: '자율형 프로젝트', 
+        achievement_rate1: "40%",
+        achievement_rate2: <ProgressBar completed={40} height={'13px'} width={'200px'} labelSize={'0px'} bgColor={'rgba(6, 132, 196, 0.77)'} borderRadius={'3px'} baseBgColor={mode === 'light' ? '#f1f1f1' : '#383850'} />,
         file: <AiOutlineFile size={24} />, 
         date: '2022-04-25' 
       },
-      
-    ]
-  }
+    ] 
 
-
-  
   return (
     <div>
       <div className={styles.main}>
@@ -77,13 +75,18 @@ const StudentMain = ({ mode }) => {
             <table>
               <thead className={mode === 'light' ? styles.light_thead : styles.dark_thead}>
                 <tr>
-                  {items.header.map((item, index) => {
-                    return <td key={index}>{item}</td>  
-                  })}
-                  <td>신청일<BsChevronDown /></td>
+                  <td>번호</td>
+                  <td>신청일</td>
+                  <td>학과</td>
+                  <td>영역</td>
+                  <td>분류</td>
+                  <td>달성률</td>
+                  <td></td>
+                  <td>파일</td>
+                  <td>신청일<BsChevronDown style={{position: 'relative', left: '3px', top: '2px'}}/></td>
                 </tr>
               </thead>
-              {items.data.map((item, index) => {
+              {items.map((item, index) => {
                 return (
                   <tbody key={index}>
                     <tr>
@@ -92,7 +95,8 @@ const StudentMain = ({ mode }) => {
                       <td>{item.department}</td>
                       <td>{item.area}</td>
                       <td>{item.classification1} <br /> {item.classification2}</td>
-                      <td>{item.achievement_rate}</td>
+                      <td>{item.achievement_rate1}</td>
+                      <td>{item.achievement_rate2}</td>
                       <td>{item.file}</td>
                       <td>{item.date}</td>
                     </tr>

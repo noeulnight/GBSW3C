@@ -3,18 +3,35 @@ import { Doughnut } from 'react-chartjs-2'
 
 ChartJS.register(ArcElement, Tooltip, Legend)
 
-const data = {
+const light_data = {
   datasets: [
     {
-      label: '# of Votes',
       data: [50, 50],
       backgroundColor: [
         'rgba(6, 132, 196, 0.77)',
-        'rgba(241, 241, 245, 0.96)',
+        '#f1f1f1',
       ],
       borderColor: [
         'rgba(6, 132, 196, 0.77)',
-        'rgba(241, 241, 245, 0.96)',
+        '#f1f1f1',
+      ],
+      borderWidth: 1,
+      cutout: '83%',
+    },
+  ],
+};
+
+const dark_data = {
+  datasets: [
+    {
+      data: [50, 50],
+      backgroundColor: [
+        'rgba(6, 132, 196, 0.77)',
+        '#383850  ',
+      ],
+      borderColor: [
+        'rgba(6, 132, 196, 0.77)',
+        '#383850',
       ],
       borderWidth: 1,
       cutout: '83%',
@@ -32,23 +49,13 @@ const options = {
 }
 
 const Chart = ({ mode }) => {
-  if(mode == 'light') {
-    return (
-      <div style={{ textAlign: 'center' }}>
-        <Doughnut data={data} options={options}  style={{ width: '350px' }} />
-        <p style={{ position: 'relative', display: 'inline-block', bottom: '110px', color: '#191919' }}>1000점 </p><br />
-        <p style={{ position: 'relative', display: 'inline-block', bottom: '110px', fontSize: '13px', color: '#ACB2CB' }}>50% </p>
-      </div>
-    )
-  } else {
-    return (
-      <div style={{ textAlign: 'center' }}>
-        <Doughnut data={data} options={options}  style={{ width: '350px' }} />
-        <p style={{ position: 'relative', display: 'inline-block', bottom: '110px', color: '#fff' }}>1000점 </p><br />
-        <p style={{ position: 'relative', display: 'inline-block', bottom: '110px', fontSize: '13px', color: '#ACB2CB' }}>50% </p>
-      </div>
-    )
-  }
+  return (
+    <div style={{ textAlign: 'center' }}>
+      <Doughnut data={mode === 'light' ? light_data : dark_data} options={options}  style={{ width: '350px' }} />
+      <p style={{ position: 'relative', display: 'inline-block', bottom: '110px', color: '#ACB2CB' }}>1000점 </p><br />
+      <p style={{ position: 'relative', display: 'inline-block', bottom: '110px', fontSize: '13px', color: '#ACB2CB' }}>50% </p>
+    </div>
+  )
 }
 
 export default Chart;

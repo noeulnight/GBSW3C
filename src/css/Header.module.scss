@@ -12,7 +12,6 @@
     display: none
   }
 
-  // Light Mode
   .container {
     position: absolute;
     top: 0;
@@ -37,15 +36,28 @@
       border-bottom: 1px solid #f1f1f1;
     }
 
-    .logo {
+    .light_logo {
       font-family: 'Roboto', sans-serif;
-      color: #191919;
-      width: 256px;
+      width: 280px;
       height: 64px;
       padding-left: 24px;
       font-size: 1.3rem;
       font-weight: 900;
       line-height: 64px;
+      color: #2A2C42;
+      border-bottom: 1px solid #f1f1f1;
+    }
+
+    .dark_logo {
+      font-family: 'Roboto', sans-serif;
+      width: 280px;
+      height: 64px;
+      padding-left: 24px;
+      font-size: 1.3rem;
+      font-weight: 900;
+      line-height: 64px;
+      color: #fff;
+      border-bottom: 1px solid #2A2C42;
     }
   
     .topbar {
@@ -77,6 +89,7 @@
       }
 
       .light_input {
+        position: absolute;
         width: 100%;
         height: 100%;
         border-radius: 30px;
@@ -91,6 +104,7 @@
       }
 
       .dark_input {
+        position: absolute  ;
         width: 100%;
         height: 100%; 
         border-radius: 30px;

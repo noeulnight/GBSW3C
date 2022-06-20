@@ -3,7 +3,7 @@ import { AiOutlineFile, AiOutlineClose, AiOutlineCheck } from 'react-icons/ai'
 import { BsChevronLeft, BsChevronRight, BsChevronDown } from 'react-icons/bs'
 import styles from '../css/TeacherMain.module.scss'
 
-const TeacherMain = ({ mode }) => {
+const TeacherMain = ({ mode, isOpen }) => {
   const [fullCheched, setFullchecked] = useState(false)
   const [items, setItems] = useState([
       {
@@ -54,7 +54,7 @@ const TeacherMain = ({ mode }) => {
 
   return (
     <div>
-      <div className={styles.main}>
+      <div className={isOpen === true ? styles.open_main : styles.hide_main}>
         <div className={mode === 'light' ? styles.light_title : styles.dark_title}>
           <div>
             교사 페이지/<span style={{color : '#0684c4'}}>신청 리스트</span>

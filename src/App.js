@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from './App.css'
 import { Route, Routes } from 'react-router-dom';
 import Navigation from "./components/Navigation";
@@ -9,6 +9,7 @@ import TeacherMain from "./pages/TeacherMain";
 import useSessionStorage from "./components/UseSessionStorage";
 
 function App () {
+  const [ isOpen, setMenu ] = useState(true);
   const [ login, isLogin ] = useSessionStorage("login", false)
   const [ grade, setGrade ] = useSessionStorage("grade", 0)
   const [ mode, setMode ] = useSessionStorage("mode", 'light')
@@ -29,30 +30,30 @@ function App () {
     if(grade == 0){ // grade에 따라서 바꾸기
       return (
         <div>
-          <Header mode={mode} setMode={setMode} />
-          <Navigation grade={grade} mode={mode} />
+          <Header mode={mode} setMode={setMode} isOpen={isOpen} setMenu={setMenu}/>
+          <Navigation grade={grade} mode={mode} isOpen={isOpen} />
           <Routes>
-            <Route path="/" element={<StudentMain mode={mode} />} />
+            <Route path="/" element={<StudentMain mode={mode} isOpen={isOpen} />} />
           </Routes>
         </div>
       )
     } else if (grade == 1) {
       return (
         <div>
-          <Header mode={mode} setMode={setMode} />
-          <Navigation grade={grade} mode={mode} />
+          <Header mode={mode} setMode={setMode} isOpen={isOpen} setMenu={setMenu} />
+          <Navigation grade={grade} mode={mode} isOpen={isOpen} />
           <Routes>
-            <Route path="/" element={<TeacherMain mode={mode} />} />
+            <Route path="/" element={<TeacherMain mode={mode} isOpen={isOpen} />} />
           </Routes>
         </div>
       )
     } else if (grade == 2) {
       return (
         <div>
-          <Header mode={mode} setMode={setMode} />
-          <Navigation grade={grade} mode={mode} />
+          <Header mode={mode} setMode={setMode} isOpen={isOpen} setMenu={setMenu} />
+          <Navigation grade={grade} mode={mode} isOpen={isOpen} />
           <Routes>
-            <Route path="/" element={<TeacherMain mode={mode} />} />
+            <Route path="/" element={<TeacherMain mode={mode} isOpen={isOpen} />} />
           </Routes>
         </div>
       )

@@ -5,14 +5,13 @@ import styles from '../css/Navigation.module.scss'
 import profile from '../img/profile.png'
 import Chart from "./Chart"
 
-const Navigation = ({ grade, mode }) => {
+const Navigation = ({ grade, mode, isOpen }) => {
   const [active, setActive] = useSessionStorage("active", 1)
 
   if ( grade == 0) {
     return (
-      <div>
+      <div className={isOpen === true ? styles.show_nav : styles.hide_nav}>
         <div className={mode === 'light' ? styles.light_navigation : styles.dark_navigation}>
-          <div className={mode === 'light' ? styles.light_logo : styles.dark_logo}>Gbsw Logo</div>
           <div className={styles.profile}>
             <img src={profile} alt="ProfileIcon" />
             <div>
@@ -39,9 +38,8 @@ const Navigation = ({ grade, mode }) => {
     )
   } else if (grade == 1) {
     return (
-      <div>
+      <div className={isOpen === true ? styles.show_nav : styles.hide_nav}>
         <div className={mode === 'light' ? styles.light_navigation : styles.dark_navigation}>
-          <div className={mode === 'light' ? styles.light_logo : styles.dark_logo}>Gbsw Logo</div>
           <div className={styles.profile}>
             <img src={profile} alt="ProfileIcon" />
             <div>
@@ -68,7 +66,7 @@ const Navigation = ({ grade, mode }) => {
     )
   } else if (grade == 2) {
     return (
-      <div>
+      <div className={isOpen === true ? styles.show_nav : styles.hide_nav}>
         <div className={mode === 'light' ? styles.light_navigation : styles.dark_navigation}>
           <div className={mode === 'light' ? styles.light_logo : styles.dark_logo}>Gbsw Logo</div>
           <div className={styles.profile}>
@@ -101,7 +99,7 @@ const Navigation = ({ grade, mode }) => {
         </div>
       </div>
     )
-  }
+    }
 } 
 
 export default Navigation

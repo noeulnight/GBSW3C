@@ -4,7 +4,7 @@ import { AiOutlineFile, AiOutlinePlus, AiOutlineCheck } from 'react-icons/ai'
 import { BsChevronLeft, BsChevronRight, BsChevronDown } from 'react-icons/bs'
 import styles from '../css/StudentMain.module.scss'
 
-const StudentMain = ({ mode }) => {
+const StudentMain = ({ mode, isOpen }) => {
 
   const items = [
       {
@@ -47,7 +47,7 @@ const StudentMain = ({ mode }) => {
 
   return (
     <div>
-      <div className={styles.main}>
+      <div className={isOpen === true ? styles.open_main : styles.hide_main}>
         <div className={mode === 'light' ? styles.light_title : styles.dark_title}>
           <div>
             학생 페이지/<span style={{color : '#0684c4'}}>신청 리스트</span>

@@ -1,8 +1,11 @@
-import React from "react";
-import { AiOutlineSearch } from 'react-icons/ai'
+import React, { useState } from "react";
+import { AiOutlineSearch, AiOutlineBars } from 'react-icons/ai'
 import styles from '../css/Header.module.scss'
 
-const Header = ({ mode, setMode }) => {
+const Header = ({ mode, setMode, isOpen, setMenu }) => {
+  const toggleMenu = () => {
+    setMenu(isOpen => !isOpen);
+  }
 
   const CheckChange = () => {
     if(mode == 'light') {
@@ -19,12 +22,13 @@ const Header = ({ mode, setMode }) => {
           <div className={styles.modeBtn}>
             <input type="checkbox" id="mode" name="mode" onChange={CheckChange} />
           </div>
-          <div className={styles.logo}>Gbsw Logo</div>
-            <div className={styles.topbar}>
-              <div className={styles.toggle}>
+          <div className={mode === 'light' ? styles.light_logo : styles.dark_logo}>Gbsw Logo</div>
+          <AiOutlineBars size={36} color={'#adabab'} onClick={() => toggleMenu()}/>
+          <div className={styles.topbar}>
+            <div className={styles.toggle}>
                   
-              </div>
-              <div className={mode === 'light' ? styles.light_search : styles.dark_search}>
+            </div>
+            <div className={mode === 'light' ? styles.light_search : styles.dark_search}>
               <label>
                 <input type="text" placeholder="Search here" className={mode === 'light' ? styles.light_input : styles.dark_input} />
                 <AiOutlineSearch className={styles.AiOutlineSearch}/>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AiOutlineSearch, AiOutlineBars } from 'react-icons/ai'
+import { HiMenu, HiSearch } from 'react-icons/hi'
 import styles from '../css/Header.module.scss'
 
 const Header = ({ mode, setMode, isOpen, setMenu }) => {
@@ -17,27 +17,25 @@ const Header = ({ mode, setMode, isOpen, setMenu }) => {
 
   return (
     <div>
-      <div className={styles.container}>
-        <div className={mode === 'light' ? styles.light_header : styles.dark_header} >
+      <div className={isOpen === true ? styles.show_contain : styles.hide_contain}>
+        <div className={styles.header} style={mode === 'light' ? {background: '#fff'} : {background: '#2F3146'}} >
           <div className={styles.modeBtn}>
             <input type="checkbox" id="mode" name="mode" onChange={CheckChange} />
           </div>
-          <div className={mode === 'light' ? styles.light_logo : styles.dark_logo}>Gbsw Logo</div>
-          <AiOutlineBars size={36} color={'#adabab'} onClick={() => toggleMenu()}/>
           <div className={styles.topbar}>
             <div className={styles.toggle}>
-                  
-            </div>
-            <div className={mode === 'light' ? styles.light_search : styles.dark_search}>
+                <HiMenu size={36} style={mode === 'light' ? {color: '#ACB2CB'} : {color: '#6F738E'}} onClick={() => toggleMenu()}/>
+              </div>
+            <div className={styles.search} style={mode === 'light' ? {color: '#ACB2CB'} : {color: '#8C8EA0'}}>
               <label>
-                <input type="text" placeholder="Search here" className={mode === 'light' ? styles.light_input : styles.dark_input} />
-                <AiOutlineSearch className={styles.AiOutlineSearch}/>
+                <input type="text" placeholder="검색어를 입력하세요." className={mode === 'light' ? styles.light_input : styles.dark_input} />
+                <div className={styles.icons}>
+                  <HiSearch className={styles.HiSearch}/>
+                </div>
               </label>
             </div>
-            <label htmlFor="mode">
-              <div className={mode === 'light' ? styles.light_mode : styles.dark_mode}>
-
-              </div>
+            <label className={styles.mode} htmlFor="mode">
+              <div className={mode === 'light' ? styles.light_mode : styles.dark_mode}></div>
             </label>
           </div>
         </div>

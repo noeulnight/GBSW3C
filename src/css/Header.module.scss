@@ -1,147 +1,197 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Roboto:wght@300;400;500;700;900&display=swap');
-
 * {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  text-decoration: none;
-  box-sizing: border-box;
-  font-family: 'Noto Sans KR', sans-serif;
-
-  input[id="mode"]{
-    display: none
-  }
-
-  .container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    
-    .dark_header {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      height: 64px;
-      background: #2F3146;
-      border-bottom: 1px solid #2A2C42;
+  body {
+    .modeBtn {
+      display: none;
     }
-
-    .light_header {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      height: 64px;
-      background: #fff;
-      border-bottom: 1px solid #f1f1f1;
-    }
-
-    .light_logo {
-      font-family: 'Roboto', sans-serif;
-      width: 280px;
-      height: 64px;
-      padding-left: 24px;
-      font-size: 1.3rem;
-      font-weight: 900;
-      line-height: 64px;
-      color: #2A2C42;
-      border-bottom: 1px solid #f1f1f1;
-    }
-
-    .dark_logo {
-      font-family: 'Roboto', sans-serif;
-      width: 280px;
-      height: 64px;
-      padding-left: 24px;
-      font-size: 1.3rem;
-      font-weight: 900;
-      line-height: 64px;
-      color: #fff;
-      border-bottom: 1px solid #2A2C42;
-    }
-  
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between  ;
+    .show_contain {
+      position: fixed;
+      top: 0;
+      left: 256px;
       width: calc(100% - 256px);
       height: 64px;
+    }
+
+    .hide_contain  {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: calc(100%);
+      height: 64px;
+    }
+
+    .header {
+      width: 100%;
+      height: 100%;
       padding: 0 24px;
-
-      .toggle {
-        width: 24px;
-        height: 24px;
-        // background: url(../images/그룹\ 117@2x.png) 50% 50% / cover; 
-      }
-
-      .light_search {
-        position: relative;
-        width: 600px;
-        height: 46px;
-        color: #ACB2CB;
-      }
-
-      .dark_search {
-        position: relative;
-        width: 600px;
-        height: 46px;
-        color: #8C8EA0;
-      }
-
-      .light_input {
-        position: absolute;
+      .topbar {
         width: 100%;
         height: 100%;
-        border-radius: 30px;
-        border: none;
-        outline: none;
-        background: #F1F1F5;
-        padding-left: 59px;
-
-        &::placeholder {
-          color: #ACB2CB;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .toggle {
+          cursor: pointer;
+          width: 40px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .search {
+          position: relative;
+          width: 600px;
+          height: 46px;
+          border-radius: 40px;
+          overflow: hidden;
+          input {
+            padding-left: 50px;
+            width: 100%;
+            height: 100%;
+            outline: none;
+            border: none;
+          }
+          .light_input {
+            color: #191919;
+            background: #F1F1F5;
+            &::placeholder {
+              color: #ACB2CB;
+            }
+            &:focus {
+              background: #F3F5F7;
+            }
+          }
+          .dark_input {
+            color: #fff;
+            background: #383850;
+            &::placeholder {
+              color: #8C8EA0;
+            }
+            &:focus {
+              background: #2B2E44;
+            }
+          }
+          .icons {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50px;
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .HiSearch {
+              width: 20px;
+              height: 20px;
+            }
+          }
+        }
+        .mode {
+          .light_mode {
+            width: 30px;
+            height: 30px; 
+            cursor: pointer;
+            background: url("../img/light_mode.png") 50% 50% / cover;
+          }
+    
+          .dark_mode {
+            width: 30px;
+            height: 30px; 
+            cursor: pointer;
+            background: url("../img/dark_mode.png") 50% 50% / cover;
+          }
         }
       }
-
-      .dark_input {
-        position: absolute  ;
-        width: 100%;
-        height: 100%; 
-        border-radius: 30px;
-        border: none;
-        outline: none;
-        color: rgba(255, 255, 255, 0.6);
-        background: #383850;
-        padding-left: 59px;
-
-        &::placeholder {
-          color: #8C8EA0;
-        }
-      }
-
-        .AiOutlineSearch {
-          position: absolute;
-          line-height: 46px;
-          left: 24px;
-          top: 15px;
-          size: 30px;
-        }
-    }
-
-    .light_mode {
-      width: 28px;
-      height: 28px; 
-      cursor: pointer;
-      background: url("../img/mode.png") 50% 50% / cover;
-    }
-
-    .dark_mode {
-      width: 28px;
-      height: 28px; 
-      cursor: pointer;
-      background: url("../img/darkMode.png") 50% 50% / cover;
     }
   }
 }
+  //   * {
+  //   input[id="mode"]{
+  //     display: none
+  //   }
 
+  //   .container {
+  //     position: absolute;
+  //     top: 0;
+  //     left: 0;
+  //     width: 100%;
 
+  //     .header {
+  //       display: flex;
+  //       align-items: center;
+  //       width: 100%;
+  //       height: 64px;
+  //     }
+
+  //     .logo {
+  //       font-family: 'Roboto', sans-serif;
+  //       width: 280px;
+  //       height: 64px;
+  //       padding-left: 24px;
+  //       font-size: 1.3rem;
+  //       font-weight: 900;
+  //       line-height: 64px;
+  //     }
+
+  //     .topbar {
+  //       display: flex;
+  //       align-items: center;
+  //       justify-content: space-between  ;
+  //       width: calc(100% - 256px);
+  //       height: 64px;
+  //       padding: 0 24px;
+
+  //       .toggle {
+  //         width: 24px;
+  //         height: 24px;
+  //         // background: url(../images/그룹\ 117@2x.png) 50% 50% / cover; 
+  //       }
+
+  //       .search {
+  //         position: relative;
+  //         width: 600px;
+  //         height: 46px;
+  //       }
+
+  //       .light_input {
+  //         position: absolute;
+  //         width: 100%;
+  //         height: 100%;
+  //         border-radius: 30px;
+  //         border: none;
+  //         outline: none;
+  //         background: #F1F1F5;
+  //         padding-left: 59px;
+
+  //         &::placeholder {
+  //           color: #ACB2CB;
+  //         }
+  //       }
+
+  //       .dark_input {
+  //         position: absolute  ;
+  //         width: 100%;
+  //         height: 100%; 
+  //         border-radius: 30px;
+  //         border: none;
+  //         outline: none;
+  //         color: rgba(255, 255, 255, 0.6);
+  //         background: #383850;
+  //         padding-left: 59px;
+
+  //         &::placeholder {
+  //           color: #8C8EA0;
+  //         }
+  //       }
+
+  //         .AiOutlineSearch {
+  //           position: absolute;
+  //           line-height: 46px;
+  //           left: 24px;
+  //           top: 15px;
+  //           size: 30px;
+  //         }
+  //     }
+
+    
+  //   }
+  // }

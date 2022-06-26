@@ -9,4 +9,7 @@
   box-sizing: border-box;
   transition: all .35s;
   font-family: 'Noto Sans KR', sans-serif;
+  body {
+    user-select: none;
+  }
 }

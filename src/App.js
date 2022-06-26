@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Login from "./pages/Login";
 import StudentMain from './pages/StudentMain'
 import TeacherMain from "./pages/TeacherMain";
+import AdminMain from "./pages/AdminMain"
 import useSessionStorage from "./components/UseSessionStorage";
 import Logout from './pages/Logout'
 import './css/Reset.modele.scss'
@@ -32,34 +33,34 @@ function App () {
     if(grade == 0){ // grade에 따라서 바꾸기
       return (
         <div>
+            <Routes>
+              <Route path="/" element={<StudentMain mode={mode} isOpen={isOpen} />} />
+              <Route  path="/logout" element={<Logout isLogin={isLogin} />} />
+            </Routes>
           <Header mode={mode} setMode={setMode} isOpen={isOpen} setMenu={setMenu}/>
           <Navigation grade={grade} mode={mode} isOpen={isOpen} />
-          <Routes>
-            <Route path="/" element={<StudentMain mode={mode} isOpen={isOpen} />} />
-            <Route  path="/logout" element={<Logout isLogin={isLogin} />} />
-          </Routes>
         </div>
       )
     } else if (grade == 1) {
       return (
         <div>
-          <Header mode={mode} setMode={setMode} isOpen={isOpen} setMenu={setMenu} />
-          <Navigation grade={grade} mode={mode} isOpen={isOpen} />
-          {/* <Routes>
+          <Routes>
             <Route path="/" element={<TeacherMain mode={mode} isOpen={isOpen} />} />
             <Route path="/logout" element={<Logout isLogin={isLogin} />} />
-          </Routes> */}
+          </Routes>
+          <Header mode={mode} setMode={setMode} isOpen={isOpen} setMenu={setMenu} />
+          <Navigation grade={grade} mode={mode} isOpen={isOpen} />
         </div>
       )
     } else if (grade == 2) {
       return (
         <div>
+          <Routes>
+            <Route path="/" element={<AdminMain mode={mode} isOpen={isOpen} />} />
+            <Route path="/logout" element={<Logout isLogin={isLogin} />} />
+          </Routes>
           <Header mode={mode} setMode={setMode} isOpen={isOpen} setMenu={setMenu} />
           <Navigation grade={grade} mode={mode} isOpen={isOpen} />
-          {/* <Routes>
-            <Route path="/" element={<TeacherMain mode={mode} isOpen={isOpen} />} />
-            <Route path="/logout" element={<Logout isLogin={isLogin} />} />
-          </Routes> */}
         </div>
       )
     }

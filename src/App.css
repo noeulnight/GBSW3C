@@ -1,7 +1,17 @@
 .light_body {
-  background-color: #F3F5F7;
+  background: #F3F5F7;
 }
 
 .dark_body {
-  background-color: #2B2E44;
+  background: #2B2E44;
+}
+
+@media (max-width: 720px) {
+  .light_body {
+    background: #fff;
+  }
+  .dark_body {
+    background: #2F3146;
+  }
+  
 }

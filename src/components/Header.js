@@ -19,6 +19,9 @@ const Header = ({ mode, setMode, isOpen, setMenu }) => {
     <div>
       <div className={isOpen === true ? styles.show_contain : styles.hide_contain}>
         <div className={styles.header} style={mode === 'light' ? {background: '#fff'} : {background: '#2F3146'}} >
+          <div className={isOpen != true ? styles.show_dow : styles.hide_dow} onClick={() => toggleMenu()}>
+            
+          </div>
           <div className={styles.modeBtn}>
             <input type="checkbox" id="mode" name="mode" onChange={CheckChange} />
           </div>

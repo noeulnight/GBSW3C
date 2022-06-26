@@ -56,6 +56,10 @@
               &::placeholder {
                 color: #DEE2E6;
               }
+
+              &:focus {
+                border: 1px solid #0C8BC6;
+              }
             }
 
             .in {

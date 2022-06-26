@@ -99,7 +99,7 @@ if (grade == 2) {
             <div className={styles.left}> 
               <img src={profile} alt="ProfileIcon" />
               <div>
-                <h4 style={mode === 'light' ? {color: '#191919'} :  {color: '#fff'}}>2204김무일</h4>
+                <h4 style={mode === 'light' ? {color: '#191919'} :  {color: '#fff'}}>관리자</h4>
                 <span style={mode === 'light' ? {color: '#ACB2CB'} :  {color: '#6F738E'}}>소프트웨어개발과</span>
               </div>
             </div>
@@ -108,7 +108,7 @@ if (grade == 2) {
             <HiChevronDown />
           </div>
         </div>
-        <div className={styles.list}>
+        <div className={styles.list} id={styles.list}>
           <p className={styles.tag} style={mode === 'light' ? {color: '#adabab'} :  {color: '#6F738E'}} >사용자 페이지</p>
           <ul className={mode === 'light' ? styles.light_ul : styles.dark_ul}>  
             <Link className={active === 1 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="" onClick={() => setActive(1)}><li><p>신청 리스트</p></li></Link>

@@ -1,0 +1,5 @@
+<td><input checked={fullCheched} onChange={onFullCheck} type='checkbox' style={{marginTop: '5px', width: "22px", height: '22px'}} /></td>
+
+<td> 
+  <input type='checkbox' style={{marginTop: '5px', width: "22px", height: '22px'}} onChange={onCheck(index)} checked={item.checked} />
+</td>

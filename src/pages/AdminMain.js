@@ -1,17 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import ProgressBar from "@ramonak/react-progress-bar";
 import {
   HiChevronLeft,
   HiChevronRight,
   HiChevronDown,
   HiPlus,
+  HiCheck,
 } from "react-icons/hi";
-import styles from "../css/StudentMain.module.scss";
+import styles from "../css/AdminMain.module.scss";
 
-const StudentMain = ({ mode, isOpen }) => {
-  const items = [
+const TeacherMain = ({ mode, isOpen }) => {
+  const [fullCheched, setFullchecked] = useState(false);
+  const [items, setItems] = useState([
     {
-      number: "0001",
       name: "2204김무일",
       department: "소프트웨어개발과",
       area: "실무역량",
@@ -19,29 +20,41 @@ const StudentMain = ({ mode, isOpen }) => {
       classification2: "정보처리기능사",
       achievement_rate: 25,
       date: "2022-04-25",
+      checked: false,
     },
     {
-      number: "0002",
       name: "2204김무일",
       department: "소프트웨어개발과",
       area: "실무역량",
       classification1: "자격증",
-      classification2: "리눅스마스터",
+      classification2: "정보처리기능사",
       achievement_rate: 25,
       date: "2022-04-25",
+      checked: false,
     },
     {
-      number: "0003",
       name: "2204김무일",
       department: "소프트웨어개발과",
-      area: "도전역량",
-      classification1: "프로젝트 산출물",
-      classification2: "자율형 프로젝트",
+      area: "실무역량",
+      classification1: "자격증",
+      classification2: "정보처리기능사",
       achievement_rate: 40,
       file: 1,
       date: "2022-04-25",
+      checked: false,
     },
-  ];
+  ]);
+
+  const onCheck = (index) => () => {
+    items[index].checked = !items[index].checked;
+    setItems([...items]);
+    setFullchecked(false);
+  };
+
+  const onFullCheck = () => {
+    setItems([...items.map((v) => ({ ...v, checked: !fullCheched }))]);
+    setFullchecked(!fullCheched);
+  };
 
   return (
     <div>
@@ -51,7 +64,7 @@ const StudentMain = ({ mode, isOpen }) => {
           style={mode === "light" ? { color: "#191919" } : { color: "#fff" }}
         >
           <div className={styles.title}>
-            학생 페이지/
+            사용자 페이지/
             <span style={{ color: "#0684c4" }}>신청 리스트</span>
           </div>
           <div className={styles.page}>
@@ -120,7 +133,7 @@ const StudentMain = ({ mode, isOpen }) => {
                   mode === "light" ? { color: "#191919" } : { color: "#fff" }
                 }
               >
-                신청 리스트
+                교사 리스트
               </div>
               <div className={styles.div}>
                 <a href="">
@@ -152,7 +165,24 @@ const StudentMain = ({ mode, isOpen }) => {
                 }
               >
                 <tr>
-                  <td>번호</td>
+                  <td>
+                    <div>
+                      <input
+                        checked={fullCheched}
+                        onChange={onFullCheck}
+                        type="checkbox"
+                        id="ckeckBox"
+                      />
+                      <label
+                        htmlFor="ckeckBox"
+                        className={
+                          mode === "light" ? styles.light_ck : styles.dark_ck
+                        }
+                      >
+                        <HiCheck size={18} />
+                      </label>
+                    </div>
+                  </td>
                   <td>
                     <span>신청인</span>
                     <div
@@ -190,7 +220,26 @@ const StudentMain = ({ mode, isOpen }) => {
                     }
                   >
                     <tr>
-                      <td style={{ color: "#0684c4" }}>{item.number}</td>
+                      <td>
+                        <div>
+                          <input
+                            type="checkbox"
+                            onChange={onCheck(index)}
+                            checked={item.checked}
+                            id={index}
+                          />
+                          <label
+                            htmlFor={index}
+                            className={
+                              mode === "light"
+                                ? styles.light_ck
+                                : styles.dark_ck
+                            }
+                          >
+                            <HiCheck size={18} />
+                          </label>
+                        </div>
+                      </td>{" "}
                       <td
                         style={
                           mode === "light"
@@ -237,6 +286,7 @@ const StudentMain = ({ mode, isOpen }) => {
                               mode === "light" ? "#f1f1f1" : "#383850"
                             }
                           />
+                          {item.achievement_rate2}
                         </span>
                       </td>
                     </tr>
@@ -265,4 +315,4 @@ const StudentMain = ({ mode, isOpen }) => {
   );
 };
 
-export default StudentMain;
+export default TeacherMain;

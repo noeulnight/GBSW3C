@@ -102,7 +102,15 @@
       bottom: 100px;
     }
 
-    .list {
+    .listsBox {
+      .list {
+        .light_ul {
+          height: 250px;
+        }
+        .dark_ul {
+          height: 250px;
+        }
+      }
       .tag {
         width: 100%;
         height: 50px;
@@ -111,6 +119,8 @@
       }
 
       .light_ul {
+        height: 0;
+        overflow: hidden;
         a {
           position: relative;
           width: 100%;
@@ -132,6 +142,8 @@
       }
 
       .dark_ul {
+        height: 0;
+        overflow: hidden;
         a {
           position: relative;
           width: 100%;
@@ -140,7 +152,7 @@
           display: flex;
           align-items: center;
           color: #8C8EA0;
-
+          
           p {
             margin-left: 50px;
           }

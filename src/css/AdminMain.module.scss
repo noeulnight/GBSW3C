@@ -83,6 +83,24 @@
       height: calc((100% - 70px));
       border-radius: 4px;
 
+      .navbar {
+        position: absolute;
+        width: 100%;
+        height: 64px;
+        bottom: 0;
+        display: none;
+        >div {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          >a {
+            display: block;
+            text-align: center;
+          }
+        }
+      }
+
       .Box {
         width: 100%;
         height: 100%;
@@ -351,8 +369,12 @@
       }
 
       .listBox {
+        .navbar {
+          display: flex;
+        }
         .Box {
           padding: 0;
+          border-radius: 0;
 
           .listBoxHeader {
             padding: 0 24px;

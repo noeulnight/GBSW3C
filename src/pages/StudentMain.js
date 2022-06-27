@@ -1,47 +1,44 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ProgressBar from "@ramonak/react-progress-bar";
 import {
   HiChevronLeft,
   HiChevronRight,
   HiChevronDown,
   HiPlus,
+  HiRefresh,
+  HiReply,
 } from "react-icons/hi";
+import { FaPlus } from "react-icons/fa";
+
 import styles from "../css/StudentMain.module.scss";
 
 const StudentMain = ({ mode, isOpen }) => {
-  const items = [
-    {
-      number: "0001",
-      name: "2204김무일",
-      department: "소프트웨어개발과",
-      area: "실무역량",
-      classification1: "자격증",
-      classification2: "정보처리기능사",
-      achievement_rate: 25,
-      date: "2022-04-25",
-    },
-    {
-      number: "0002",
-      name: "2204김무일",
-      department: "소프트웨어개발과",
-      area: "실무역량",
-      classification1: "자격증",
-      classification2: "리눅스마스터",
-      achievement_rate: 25,
-      date: "2022-04-25",
-    },
-    {
-      number: "0003",
-      name: "2204김무일",
-      department: "소프트웨어개발과",
-      area: "도전역량",
-      classification1: "프로젝트 산출물",
-      classification2: "자율형 프로젝트",
-      achievement_rate: 40,
-      file: 1,
-      date: "2022-04-25",
-    },
-  ];
+  const [items, setItems] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      const res = await fetch("/api/board/v1/posts/@me").then((res) =>
+        res.json()
+      );
+
+      if (!res)
+        alert("제출 목록을 가져오는데 예상치 못한 오류가 발생했습니다.");
+
+      setItems(
+        res.data.posts.map((post) => ({
+          number: "0003",
+          name: "2204김무일",
+          department: "소프트웨어개발과",
+          area: "도전역량",
+          classification1: "프로젝트 산출물",
+          classification2: "자율형 프로젝트",
+          achievement_rate: 40,
+          file: 1,
+          date: "2022-04-25",
+        }))
+      );
+    })();
+  }, []);
 
   return (
     <div>
@@ -106,6 +103,19 @@ const StudentMain = ({ mode, isOpen }) => {
           </div>
         </div>
         <div className={styles.listBox}>
+          <div className={styles.navbar} style={mode === 'light' ? {background: '#F3F5F7'} : {background: '#2B2E44'}}>
+            <div>
+              <a href="" style={mode === 'light' ? {color: '#ACB2CB'} : {color: '#6F738E'}}>
+                <div>
+                <FaPlus
+                  style={{ position: "relative", top: "3px" }}
+                  size={24}
+                />{" "}
+                </div>
+                추가신청
+              </a>
+            </div>
+          </div>
           <div
             style={
               mode === "light"
@@ -179,84 +189,108 @@ const StudentMain = ({ mode, isOpen }) => {
                   </td>
                 </tr>
               </thead>
-              {items.map((item, index) => {
-                return (
-                  <tbody
-                    key={index}
-                    style={
-                      mode === "light"
-                        ? { color: "#ACB2CB" }
-                        : { color: "#6F738E" }
-                    }
-                  >
-                    <tr>
-                      <td style={{ color: "#0684c4" }}>{item.number}</td>
-                      <td
-                        style={
-                          mode === "light"
-                            ? { color: "#8993A7" }
-                            : { color: "#8C8EA0" }
-                        }
-                      >
-                        {item.name}
-                        <div
-                          style={
-                            mode === "light"
-                              ? { color: "#ACB2CB" }
-                              : { color: "#6F738E" }
-                          }
-                        >
-                          {item.classification2}
-                        </div>
-                      </td>
-                      <td>{item.department}</td>
-                      <td>{item.area}</td>
-                      <td>
-                        {item.classification1}
-                        <div
+              {items === null && (
+                <tbody
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    paddingTop: 10,
+                  }}
+                >
+                  <HiRefresh /> 신청 내역을 불러오는 중입니다.
+                </tbody>
+              )}
+              {items !== null && items?.length < 1 && (
+                <tbody
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    paddingTop: 10,
+                  }}
+                >
+                  신청 내역이 없습니다.
+                </tbody>
+              )}
+              {items !== null &&
+                items?.length > 0 &&
+                items.map((item, index) => {
+                  return (
+                    <tbody
+                      key={index}
+                      style={
+                        mode === "light"
+                          ? { color: "#ACB2CB" }
+                          : { color: "#6F738E" }
+                      }
+                    >
+                      <tr>
+                        <td style={{ color: "#0684c4" }}>{item.number}</td>
+                        <td
                           style={
                             mode === "light"
                               ? { color: "#8993A7" }
                               : { color: "#8C8EA0" }
                           }
                         >
-                          {item.classification2}
-                        </div>
-                      </td>
-                      <td>
-                        <span>
-                          {item.achievement_rate}%
-                          <ProgressBar
-                            completed={item.achievement_rate}
-                            height={"13px"}
-                            width={"200px"}
-                            labelSize={"0px"}
-                            bgColor={"rgba(6, 132, 196, 0.77)"}
-                            borderRadius={"3px"}
-                            baseBgColor={
-                              mode === "light" ? "#f1f1f1" : "#383850"
+                          {item.name}
+                          <div
+                            style={
+                              mode === "light"
+                                ? { color: "#ACB2CB" }
+                                : { color: "#6F738E" }
                             }
-                          />
-                        </span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div
-                          className={
-                            item.file != null
-                              ? mode === "light"
-                                ? styles.light_file
-                                : styles.dark_file
-                              : null
-                          }
-                        ></div>
-                      </td>
-                      <td>{item.date}</td>
-                    </tr>
-                  </tbody>
-                );
-              })}
+                          >
+                            {item.classification2}
+                          </div>
+                        </td>
+                        <td>{item.department}</td>
+                        <td>{item.area}</td>
+                        <td>
+                          {item.classification1}
+                          <div
+                            style={
+                              mode === "light"
+                                ? { color: "#8993A7" }
+                                : { color: "#8C8EA0" }
+                            }
+                          >
+                            {item.classification2}
+                          </div>
+                        </td>
+                        <td>
+                          <span>
+                            {item.achievement_rate}%
+                            <ProgressBar
+                              completed={item.achievement_rate}
+                              height={"13px"}
+                              width={"200px"}
+                              labelSize={"0px"}
+                              bgColor={"rgba(6, 132, 196, 0.77)"}
+                              borderRadius={"3px"}
+                              baseBgColor={
+                                mode === "light" ? "#f1f1f1" : "#383850"
+                              }
+                            />
+                          </span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div
+                            className={
+                              item.file != null
+                                ? mode === "light"
+                                  ? styles.light_file
+                                  : styles.dark_file
+                                : null
+                            }
+                          ></div>
+                        </td>
+                        <td>{item.date}</td>
+                      </tr>
+                    </tbody>
+                  );
+                })}
             </table>
           </div>
         </div>

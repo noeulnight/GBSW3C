@@ -42,8 +42,8 @@ function App () {
         </div>
       )
     } else if (grade == 1) {
-      return (
-        <div>
+        return (
+          <div>
           <Routes>
             <Route path="/" element={<TeacherMain mode={mode} isOpen={isOpen} />} />
             <Route path="/logout" element={<Logout isLogin={isLogin} />} />

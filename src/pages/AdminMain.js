@@ -7,6 +7,7 @@ import {
   HiPlus,
   HiCheck,
 } from "react-icons/hi";
+import { FaCheck, FaPlus } from "react-icons/fa";
 import styles from "../css/AdminMain.module.scss";
 
 const TeacherMain = ({ mode, isOpen }) => {
@@ -119,6 +120,30 @@ const TeacherMain = ({ mode, isOpen }) => {
           </div>
         </div>
         <div className={styles.listBox}>
+        <div className={styles.navbar} style={mode === 'light' ? {background: '#F3F5F7'} : {background: '#2B2E44'}}>
+            <div>
+              <a href="" style={mode === 'light' ? {color: '#ACB2CB'} : {color: '#6F738E'}}>
+                <div>
+                <FaCheck
+                  style={{ position: "relative", top: "3px" }}
+                  size={22}
+                />{" "}
+                </div>
+                수락하기
+              </a>
+            </div>
+            <div>
+              <a href="" style={mode === 'light' ? {color: '#ACB2CB'} : {color: '#6F738E'}}>
+                <div>
+                <FaPlus
+                  style={{ position: "relative", top: "3px", transform: 'rotate(-45deg)' }}
+                  size={24}
+                />{" "}
+                </div>
+                거절하기
+              </a>
+            </div>
+          </div>
           <div
             style={
               mode === "light"

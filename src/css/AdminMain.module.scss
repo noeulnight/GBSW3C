@@ -123,6 +123,7 @@
             a {
               color: #0684c4;
               margin-right: 24px;
+              display: flex;
             }
 
             .btn {
@@ -154,7 +155,7 @@
             }
 
             tr:nth-child(1) {
-              td:nth-child(1) {
+              .checkBox {
                 width: 82px;
 
                 >div {
@@ -207,7 +208,7 @@
                 }
               }
 
-              td:nth-child(2) {
+              .user {
                 width: 120px;
 
                 div {
@@ -215,19 +216,19 @@
                 }
               }
 
-              td:nth-child(3) {
+              .class {
                 width: 164px;
               }
 
-              td:nth-child(4) {
+              .area {
                 width: 102px;
               }
 
-              td:nth-child(5) {
+              .fic {
                 width: 134px;
               }
 
-              td:nth-child(6) {
+              .rate {
                 span {
                   display: inline-block;
                   display: flex;
@@ -243,7 +244,7 @@
             tr:nth-child(2) {
               text-align: right;
 
-              td:nth-child(1) {
+              .file {
                 div {
                   width: 30px;
                   height: 36px;
@@ -258,7 +259,7 @@
                 }
               }
 
-              td:nth-child(2) {
+              .day {
                 width: 130px;
               }
             }
@@ -305,11 +306,7 @@
     .listBox {
       table {
         tr:nth-child(1) {
-          td:nth-child(3) {
-            display: none;
-          }
-
-          td:nth-child(4) {
+          .class {
             display: none;
           }
         }
@@ -324,7 +321,7 @@
       .listBox {
         table {
           tr:nth-child(1) {
-            td:nth-child(6) {
+            .rate {
               display: none;
             }
           }
@@ -401,11 +398,11 @@
             thead,
             tbody {
               tr:nth-child(1) {
-                td:nth-child(1) {
+                .number {
                   width: 60px;
                 }
 
-                td:nth-child(2) {
+                .user {
                   width: 200px;
 
                   span {
@@ -417,13 +414,14 @@
                   }
                 }
 
-                td:nth-child(5) {
+                .fic {
                   display: none;
                 }
               }
 
+
               tr:nth-child(2) {
-                td:nth-child(1) {
+                .file {
                   display: none;
                 }
               }

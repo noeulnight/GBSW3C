@@ -2,7 +2,7 @@ import React from "react";
 import { BsChevronLeft, BsChevronRight, BsChevronDown } from 'react-icons/bs'
 import styles from '../css/Notice.module.scss'
 
-const Notice = ({ mode, isOpen }) => {
+const Notice = ({ mode }) => {
   return (
     <div className={styles.main}>
       <div className={styles.title} style={mode === 'light' ? {color: '#191919'} : {color: '#fff'}}>

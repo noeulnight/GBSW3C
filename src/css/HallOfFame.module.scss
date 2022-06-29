@@ -83,10 +83,28 @@
       height: calc((100% - 70px));
       border-radius: 4px;
 
+      .navbar {
+        position: absolute;
+        width: 100%;
+        height: 64px;
+        bottom: 0;
+        display: none;
+        >div {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          >a {
+            display: block;
+            text-align: center;
+          }
+        }
+      }
       .Box {
         width: 100%;
         height: 100%;
         padding: 0 24px;
+        border-radius: 4px;
 
         .listBoxHeader {
           height: 62px;
@@ -96,27 +114,6 @@
 
           div:nth-child(1) {
             font-weight: 500;
-          }
-
-          .div {
-            display: flex;
-            align-items: center;
-
-            a {
-              color: #0684c4;
-              margin-right: 24px;
-              display: flex;
-            }
-
-            .btn {
-              display: inline-block;
-              width: 100px;
-              height: 36px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border-radius: 3px;
-            }
           }
         }
 
@@ -137,61 +134,13 @@
             }
 
             tr:nth-child(1) {
+
               td:nth-child(1) {
-                width: 82px;
-
-                >div {
-                  >label {
-                    width: 24px;
-                    height: 24px;
-                    border-radius: 3px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-
-                    >svg {
-                      display: none;
-                    }
-                  }
-
-                  .light_ck {
-                    color: #fff;
-                    background: #fff;
-                    border: 2px solid #8993A7;
-                  }
-
-                  .dark_ck {
-                    color: #2F3146;
-                    background: #2F3146;
-                    border: 2px solid #8C8EA0;
-                  }
-
-                  input {
-                    display: none;
-
-                    &:checked~.light_ck {
-                      background: #0684c4;
-                      border: none;
-
-                      svg {
-                        display: block;
-                      }
-                    }
-
-                    &:checked~.dark_ck {
-                      background: #0684c4;
-                      border: none;
-
-                      svg {
-                        display: block;
-                      }
-                    }
-                  }
-                }
+                width: 200px;
               }
 
               td:nth-child(2) {
-                width: 120px;
+                width: 350px;
 
                 div {
                   display: none;
@@ -199,18 +148,19 @@
               }
 
               td:nth-child(3) {
-                width: 164px;
+                width: 350px;
               }
 
               td:nth-child(4) {
-                width: 102px;
+                width: 300px;
               }
+            }
 
-              td:nth-child(5) {
-                width: 134px;
-              }
+            tr:nth-child(2) {
+              
+              td {
+                width: 300px;
 
-              td:nth-child(6) {
                 span {
                   display: inline-block;
                   display: flex;
@@ -218,45 +168,6 @@
 
                   >div {
                     margin-left: 13px;
-                  }
-                }
-              }
-            }
-
-            tr:nth-child(2) {
-              text-align: right;
-
-              td:nth-child(1) {
-                div {
-                  width: 30px;
-                  height: 36px;
-                }
-
-                .light_file {
-                  background: url(../img/light_file.png) 50% 50% / cover;
-                }
-
-                .dark_file {
-                  background: url(../img/dark_file.png) 50% 50% / cover;
-                }
-              }
-
-              td:nth-child(2) {
-                width: 130px;
-              }
-            }
-          }
-
-          thead {
-            tr:nth-child(1) {
-              td:nth-child(1) {
-                >div {
-                  .light_ck {
-                    border-color: #ACB2CB;
-                  }
-
-                  .dark_ck {
-                    border-color: #6F738E;
                   }
                 }
               }
@@ -354,8 +265,12 @@
       }
 
       .listBox {
+        .navbar {
+          display: flex;
+        }
         .Box {
           padding: 0;
+          border-radius: 0;
 
           .listBoxHeader {
             padding: 0 24px;
@@ -397,16 +312,6 @@
                     display: block;
                   }
                 }
-
-                td:nth-child(5) {
-                  display: none;
-                }
-              }
-
-              tr:nth-child(2) {
-                td:nth-child(1) {
-                  display: none;
-                }
               }
             }
 
@@ -420,4 +325,5 @@
       }
     }
   }
+
 }

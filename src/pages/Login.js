@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../css/Login.module.scss";
 import logo from "../img/logo.png";
 
 const Login = ({ isLogin, setGrade }) => {
+  const [loading, setLoading] = useState(true)
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
   const [message, setMessage] = useState(null);
   const onSubmit = async (e) => {
     e.preventDefault();
     setMessage(null);
+    setLoading(true)
     const res = await fetch("/api/auth/v1/login", {
       method: "POST",
       headers: {
@@ -18,7 +20,9 @@ const Login = ({ isLogin, setGrade }) => {
         user_id: id,
         password: pw,
       }),
-    }).then((res) => res.json());
+    }).then((res) => res.json())
+      .catch(() => ({ success: false }));
+    setLoading(false)
 
     if (!res.success) {
       setMessage("아이디 또는 비밀번호가 일치하지 않습니다.");
@@ -27,6 +31,7 @@ const Login = ({ isLogin, setGrade }) => {
 
     document.cookie = `SESSION_TOKEN=${res.data.token}`;
 
+    setLoading(true)
     const me = await fetch("/api/auth/v1/@me").then((res) => res.json());
     if (me.data.permissions.includes("ADMINISTRATOR")) {
       setGrade(2);
@@ -36,11 +41,29 @@ const Login = ({ isLogin, setGrade }) => {
       setGrade(0);
     }
 
+    setLoading(false)
     isLogin(true);
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false)
+    }, 300)
+  }, [])
+
   return (
     <div className={styles.container}>
+      {loading && (
+        <div style={{
+          position: 'absolute',
+          top: 0, left: 0,
+          width: '100vw', height: '100vh',
+          zIndex: 100, backgroundColor: '#00000099', 
+          display: 'flex', justifyContent: 'center', 
+          alignItems: 'center', color: 'white' }}>
+          처리중입니다...
+        </div>
+      )}
       <div className={styles.loginForm}>
         <div className={styles.loginBox}>
           <form onSubmit={onSubmit}>
@@ -51,13 +74,13 @@ const Login = ({ isLogin, setGrade }) => {
               type="text"
               name="id"
               onChange={(e) => setId(e.target.value)}
-              placeholder="id"
+              placeholder="Id"
             />
             <input
               type="password"
               name="pw"
               onChange={(e) => setPw(e.target.value)}
-              placeholder="password"
+              placeholder="Password"
             />
             {message && <p className={styles.error}>{message}</p>}
             <input type="submit" className={styles.loginBtn} value="로그인" />
@@ -74,6 +97,7 @@ const Login = ({ isLogin, setGrade }) => {
               6대 핵심역량을 길러준다.
             </p>
             <a>
+
               <button>알아보기</button>
             </a>
           </div>

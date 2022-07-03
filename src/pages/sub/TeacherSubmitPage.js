@@ -14,7 +14,7 @@ import { FaPlus } from "react-icons/fa";
 import Select from "react-select";
 import styles from "../../css/StudentMain.module.scss";
 
-const StudentSubmitPage = ({mode, page, depart}) => {
+const TeacherSubmitPage = ({mode, page, depart}) => {
   const navigate = useNavigate();
   const [items, setItems] = useState(null);
   const [filterStr, setFilterStr] = useState("all");
@@ -345,4 +345,4 @@ const StudentSubmitPage = ({mode, page, depart}) => {
   )
 }
 
-export default StudentSubmitPage
+export default TeacherSubmitPage

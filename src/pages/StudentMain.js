@@ -15,7 +15,8 @@ import styles from "../css/StudentMain.module.scss";
 import StudentSubmitPage from "./sub/StudentSubmitPage";
 
 const StudentMain = ({ mode, isOpen }) => {
-  const [loading, setLoading] = useState(true)
+  const [depart, setDepart] = useState('로딩중...')
+  const [page, setPage] = useState(0)
   const [items, setItems] = useState(null);
   const [filterStr, setFilterStr] = useState("all");
   const filterOptions = [
@@ -34,50 +35,21 @@ const StudentMain = ({ mode, isOpen }) => {
   }
 
   async function fetchData() {
-    let str = "";
-    if (filterStr === "open") {
-      str = "?closed=false";
-    }
-    if (filterStr === "closed") {
-      str = "?closed=true";
-    }
+    const me = await fetch(`/api/auth/v1/@me`)
+      .then((res) => res.json())
 
-    setLoading(true)
-    const res = await fetch("/api/board/v1/posts/@me" + str).then((res) =>
-      res.json()
-    );
-    setLoading(false)
+    const depart = await fetch(`/api/auth/v1/departs?depid=${me.data.currentUser.depid}`)
+      .then((res) => res.json())
+    setDepart(depart.data.desc)
+  }
 
-    if (!res) alert("제출 목록을 가져오는데 예상치 못한 오류가 발생했습니다.");
-
-    setItems(
-      res.data.posts.map((post) => ({
-        number: post.postId,
-        name: "2204김무일",
-        department: "소프트웨어개발과",
-        area: "도전역량",
-        classification1: "프로젝트 산출물",
-        classification2: "자율형 프로젝트",
-        achievement_rate: 40,
-        file: 1,
-        date: "2022-04-25",
-      }))
-    );
+  async function setPageFn (v) {
+    fetchData()
+    setPage(v)
   }
 
   return (
     <div>
-      {loading && (
-        <div style={{
-          position: 'absolute',
-          top: 0, left: 0,
-          width: '100vw', height: '100vh',
-          zIndex: 100, backgroundColor: '#00000099', 
-          display: 'flex', justifyContent: 'center', 
-          alignItems: 'center', color: 'white' }}>
-          처리중입니다...
-        </div>
-      )}
       <div className={isOpen === true ? styles.open_main : styles.hide_main}>
         <div
           className={styles.listHeader}
@@ -94,34 +66,21 @@ const StudentMain = ({ mode, isOpen }) => {
               }
             >
               <span>페이지</span>
-              <input
-                maxLength={3}
-                style={
-                  mode === "light"
-                    ? {
-                        background: "#FFFFFF",
-                        border: "1px solid #ACB2CB",
-                        color: "#8993A7",
-                      }
-                    : {
-                        background: "#2F3146",
-                        border: "1px solid #6F738E",
-                        color: "#6F738E",
-                      }
-                }
-                type="text"
-                defaultValue="1"
-              />{" "}
-              / 1
+              {page + 1}
             </div>
             <div className={styles.btn}>
               <label
                 style={
-                  mode === "light"
-                    ? { backgroundColor: "#FFFFFF", color: "#ACB2CB" }
-                    : { backgroundColor: "#2F3146", color: "#6F738E" }
+                  page < 1
+                    ? mode === "light"
+                      ? { backgroundColor: "#FFFFFF", color: "#ACB2CB" }
+                      : { backgroundColor: "#2F3146", color: "#6F738E" }
+                    : mode === "light"
+                      ? { backgroundColor: "#0684c4", color: "#F3F5F7" }
+                      : { backgroundColor: "#0684c4", color: "#2B2E44" }
                 }
                 className={styles.left}
+                onClick={() => page < 1 ? undefined : setPageFn(page - 1)}
               >
                 <HiChevronLeft size={24} />
               </label>
@@ -132,6 +91,7 @@ const StudentMain = ({ mode, isOpen }) => {
                     : { backgroundColor: "#0684c4", color: "#2B2E44" }
                 }
                 className={styles.right}
+                onClick={() => setPageFn(page + 1)}
               >
                 <HiChevronRight size={24} />
               </label>
@@ -139,7 +99,7 @@ const StudentMain = ({ mode, isOpen }) => {
           </div>
         </div>
         <div className={styles.listBox}>
-          <StudentSubmitPage mode={mode}/>
+          <StudentSubmitPage key={page + depart} depart={depart} page={page} mode={mode}/>
         </div>
       </div>
     </div>

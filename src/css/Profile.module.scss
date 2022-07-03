@@ -18,6 +18,28 @@
       min-width: 320px;
     }
 
+    .light_chart {
+      height: 320px;
+      position: absolute;
+      text-align: center;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      bottom: 100px;
+    }
+
+    .dark_chart {
+      height: 320px;
+      position: absolute;
+      text-align: center;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      bottom: 100px;
+    }
+
     .listHeader {
       height: 70px;
       display: flex;
@@ -82,6 +104,7 @@
     .listBox {
       height: calc((100% - 70px));
       border-radius: 4px;
+      display: flex;  
 
       .navbar {
         position: absolute;
@@ -101,10 +124,17 @@
         }
       }
 
+      .Box:nth-child(1) {
+        flex: 2;
+        margin-right: 50px;
+      }
+    
       .Box {
-        width: 100%;
+        position: relative;
+        flex: 1;
         height: 100%;
         padding: 0 24px;
+        border-radius: 4px;
 
         .listBoxHeader {
           height: 62px;
@@ -137,148 +167,7 @@
             }
           }
         }
-
-        table {
-          width: 100%;
-          border-collapse: collapse;
-
-          thead,
-          tbody {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            border-radius: 3px;
-            padding: 0 24px;
-
-            tr>td {
-              height: 60px;
-            }
-
-            tr:nth-child(1) {
-              td:nth-child(1) {
-                width: 82px;
-
-                >div {
-                  >label {
-                    width: 24px;
-                    height: 24px;
-                    border-radius: 3px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-
-                    >svg {
-                      display: none;
-                    }
-                  }
-
-                  .light_ck {
-                    color: #fff;
-                    background: #fff;
-                    border: 2px solid #8993A7;
-                  }
-
-                  .dark_ck {
-                    color: #2F3146;
-                    background: #2F3146;
-                    border: 2px solid #8C8EA0;
-                  }
-
-                  input {
-                    display: none;
-
-                    &:checked~.light_ck {
-                      background: #0684c4;
-                      border: none;
-
-                      svg {
-                        display: block;
-                      }
-                    }
-
-                    &:checked~.dark_ck {
-                      background: #0684c4;
-                      border: none;
-
-                      svg {
-                        display: block;
-                      }
-                    }
-                  }
-                }
-              }
-
-              td:nth-child(2) {
-                width: 120px;
-
-                div {
-                  display: none;
-                }
-              }
-
-              td:nth-child(3) {
-                width: 164px;
-              }
-
-              td:nth-child(4) {
-                width: 102px;
-              }
-
-              td:nth-child(5) {
-                width: 134px;
-              }
-
-              td:nth-child(6) {
-                span {
-                  display: inline-block;
-                  display: flex;
-                  align-items: center;
-
-                  >div {
-                    margin-left: 13px;
-                  }
-                }
-              }
-            }
-
-            tr:nth-child(2) {
-              text-align: right;
-
-              td:nth-child(1) {
-                div {
-                  width: 30px;
-                  height: 36px;
-                }
-
-                .light_file {
-                  background: url(../img/light_file.png) 50% 50% / cover;
-                }
-
-                .dark_file {
-                  background: url(../img/dark_file.png) 50% 50% / cover;
-                }
-              }
-
-              td:nth-child(2) {
-                width: 130px;
-              }
-            }
-          }
-          thead {
-            tr:nth-child(1) {
-              td:nth-child(1) {
-                >div {
-                  .light_ck {
-                    border-color: #ACB2CB;
-                  }
-                  .dark_ck {
-                    border-color: #6F738E;
-                  }
-                }
-              }
-            }
-          }
-        }
+        
       }
     }
   }
@@ -301,36 +190,6 @@
       bottom: 70px;
       width: calc((100% - 48px));
       height: calc((100% - 134px));
-    }
-
-    .listBox {
-      table {
-        tr:nth-child(1) {
-          td:nth-child(3) {
-            display: none;
-          }
-
-          td:nth-child(4) {
-            display: none;
-          }
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 1080px) {
-  * {
-    body {
-      .listBox {
-        table {
-          tr:nth-child(1) {
-            td:nth-child(6) {
-              display: none;
-            }
-          }
-        }
-      }
     }
   }
 }
@@ -393,46 +252,6 @@
               .btn {
                 width: 80px;
                 height: 32px;
-              }
-            }
-          }
-
-          table {
-
-            thead,
-            tbody {
-              tr:nth-child(1) {
-                td:nth-child(1) {
-                  width: 60px;
-                }
-
-                td:nth-child(2) {
-                  width: 200px;
-
-                  span {
-                    display: none;
-                  }
-
-                  div {
-                    display: block;
-                  }
-                }
-
-                td:nth-child(5) {
-                  display: none;
-                }
-              }
-
-              tr:nth-child(2) {
-                td:nth-child(1) {
-                  display: none;
-                }
-              }
-            }
-
-            thead {
-              tr>td {
-                height: 50px;
               }
             }
           }

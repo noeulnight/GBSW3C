@@ -12,6 +12,8 @@ import { FaCheck, FaPlus } from "react-icons/fa";
 import styles from "../css/AdminMain.module.scss";
 import SubmitPage from "./sub/SubmitPage";
 import StudentListPage from "./sub/StudentListPage";
+import HallOfFame from './HallOfFame'
+import Introduce from './3C_Introduce'
 import useSessionStorage from "../components/UseSessionStorage";
 
 const TeacherMain = ({ mode, isOpen, page }) => {
@@ -35,11 +37,10 @@ const TeacherMain = ({ mode, isOpen, page }) => {
               {page === 2 && "학생 리스트"}
               {page === 3 && "명예의 전당"}
               {page === 4 && "3C 인증제"}
-              {page === 5 && "프로필"}
-              {page === 6 && "통계분석"}
-              {page === 7 && "계정관리"}
-              {page === 8 && "점수 영역관리"}
-              {page === 9 && "학생 등록"}
+              {page === 5 && "통계분석"}
+              {page === 6 && "계정관리"}
+              {page === 7 && "점수 영역관리"}
+              {page === 8 && "학생 등록"}
             </span>
           </div>
           <div className={styles.page}>
@@ -96,12 +97,12 @@ const TeacherMain = ({ mode, isOpen, page }) => {
         <div className={styles.listBox}>
           { page === 1 && <SubmitPage mode={mode}/> }
           { page === 2 && <StudentListPage mode={mode}/> }
-          { page === 3 && <SubmitPage mode={mode}/> }
-          { page === 4 && <SubmitPage mode={mode}/> }
-          { page === 5 && <p>easter egg</p> }
+          { page === 3 && <HallOfFame mode={mode}/> }
+          { page === 4 && <Introduce mode={mode}/> }
+          { page === 5 && <SubmitPage mode={mode}/> }
+          { page === 6 && <SubmitPage mode={mode}/> }
           { page === 7 && <SubmitPage mode={mode}/> }
           { page === 8 && <SubmitPage mode={mode}/> }
-          { page === 9 && <SubmitPage mode={mode}/> }
         </div>
       </div>
     </div>

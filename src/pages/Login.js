@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "../css/Login.module.scss";
 import logo from "../img/logo.png";
+import { Link } from 'react-router-dom'
 
 const Login = ({ isLogin, setGrade }) => {
   const [loading, setLoading] = useState(true)
@@ -97,8 +98,7 @@ const Login = ({ isLogin, setGrade }) => {
               6대 핵심역량을 길러준다.
             </p>
             <a>
-
-              <button>알아보기</button>
+              <Link to="/introduce"><button>알아보기</button></Link>
             </a>
           </div>
         </div>

@@ -1,12 +1,13 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 import img from "../img/3C.png"
-import styles from '../css/3C_Intoduce.module.scss'
+import styles from '../css/3C_Intoduce_nonav.module.scss'
 
-const Introduce = ({ mode, isOpen }) => {
+const IntroduceNonav = ({ mode, isOpen }) => {
   console.log(mode);  
   
   return (
-    <div className={isOpen === true ? styles.open_menu : styles.hide_menu} 
+    <div className={styles.open_menu} 
     style={
       mode === "light"
         ? { background: "#fff", color: "#ACB2CB" }
@@ -32,6 +33,7 @@ const Introduce = ({ mode, isOpen }) => {
             다양한 방법이 있는데 그 중 조건을 만족한 것을 신청하면 <br />
             포인트를 얻을 수 있다.
           </p>
+          <Link to="/">돌아가기</Link>
           <a href="http://viewer20.gyo6.net:8080/SynapDocViewServer/viewer/doc.html?key=ac720a6703974861af67e57b7e3a7dec&convType=img&convLocale=en_US&contextPath=/SynapDocViewServer" >자세한 내용은 이곳을 눌러 확인하세요</a>
         {/* 대충 설치 위치 */}
         </div>
@@ -40,4 +42,4 @@ const Introduce = ({ mode, isOpen }) => {
   )
 }
 
-export default Introduce
+export default IntroduceNonav

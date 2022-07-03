@@ -1,16 +1,8 @@
 import React, { useStat, useSessionStorag, useEffect } from "react";
-import ProgressBar from "@ramonak/react-progress-bar";
-import {
-  HiChevronLeft,
-  HiChevronRight,
-  HiChevronDown,
-  HiPlus,
-  HiX,
-  HiCheck,
-} from "react-icons/hi";
-import { FaCheck, FaPlus } from "react-icons/fa";
 import styles from "../css/Profile.module.scss";
 import useSessionStorage from "../components/UseSessionStorage";
+import Chart from "../components/Chart";
+
 
 const Profile = ({ mode, isOpen, page }) => {
   const [active, setActive] = useSessionStorage("active")
@@ -33,9 +25,16 @@ const Profile = ({ mode, isOpen, page }) => {
             </span>
           </div>
           </div>
-        <div className={styles.listBox} style={mode === 'light' ? {background: '#fff'} : {background: '#2F3146'}}>
-            <div className={styles.Box}>
-              
+        <div className={styles.listBox}>
+            <div className={styles.Box} style={mode === 'light' ? {background: '#fff'} : {background: '#2F3146'}}>
+              <div className={styles.listBoxHeader}>
+                <div style={mode === 'light' ? {color: '#191919'} : {color: '#fff'}}>프로필</div>
+              </div>
+            </div>
+            <div className={styles.Box} style={mode === 'light' ? {background: '#fff'} : {background: '#2F3146'}}>
+              <div className={styles.listBoxHeader}>
+                <div style={mode === 'light' ? {color: '#191919'} : {color: '#fff'}}>비밀번호 재설정</div>
+              </div>
             </div>
         </div>
       </div>

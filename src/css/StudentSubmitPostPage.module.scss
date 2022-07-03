@@ -133,14 +133,115 @@
         padding: 0 24px;
         border-radius: 4px;
 
-        .formBox {
-          width: 100%;
-          margin: 0 auto;
-          padding: 0 24px;
-          P {
-            margin-top: 20px;
+        .category {
+          display: flex;
+          >div {
+            flex: 1;
+            p {
+              margin-bottom: 5px;
+            }
+            >div {
+              margin-bottom: 20px;
+              >div {
+                height: 40px;
+              }
+            }
+          }
+          >div:nth-child(1) {
+            margin-right: 40px;
+          }
+        }
+
+        .editor {
+          height: calc(100% - 264px);
+          p {
             margin-bottom: 5px;
           }
+          .light_edit {
+            > div {
+              > div {
+                border: none;
+                border-bottom: 1px solid #fff;
+                > div:nth-child(1) {
+                  border-top-left-radius: 4px;
+                  border-top-right-radius: 4px;
+                  >div:nth-child(3) {
+                    margin: 0;
+                  }
+                  > div {
+                    background: #F3F5F7;
+                    >div {
+                      button {
+                        border: 1px solid #F3F5F7;
+                      }
+                    }
+                  }
+                }
+                >div:nth-child(2) {
+                  border-bottom-left-radius: 4px;
+                  border-bottom-right-radius: 4px;
+                  overflow: hidden;
+                  >div {
+                    >div {
+                      background: #F3F5F7;
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .dark_edit {
+            >div {
+              >div {
+                border: none;
+                >div:nth-child(1) {
+                  border-top-left-radius: 4px;
+                  border-top-right-radius: 4px;
+                  >div {
+                    background: #2B2E44;
+                    border-bottom: 1px solid #2F3146;
+                    >div {
+                      button {
+                        border: 1px solid #2B2E44;
+                      }
+                    }
+                    >div:nth-child(1) {
+                      >div:nth-child(1),
+                      >div:nth-child(2) {
+                        background: #383850;
+                      }
+                    }
+                  }
+                }
+                >div:nth-child(2) {
+                  border-bottom-left-radius: 4px;
+                  border-bottom-right-radius: 4px;
+                  overflow: hidden;
+                  >div {
+                    >div {
+                      background: #2B2E44;
+                    }
+                  }
+                }
+                >div:nth-child(3) {
+                  background: transparent;
+                  border: none;
+                  >div {
+                    line-height: 30px;
+                    height: 30px;
+                    background: #2B2E44;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .btn {
+          position: relative;
+          top: 48px;
+          display: flex;
+          justify-content: flex-end;
         }
 
         .listBoxHeader {
@@ -183,90 +284,6 @@
             }
           }
         }
-
-        table {
-          width: 100%;
-          border-collapse: collapse;
-          .error {
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-          thead,
-          tbody {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            border-radius: 3px;
-            padding: 0 24px;
-
-            tr>td {
-              height: 60px;
-            }
-
-            tr:nth-child(1) {
-              td:nth-child(1) {
-                width: 82px;
-              }
-
-              td:nth-child(2) {
-                width: 120px;
-
-                div {
-                  display: none;
-                }
-              }
-
-              td:nth-child(3) {
-                width: 164px;
-              }
-
-              td:nth-child(4) {
-                width: 102px;
-              }
-
-              td:nth-child(5) {
-                width: 134px;
-              }
-
-              td:nth-child(6) {
-                span {
-                  display: inline-block;
-                  display: flex;
-                  align-items: center;
-
-                  >div {
-                    margin-left: 13px;
-                  }
-                }
-              }
-            }
-
-            tr:nth-child(2) {
-              text-align: right;
-
-              td:nth-child(1) {
-                div {
-                  width: 30px;
-                  height: 36px;
-                }
-
-                .light_file {
-                  background: url(../img/light_file.png) 50% 50% / cover;
-                }
-
-                .dark_file {
-                  background: url(../img/dark_file.png) 50% 50% / cover;
-                }
-              }
-
-              td:nth-child(2) {
-                width: 130px;
-              }
-            }
-          }
-        }
       }
     }
   }
@@ -289,36 +306,6 @@
       bottom: 70px;
       width: calc((100% - 48px));
       height: calc((100% - 134px));
-    }
-
-    .listBox {
-      table {
-        tr:nth-child(1) {
-          td:nth-child(3) {
-            display: none;
-          }
-
-          td:nth-child(4) {
-            display: none;
-          }
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 1080px) {
-  * {
-    body {
-      .listBox {
-        table {
-          tr:nth-child(1) {
-            td:nth-child(6) {
-              display: none;
-            }
-          }
-        }
-      }
     }
   }
 }
@@ -343,93 +330,48 @@
       .listHeader {
         height: 42px;
         padding: 0 24px;
-
         .title {
           font-size: 14px;
-
           span {
             font-size: 14px;
           }
         }
-
-        .btn {
-          display: none;
-        }
       }
 
       .listBox {
-        .navbar {
-          display: flex;
-        }
         .Box {
-          padding: 0;
-          border-radius: 0;
-
           .listBoxHeader {
-            padding: 0 24px;
-            height: 50px;
-
-            >div:nth-child(1) {
+            div {
               display: none;
             }
-
-            .div {
-              a {
-                display: none;
-              }
-
-              .btn {
-                width: 80px;
-                height: 32px;
-              }
+          }
+          .category {
+            display: block;
+            >div:nth-child(1) {
+              margin-right: 0;
             }
           }
 
-          table {
+          .editor {
+            margin: 24px 0;
+            height: calc(100% - 314px);
+          }
 
-            thead,
-            tbody {
-              tr:nth-child(1) {
-                td:nth-child(1) {
-                  width: 60px;
-                }
-
-                td:nth-child(2) {
-                  width: 200px;
-
-                  span {
-                    display: none;
-                  }
-
-                  div {
-                    display: block;
-                  }
-                }
-
-                td:nth-child(5) {
-                  display: none;
-                }
-              }
-
-              tr:nth-child(2) {
-                td:nth-child(1) {
-                  display: none;
-                }
+          .btn {
+            a {
+              width: 50%;
+              display: inline-block;
+              >button {
+                width: 100% ;
               }
             }
-
-            thead {
-              tr>td {
-                height: 50px;
-              }
+            top: 24px;
+            button {
+              width: 50%;
             }
           }
         }
-      }
-      .submitbtn {
-        display: none;
       }
     }
   }
-
 }

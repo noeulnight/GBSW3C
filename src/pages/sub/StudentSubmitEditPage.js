@@ -53,11 +53,6 @@ const StudentSubmitPostPage = ({ mode, isOpen }) => {
   }, [])
 
   async function onSubmit () {
-    if (content.length > 100) {
-      setMessage('설명글은 100자 이상 입력할 수 없습니다.')
-      return
-    }
-
     setLoading(true)
     const data = await fetch('/api/board/v1/posts', {
       method: 'POST',

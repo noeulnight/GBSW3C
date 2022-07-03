@@ -2,6 +2,8 @@ import React, { useState, useCallback } from "react";
 import './App.css'
 import { Route, Routes } from 'react-router-dom';
 import StudentSubmitPostPage from './pages/sub/StudentSubmitPostPage'
+import StudentSubmitFilePage from './pages/sub/StudentSubmitFilePage'
+import StudentSubmitView from './pages/sub/StudentSubmitView'
 import Navigation from "./components/Navigation";
 import Header from "./components/Header";
 import Login from "./pages/Login";
@@ -11,6 +13,7 @@ import AdminMain from "./pages/AdminMain"
 import HallOfFame from './pages/HallOfFame'
 import Profile from './pages/Profile'
 import Introduce from "./pages/3C_Introduce";
+import IntroduceNonav from "./pages/3C_Introduce_nonav";
 import useSessionStorage from "./components/UseSessionStorage";
 import Logout from './pages/Logout'
 import './css/Reset.modele.scss'
@@ -36,7 +39,10 @@ function App () {
   if(!login) {
     return (
       <div>
-        <Login isLogin={isLogin} setGrade={setGrade}/>
+        <Routes>
+          <Route path="/" element={<Login isLogin={isLogin} setGrade={setGrade}/>} />
+          <Route path="/introduce" element={<IntroduceNonav isOpen={isOpen} mode={mode}/>} />
+        </Routes>
       </div>
     )
   } else if(login) {
@@ -46,10 +52,13 @@ function App () {
             <Routes>
               <Route path="/" element={<StudentMain mode={mode} isOpen={isOpen} />} />
               <Route path="/submit" element={<StudentSubmitPostPage mode={mode} isOpen={isOpen} />} />
+              <Route path="/posts/:id" element={<StudentSubmitView mode={mode} isOpen={isOpen} />} />
+              <Route path="/edit/:id" element={<StudentSubmitView mode={mode} isOpen={isOpen} />} />
+              <Route path="/upload/:id" element={<StudentSubmitFilePage mode={mode} isOpen={isOpen} />} />
               <Route path="/logout" element={<Logout isLogin={isLogin} />} />
               <Route path="/ranking" element={<HallOfFame mode={mode} isOpen={isOpen}/>} />
               <Route path="/profile" element={<Profile mode={mode} isOpen={isOpen}/>} />
-              <Route path="/introduce" element={<Introduce isOpen={isOpen} />} />
+              <Route path="/introduce" element={<Introduce isOpen={isOpen} mode={mode}/>} />
             </Routes>
           <Header mode={mode} setMode={setMode} isOpen={isOpen} setMenu={setMenu}/>
           <Navigation grade={grade} mode={mode} isOpen={isOpen} />

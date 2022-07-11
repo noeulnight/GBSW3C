@@ -75,7 +75,7 @@ const Login = ({ isLogin, setGrade }) => {
               type="text"
               name="id"
               onChange={(e) => setId(e.target.value)}
-              placeholder="Id"
+              placeholder="Username"
             />
             <input
               type="password"

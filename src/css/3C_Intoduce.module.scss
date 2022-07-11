@@ -16,7 +16,7 @@
   height: calc((100% - 214px));
   min-width: 320px;
 }
-// 왜요 왜 나란히 오셨나;;
+
 .main {
   display: flex;
   justify-content: space-between;
@@ -50,7 +50,7 @@
 
     p {
       display: inline-block;
-      font-size: 25px;
+      font-size: 20px;
       font-weight: bold;
       color: #808080;
     }
@@ -78,6 +78,23 @@
     bottom: 67px;
     width: calc((100% - 48px));
     height: calc((100% - 134px));
+  }
+}
+
+@media (max-width: 1170px) {
+  .img {
+    position: absolute;
+
+    img {
+      display: none;
+    }
+  }
+
+  .information {
+    
+    p {
+      font-size: 14px;
+    }
   }
 }
 

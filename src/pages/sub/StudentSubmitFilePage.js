@@ -13,16 +13,17 @@ import {
   HiReply,
 } from "react-icons/hi";
 import { AiFillDelete } from "react-icons/ai";
+import { FaCheck } from "react-icons/fa";
 import Select from 'react-select'
 import { useNavigate, Link } from "react-router-dom";
-
+  
 import styles from "../../css/StudentSubmitFilePage.module.scss";
 
 const StudentSubmitFilePostPage = ({ mode, isOpen }) => {
   const fileRef = createRef()
   const postId = window.location.pathname.split('/')[window.location.pathname.split('/').length - 1]
   const [loading, setLoading] = useState(true)
-  const [uploading, setUploading] = useState(false)
+  const [uploading, setUploading] = useState(false) 
   const [message, setMessage] = useState('')
   const [file, setFile] = useState([])
   const [post, setPost] = useState(null)
@@ -106,7 +107,18 @@ const StudentSubmitFilePostPage = ({ mode, isOpen }) => {
             로딩중 입니다...
         </div>
       )}
+      
       <div className={isOpen === true ? styles.open_main : styles.hide_main}>
+        <div className={styles.navbar} style={mode === "light" ? {background: "#F3F5F7"} : {background: "#2B2E44"}}>
+          <div>
+            <button onClick={() => navigation('/')} style={mode === "light" ? { color: "#ACB2CB" } : { color: "#6F738E" }}>
+              <div>
+                <FaCheck size={24} />
+              </div>
+              완료
+            </button>
+          </div>
+        </div>
         <div className={styles.listHeader} style={mode === 'light' ? {color: '#191919'} : {color: '#fff'}}>
           <div className={styles.title}>
             학생 페이지/신청리스트/<span style={{color: '#0684c4'}}>파일업로드</span>
@@ -152,11 +164,6 @@ const StudentSubmitFilePostPage = ({ mode, isOpen }) => {
               </div>
             </div>
             <div className={styles.btn}>
-              <Link to="/">
-                <button className={styles.cancelbtn} style={{ alignSelf: 'center', cursor: 'pointer', border: 'none', backgroundColor: 'gray', color: 'white', padding: 10, fontSize: 16, borderRadius: 4}}>
-                  업로드 없이 계속
-                </button>
-              </Link>
               <button onClick={() => navigation('/')} className={styles.submitbtn} style={{ marginLeft: 10, cursor: 'pointer', alignSelf: 'center', border: 'none', backgroundColor: 'rgb(6, 132, 196)', color: 'white', padding: 10, fontSize: 16, borderRadius: 4}}>
                   완료
               </button>

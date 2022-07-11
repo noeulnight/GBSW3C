@@ -18,26 +18,28 @@
       min-width: 320px;
     }
 
+    .chartBox {
+      display: flex;
+    }
     .light_chart {
+      flex: 1;
       height: 320px;
-      position: absolute;
       text-align: center;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      bottom: 100px;
+      border-radius: 4px;
     }
 
     .dark_chart {
+      flex: 1;
       height: 320px;
-      position: absolute;
       text-align: center;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      bottom: 100px;
     }
 
     .listHeader {
@@ -54,50 +56,28 @@
           font-size: 22px;
         }
       }
+    }
 
-      .page {
-        display: flex;
-        align-items: center;
-
-        .light_page {
-          color: #8993A7;
-        }
-
-        .dark_page {
-          color: #6F738E;
-        }
-
-        span {
-          margin-right: 12px;
-        }
-
-        input {
-          width: 36px;
-          height: 24px;
-          border: none;
-          outline: none;
-          border-radius: 3px;
-          text-align: center;
-          margin-right: 5px;
-        }
+    .boxHeader {
+      padding: 10px 0;
+      border-bottom: 1px solid #191919;
+      .name {
+        font-size: 20px;
+        font-weight: 500;
+        display: block;
       }
+      .class {
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
 
-      .btn {
-        display: flex;
-        margin-left: 20px;
-
-        .left {
-          margin-right: 10px;
-        }
-
-        label {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 24px;
-          height: 24px;
-          border-radius: 3px;
-        }
+    .context {
+      margin-top: 100px;
+      display: flex;
+      justify-content: right;
+      div {
+        padding: 10px 0;
       }
     }
 
@@ -124,11 +104,6 @@
         }
       }
 
-      .Box:nth-child(1) {
-        flex: 2;
-        margin-right: 50px;
-      }
-    
       .Box {
         position: relative;
         flex: 1;
@@ -137,37 +112,12 @@
         border-radius: 4px;
 
         .listBoxHeader {
+          font-weight: 500;
           height: 62px;
           display: flex;
           align-items: center;
           justify-content: space-between;
-
-          div:nth-child(1) {
-            font-weight: 500;
-          }
-
-          .div {
-            display: flex;
-            align-items: center;
-
-            a {
-              color: #0684c4;
-              margin-right: 24px;
-              display: flex;
-            }
-
-            .btn {
-              display: inline-block;
-              width: 100px;
-              height: 36px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border-radius: 3px;
-            }
-          }
         }
-        
       }
     }
   }
@@ -254,6 +204,14 @@
                 height: 32px;
               }
             }
+          }
+
+          .boxHeader {
+            margin: 0 24px;
+          }
+      
+          .context {
+            padding: 0 24px;            
           }
         }
       }

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ProgressBar from "@ramonak/react-progress-bar";
 import { FaPlus } from "react-icons/fa";
-
 import styles from "../css/HallOfFame.module.scss";
 
 const HallOfFame = ({ mode, isOpen }) => {
@@ -15,44 +14,18 @@ const HallOfFame = ({ mode, isOpen }) => {
     }
   ]);
 
-  // useEffect(() => {
-  //   (async () => {
-  //     const res = await fetch("/api/board/v1/posts/@me").then((res) =>
-  //       res.json()
-  //     );
-
-  //     if (!res)
-  //       alert("제출 목록을 가져오는데 예상치 못한 오류가 발생했습니다.");
-
-  //     setItems(
-  //       res.data.posts.map((post) => ({
-  //         number: "0003",
-  //         name: "2204김무일",
-  //         department: "소프트웨어개발과",
-  //         area: "도전역량",
-  //         classification1: "프로젝트 산출물",
-  //         classification2: "자율형 프로젝트",
-  //         achievement_rate: 40,
-  //         file: 1,
-  //         date: "2022-04-25",
-  //       }))
-  //     );
-  //   })();
-  // }, []);
-
   return (
     <div className={isOpen === true ? styles.open_main : styles.hide_main}>
       <div className={styles.listHeader} style={mode === "light" ? { color: "#191919" } : { color: "#fff" }}>
-        <div className={styles.page}>
-          <div className={mode === "light" ? styles.light_page : styles.dark_page }>
-          </div>
+        <div className={styles.title}>
+          명예의 전당
         </div>
       </div>
       <div className={styles.listBox}>
-        <div style={mode === "light"? { background: "#FFFFFF" } : { background: "#2F3146" }} className={styles.Box}>
+        <div style={mode === "light" ? { background: "#FFFFFF" } : { background: "#2F3146" }} className={styles.Box}>
           <div className={styles.listBoxHeader}>
             <div style={mode === "light" ? { color: "#191919" } : { color: "#fff" }}>
-              랭킹
+              명예의 전당
             </div>
           </div>
           <table>

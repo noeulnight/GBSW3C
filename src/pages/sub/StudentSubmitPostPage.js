@@ -12,7 +12,7 @@ import {
   HiRefresh,
   HiReply,
 } from "react-icons/hi";
-import { FaCheck } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight, FaPlus, FaBackspace } from "react-icons/fa";
 import Select from 'react-select'
 import { useNavigate, Link } from "react-router-dom";
 
@@ -93,6 +93,42 @@ const StudentSubmitPostPage = ({ mode, isOpen }) => {
         </div>
       )}
       <div className={isOpen === true ? styles.open_main : styles.hide_main}>
+      <div
+            className={styles.navbar}
+            style={
+              mode === "light"
+                ? { background: "#F3F5F7" }
+                : { background: "#2B2E44" }
+            }
+          >
+            <div>
+              <Link
+                to="/"
+                style={
+                  mode === "light" ? { color: "#ACB2CB" } : { color: "#6F738E" }
+                }
+              >
+                <div>
+                  <FaChevronLeft size={24} />{" "}
+                </div>
+                돌아가기
+              </Link>
+            </div>
+            <div>
+              <button 
+                onClick={onSubmit}
+                to="/submit"
+                style={
+                  mode === "light" ? { color: "#ACB2CB" } : { color: "#6F738E" }
+                }
+              >
+                <div>
+                  <FaChevronRight size={24} />{" "}
+                </div>
+                다음으로
+              </button>
+            </div>
+          </div> 
         <div className={styles.listHeader} style={mode === 'light' ? {color: '#191919'} : {color: '#fff'}}>
           <div className={styles.title}>
             학생 페이지/신청리스트/<span style={{color: '#0684c4'}}>신청하기</span>

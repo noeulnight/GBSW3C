@@ -74,7 +74,7 @@ const StudentSubmitPage = ({mode, page, depart}) => {
 
   return (
     <>
-    <div
+          <div
             className={styles.navbar}
             style={
               mode === "light"

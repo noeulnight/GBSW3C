@@ -16,6 +16,7 @@ import Introduce from "./pages/3C_Introduce";
 import IntroduceNonav from "./pages/3C_Introduce_nonav";
 import useSessionStorage from "./components/UseSessionStorage";
 import Logout from './pages/Logout'
+import PasswordChange from './pages/PasswordChange'
 import './css/Reset.modele.scss'
 
 function App () {
@@ -59,6 +60,7 @@ function App () {
               <Route path="/ranking" element={<HallOfFame mode={mode} isOpen={isOpen}/>} />
               <Route path="/profile" element={<Profile mode={mode} isOpen={isOpen}/>} />
               <Route path="/introduce" element={<Introduce isOpen={isOpen} mode={mode}/>} />
+              <Route path="/resetpw" element={<PasswordChange isOpen={isOpen} mode={mode} />} />
             </Routes>
           <Header mode={mode} setMode={setMode} isOpen={isOpen} setMenu={setMenu}/>
           <Navigation grade={grade} mode={mode} isOpen={isOpen} />

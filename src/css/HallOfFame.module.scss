@@ -1,161 +1,124 @@
 * {
-  body {
-    .open_main {
+  .open_main, .hide_main {
+    position: absolute;
+    right: 24px;
+    bottom: 70px;
+    min-width: 320px;
+  }
+
+  .open_main {
+    width: calc((100% - 256px) - 48px);
+    height: calc((100% - 134px));
+    border-radius: 4px;
+  }
+  
+  .hide_main {
+    width: calc(100% - 48px);
+    height: calc((100% - 134px));
+  }
+
+  .listHeader {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .title {
+      font-size: 22px;
+      font-weight: 700;
+      color: rgb(6, 132, 196);
+    }    
+  }
+
+  .listBox {
+    height: calc((100% - 70px));
+    border-radius: 4px;
+
+    .navbar {
       position: absolute;
       width: 100%;
-      height: 100%;
-      min-width: 320px;
-    }
-
-    .hide_main {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      min-width: 320px;
-    }
-
-    .listHeader {
-      height: 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      .page {
+      height: 64px;
+      bottom: 0;
+      display: none;
+      >div {
+        flex: 1;
         display: flex;
         align-items: center;
-
-        .light_page {
-          color: #8993A7;
-        }
-
-        .dark_page {
-          color: #6F738E;
-        }
-
-        span {
-          margin-right: 12px;
-        }
-
-        input {
-          width: 36px;
-          height: 24px;
-          border: none;
-          outline: none;
-          border-radius: 3px;
+        justify-content: center;
+        >a {
+          display: block;
           text-align: center;
-          margin-right: 5px;
-        }
-      }
-
-      .btn {
-        display: flex;
-        margin-left: 20px;
-
-        .left {
-          margin-right: 10px;
-        }
-
-        label {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 24px;
-          height: 24px;
-          border-radius: 3px;
         }
       }
     }
-
-    .listBox {
-      height: calc((100% - 70px));
+    .Box {
+      width: 100%;
+      height: 100%;
+      padding: 0 24px;
       border-radius: 4px;
 
-      .navbar {
-        position: absolute;
-        width: 100%;
-        height: 64px;
-        bottom: 0;
-        display: none;
-        >div {
-          flex: 1;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          >a {
-            display: block;
-            text-align: center;
-          }
+      .listBoxHeader {
+        height: 62px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        div:nth-child(1) {
+          font-weight: 500;
         }
       }
-      .Box {
+
+      table {
         width: 100%;
-        height: 100%;
-        padding: 0 24px;
-        border-radius: 4px;
+        border-collapse: collapse;
 
-        .listBoxHeader {
-          height: 62px;
+        thead,
+        tbody {
           display: flex;
-          align-items: center;
           justify-content: space-between;
-
-          div:nth-child(1) {
-            font-weight: 500;
-          }
-        }
-
-        table {
           width: 100%;
-          border-collapse: collapse;
+          border-radius: 3px;
+          padding: 0 24px;
 
-          thead,
-          tbody {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            border-radius: 3px;
-            padding: 0 24px;
+          tr>td {
+            height: 60px;
+          }
 
-            tr>td {
-              height: 60px;
+          tr:nth-child(1) {
+
+            td:nth-child(1) {
+              width: 200px;
             }
 
-            tr:nth-child(1) {
+            td:nth-child(2) {
+              width: 350px;
 
-              td:nth-child(1) {
-                width: 200px;
-              }
-
-              td:nth-child(2) {
-                width: 350px;
-
-                div {
-                  display: none;
-                }
-              }
-
-              td:nth-child(3) {
-                width: 350px;
-              }
-
-              td:nth-child(4) {
-                width: 300px;
+              div {
+                display: none;
               }
             }
 
-            tr:nth-child(2) {
-              
-              td {
-                width: 300px;
+            td:nth-child(3) {
+              width: 350px;
+            }
 
-                span {
-                  display: inline-block;
-                  display: flex;
-                  align-items: center;
+            td:nth-child(4) {
+              width: 300px;
+            }
+          }
 
-                  >div {
-                    margin-left: 13px;
-                  }
+          tr:nth-child(2) {
+            
+            td {
+              width: 300px;
+
+              span {
+                display: inline-block;
+                display: flex;
+                align-items: center;
+
+                >div {
+                  margin-left: 13px;
                 }
               }
             }

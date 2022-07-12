@@ -83,11 +83,11 @@
       height: 100%;
       border-radius: 4px;
 
-      .navbar {
+      .navbar { 
         position: absolute;
         width: 100%;
         height: 64px;
-        bottom: 0;
+        bottom: 0px;
         display: none;
         >div {
           flex: 1;
@@ -100,12 +100,11 @@
           }
         }
       }
-
       .Box {
         width: 100%;
-        height: 100%;
+        height: calc(100% - 70px);
         padding: 0 24px;
-
+        border-radius: 4px;
         .listBoxHeader {
           height: 62px;
           display: flex;
@@ -119,11 +118,24 @@
           .div {
             display: flex;
             align-items: center;
+            >div {
+              span {
+                display: none;
+              }
+              >div {
+                box-shadow: none; 
+              }
+            }
 
-            a {
+            a { 
               color: #0684c4;
               margin-right: 24px;
               display: flex;
+              align-items: center;
+            }
+
+            >div {
+              width: 110px;
             }
 
             .btn {
@@ -141,7 +153,12 @@
         table {
           width: 100%;
           border-collapse: collapse;
-
+          .error {
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
           thead,
           tbody {
             display: flex;
@@ -149,114 +166,76 @@
             width: 100%;
             border-radius: 3px;
             padding: 0 24px;
+            cursor: pointer;
+
+            &:hover {
+              background-color: #00000008;
+            }
 
             tr>td {
               height: 60px;
             }
 
             tr:nth-child(1) {
-              .checkBox {
-                width: 130px;
-
-                >div {
-                  >label {
-                    width: 24px;
-                    height: 24px;
-                    border-radius: 3px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-
-                    >svg {
-                      display: none;
-                    }
-                  }
-
-                  .light_ck {
-                    color: #fff;
-                    background: #fff;
-                    border: 2px solid #8993A7;
-                  }
-
-                  .dark_ck {
-                    color: #2F3146;
-                    background: #2F3146;
-                    border: 2px solid #8C8EA0;
-                  }
-
-                  input {
-                    display: none;
-
-                    &:checked~.light_ck {
-                      background: #0684c4;
-                      border: none;
-
-                      svg {
-                        display: block;
-                      }
-                    }
-
-                    &:checked~.dark_ck {
-                      background: #0684c4;
-                      border: none;
-
-                      svg {
-                        display: block;
-                      }
-                    }
-                  }
-                }
+              .number {
+                width: 82px;
               }
 
               .user {
-                width: 170px;
+                width: 120px;
 
                 div {
                   display: none;
                 }
               }
 
-              .sid {
-                width: 170px;
-              }
-
               .class {
-                width: 200px;
+                width: 164px;
               }
 
-              .phoneNumber {
-                width: 150px;
+              .area {
+                width: 102px;
               }
 
-            }
-            
-            tr:nth-child(2) {
+              .fic {
+                width: 134px;
+              }
+
               .rate {
-                width: 300px;
-
                 span {
                   display: inline-block;
                   display: flex;
                   align-items: center;
-  
+
                   >div {
                     margin-left: 13px;
                   }
                 }
-              }   
+              }
             }
-          }
-          thead {
-            tr:nth-child(1) {
-              td:nth-child(1) {
-                >div {
-                  .light_ck {
-                    border-color: #ACB2CB;
-                  }
-                  .dark_ck {
-                    border-color: #6F738E;
-                  }
+
+            tr:nth-child(2) {
+              text-align: right;
+
+              .file {
+                width: 30px;
+                height: 36px;
+
+                .light_file {
+                  width: 30px;
+                  height: 36px;
+                  background: url(../img/light_file.png) 50% 50% / cover;
                 }
+
+                .dark_file {
+                  width: 30px;
+                  height: 36px;
+                  background: url(../img/dark_file.png) 50% 50% / cover;
+                }
+              }
+
+              .day {
+                width: 130px;
               }
             }
           }
@@ -302,7 +281,7 @@
     body {
       .listBox {
         table {
-          tr:nth-child(2) {
+          tr:nth-child(1) {
             .rate {
               display: none;
             }
@@ -376,20 +355,15 @@
           }
 
           table {
-
             thead,
             tbody {
               tr:nth-child(1) {
-                .checkBox {
-                  width: 50px;
-                }
-
                 .number {
                   width: 60px;
                 }
-                
+
                 .user {
-                  width: 100px;
+                  width: 200px;
 
                   span {
                     display: none;
@@ -400,15 +374,10 @@
                   }
                 }
 
-                .sid {
-                  width: 100px;
-                }
-
                 .fic {
                   display: none;
                 }
               }
-
 
               tr:nth-child(2) {
                 .file {
@@ -425,6 +394,10 @@
           }
         }
       }
+      .submitbtn {
+        display: none;
+      }
     }
   }
+
 }

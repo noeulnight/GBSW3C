@@ -122,7 +122,7 @@ const [fullChecked, setFullchecked] = useState(false);
                 }
               >
                 <tr>
-                  <td>
+                  <td className={styles.checkBox}>
                     <div>
                       <input
                         checked={fullChecked}
@@ -140,36 +140,23 @@ const [fullChecked, setFullchecked] = useState(false);
                       </label>
                     </div>
                   </td>
-                  <td>
-                    <span>학생이름</span>
-                    <div
-                      className={
-                        mode === "light" ? styles.light_tag : styles.dark_tag
-                      }
-                    >
-                      유저아이디
-                    </div>
+                  <td className={styles.user}>
+                    <span>이름</span>
+                    <div>유저아이디</div>
                   </td>
-                  <td>기수 </td>
-                  <td>전화번호</td>
-                  <td>담당자  </td>
+                  <td className={styles.sid}>학번</td>
+                  <td className={styles.class}>학과</td>
+                  <td className={styles.phoneNumber}>전화번호</td>
                 </tr>
                 <tr>
-                  
-                  <td>
-                
-                    <HiChevronDown
-                      size={14}
-                      style={{ position: "relative", left: "3px", top: "2px" }}
-                    />
-                  </td>
+                  <td className={styles.rate}>달성률</td>
                 </tr>
               </thead>
               {items.map((item, index) => {
                 return (
                   <tbody key={index} style={ mode === "light" ? { color: "#ACB2CB" } : { color: "#6F738E" }}>
                     <tr>
-                      <td>
+                      <td className={styles.checkBox}>
                         <div>
                           <input type="checkbox" onChange={onCheck(index)} checked={item.checked} id={index}/>
                           <label htmlFor={index} className={ mode === "light" ? styles.light_ck : styles.dark_ck }>
@@ -177,33 +164,31 @@ const [fullChecked, setFullchecked] = useState(false);
                           </label>
                         </div>
                       </td>{" "}
-                      <td style={ mode === "light" ? { color: "#8993A7" } : { color: "#8C8EA0" }}>
-                        {item.name}
+                      <td className={styles.user} style={ mode === "light" ? { color: "#8993A7" } : { color: "#8C8EA0" }}>
+                        <span>{item.name}</span>
+                        <div>{item.id}</div>
                       </td>
-                      <td>{item.sid}</td>
-                      <td>{item.phone}</td>
-                      <td>
-                      <span>
-                        {item.achievement_rate}%
-                          <ProgressBar
-                            completed={item.achievement_rate}
-                            height={"13px"}
-                            width={"200px"}
-                            labelSize={"0px"}
-                            bgColor={"rgba(6, 132, 196, 0.77)"}
-                            borderRadius={"3px"}
-                            baseBgColor={
+                      <td className={styles.sid}>{item.sid}</td>
+                      <td className={styles.class}>{item.department}</td>
+                      <td className={styles.phoneNumber}>{item.phone}</td>
+                    </tr>
+                    <tr>
+                      <td className={styles.rate}>
+                        <span>
+                          {item.achievement_rate}%
+                            <ProgressBar
+                              completed={item.achievement_rate}
+                              height={"13px"}
+                              width={"200px"}
+                              labelSize={"0px"}
+                              bgColor={"rgba(6, 132, 196, 0.77)"}
+                              borderRadius={"3px"}
+                              baseBgColor={
                               mode === "light" ? "#f1f1f1" : "#383850"
                             }
                           />
                         </span>
                       </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div className={ item.file != null ? mode === "light" ? styles.light_file : styles.dark_file : null }></div>
-                      </td>
-                      <td>{item.date}</td>
                     </tr>
                   </tbody>
                 );

@@ -16,11 +16,6 @@ const HallOfFame = ({ mode, isOpen }) => {
 
   return (
     <div className={isOpen === true ? styles.open_main : styles.hide_main}>
-      <div className={styles.listHeader} style={mode === "light" ? { color: "#191919" } : { color: "#fff" }}>
-        <div className={styles.title}>
-          명예의 전당
-        </div>
-      </div>
       <div className={styles.listBox}>
         <div style={mode === "light" ? { background: "#FFFFFF" } : { background: "#2F3146" }} className={styles.Box}>
           <div className={styles.listBoxHeader}>

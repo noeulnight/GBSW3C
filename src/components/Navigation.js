@@ -42,10 +42,10 @@ return (
       <div className={lists === 1 ? styles.list : null} to="" onClick={() => setLists(1)}>
         <p className={styles.tag} style={mode === 'light' ? {color: '#adabab'} :  {color: '#6F738E'}} >학생 페이지<HiChevronDown size={18} /></p>
         <ul className={mode === 'light' ? styles.light_ul : styles.dark_ul}>  
-          <Link className={page === 1 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="/" onClick={() => onChangepage(1)}><li><p>신청 리스트</p></li></Link>
-          <Link className={page === 2 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="/ranking" onClick={() => onChangepage(2)}><li><p>명예의 전당</p></li></Link>
-          <Link className={page === 3 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="/introduce" onClick={() => onChangepage(3)}><li><p>3C 인증제</p></li></Link>
-          <Link className={page === 5 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="/profile" onClick={() => onChangepage(5)}><li><p>프로필</p></li></Link>
+          <Link className={page === 1 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="" onClick={() => onChangePage(1)}><li><p>신청 리스트</p></li></Link>
+          <Link className={page === 2 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="" onClick={() => onChangePage(2)}><li><p>명예의 전당</p></li></Link>
+          <Link className={page === 3 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="" onClick={() => onChangePage(3)}><li><p>3C 인증제</p></li></Link>
+          <Link className={page === 5 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="" onClick={() => onChangePage(4)}><li><p>프로필</p></li></Link>
         </ul>
       </div>
       </div>
@@ -127,7 +127,7 @@ if (grade == 2) {
         <div className={lists === 2 ? styles.list : null} to="" onClick={() => setLists(2)}>
           <p className={styles.tag} style={mode === 'light' ? {color: '#adabab'} :  {color: '#6F738E'}} >관리자 페이지<HiChevronDown size={18} /></p>
           <ul className={mode === 'light' ? styles.light_ul : styles.dark_ul}>  
-            <Link className={page === 5 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="" onClick={() => onChangePage(5)}><li><p>통계분석</p></li></Link>
+            <Link className={page === 5 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="/stat" onClick={() => onChangePage(5)}><li><p>통계분석</p></li></Link>
             <Link className={page === 6 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="" onClick={() => onChangePage(6)}><li><p>계정관리</p></li></Link>
             <Link className={page === 7 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="" onClick={() => onChangePage(7)}><li><p>점수 영역관리</p></li></Link>
             <Link className={page === 8 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="" onClick={() => onChangePage(8)}><li><p>학생 등록</p></li></Link>

@@ -13,12 +13,17 @@ import { FaPlus } from "react-icons/fa";
 import Select from "react-select";
 import styles from "../css/StudentMain.module.scss";
 import StudentSubmitPage from "./sub/StudentSubmitPage";
+import HallOfFame from './HallOfFame'
+import Introduce from './3C_Introduce'
+import Profile from './Profile'
+import useSessionStorage from "../components/UseSessionStorage";
 
-const StudentMain = ({ mode, isOpen }) => {
+const StudentMain = ({ mode, isOpen, selectPage }) => {
   const [depart, setDepart] = useState('로딩중...')
   const [page, setPage] = useState(0)
   const [items, setItems] = useState(null);
   const [filterStr, setFilterStr] = useState("all");
+  const [active, setActive] = useSessionStorage("active")
   const filterOptions = [
     { value: "all", label: "전체보기" },
     { value: "open", label: "열림" },
@@ -28,6 +33,11 @@ const StudentMain = ({ mode, isOpen }) => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  useEffect(() => {
+    console.log('active page', selectPage);
+    setActive(selectPage)
+  }, [selectPage])
 
   function onFilterChange(e) {
     setFilterStr(e.value);
@@ -57,9 +67,14 @@ const StudentMain = ({ mode, isOpen }) => {
         >
           <div className={styles.title}>
             사용자 페이지/
-            <span style={{ color: "#0684c4" }}>신청 리스트</span>
+            <span style={{ color: "#0684c4" }}>
+              {selectPage === 1 && "신청 리스트"}
+              {selectPage === 2 && "명예의 전당"}
+              {selectPage === 3 && "3C 인증제"}
+              {selectPage === 4 && "프로필"}
+            </span>
           </div>
-          <div className={styles.page}>
+          {selectPage === 1 && <div className={styles.page}>
             <div
               className={
                 mode === "light" ? styles.light_page : styles.dark_page
@@ -96,10 +111,13 @@ const StudentMain = ({ mode, isOpen }) => {
                 <HiChevronRight size={24} />
               </label>
             </div>
-          </div>
+          </div>}
         </div>
         <div className={styles.listBox}>
-          <StudentSubmitPage key={page + depart} depart={depart} page={page} mode={mode}/>
+          { selectPage === 1 && <StudentSubmitPage key={page + depart} depart={depart} page={page} mode={mode}/> }
+          { selectPage === 2 && <HallOfFame mode={mode}/> }
+          { selectPage === 3 && <Introduce mode={mode}/> }
+          { selectPage === 4 && <Profile mode={mode} isOpen={isOpen}/> }
         </div>
       </div>
     </div>

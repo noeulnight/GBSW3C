@@ -13,19 +13,7 @@ const Profile = ({ mode, isOpen, page }) => {
   }, [page])
 
   return (
-    <div>
       <div className={isOpen === true ? styles.open_main : styles.hide_main}>
-        <div
-          className={styles.listHeader}
-          style={mode === "light" ? { color: "#191919" } : { color: "#fff" }}
-        > 
-          <div className={styles.title}>
-            학생 페이지/
-            <span style={{ color: "#0684c4" }}>
-            프로필
-            </span>
-          </div>
-          </div>
         <div className={styles.listBox}>
             <div className={styles.Box} style={mode === 'light' ? {background: '#fff'} : {background: '#2F3146'}}>
               <div className={styles.listBoxHeader}>
@@ -47,7 +35,6 @@ const Profile = ({ mode, isOpen, page }) => {
             </div>
         </div>
       </div>
-    </div>
   );
 };
 export default Profile;

@@ -33,10 +33,10 @@ const Introduce = ({ mode, isOpen }) => {
             포인트를 얻을 수 있다.
           </p>
           <a href="http://viewer20.gyo6.net:8080/SynapDocViewServer/viewer/doc.html?key=ac720a6703974861af67e57b7e3a7dec&convType=img&convLocale=en_US&contextPath=/SynapDocViewServer" >자세한 내용은 이곳을 눌러 확인하세요</a>
-        {/* 대충 설치 위치 */}
+          {/* 대충 설치 위치 */}
         </div>
       </div>
-      </div>
+    </div>
   )
 }
 

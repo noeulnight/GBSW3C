@@ -18,6 +18,8 @@ import useSessionStorage from "./components/UseSessionStorage";
 import Logout from './pages/Logout'
 import PasswordChange from './pages/PasswordChange'
 import './css/Reset.modele.scss'
+import Statistic from './pages/Statistics';
+import ScoringArea from './pages/ScoringArea'
 
 function App () {
   const [ isOpen, setMenu ] = useState(true);
@@ -51,19 +53,19 @@ function App () {
       return (
         <div>
             <Routes>
-              <Route path="/" element={<StudentMain mode={mode} isOpen={isOpen} />} />
-              <Route path="/submit" element={<StudentSubmitPostPage mode={mode} isOpen={isOpen} />} />
+              <Route path="/" element={<StudentMain mode={mode} isOpen={isOpen} selectPage={activePage} />} />
+              {/* <Route path="/submit" element={<StudentSubmitPostPage mode={mode} isOpen={isOpen} />} />
               <Route path="/posts/:id" element={<StudentSubmitView mode={mode} isOpen={isOpen} />} />
               <Route path="/edit/:id" element={<StudentSubmitView mode={mode} isOpen={isOpen} />} />
               <Route path="/upload/:id" element={<StudentSubmitFilePage mode={mode} isOpen={isOpen} />} />
-              <Route path="/logout" element={<Logout isLogin={isLogin} />} />
               <Route path="/ranking" element={<HallOfFame mode={mode} isOpen={isOpen}/>} />
               <Route path="/profile" element={<Profile mode={mode} isOpen={isOpen}/>} />
-              <Route path="/introduce" element={<Introduce isOpen={isOpen} mode={mode}/>} />
+              <Route path="/introduce" element={<Introduce isOpen={isOpen} mode={mode}/>} /> */}
+              <Route path="/logout" element={<Logout isLogin={isLogin} />} />
               <Route path="/resetpw" element={<PasswordChange isOpen={isOpen} mode={mode} />} />
             </Routes>
           <Header mode={mode} setMode={setMode} isOpen={isOpen} setMenu={setMenu}/>
-          <Navigation grade={grade} mode={mode} isOpen={isOpen} />
+          <Navigation grade={grade} mode={mode} isOpen={isOpen} page={activePage} onChangePage={onChangePage} />
         </div>
       )
     } else if (grade == 1) {
@@ -81,7 +83,9 @@ function App () {
       return (
         <div>
           <Routes>
-            <Route path="/" element={<AdminMain page={activePage} mode={mode} isOpen={isOpen} />} />
+            <Route path="/" element={<AdminMain selectPage={activePage} mode={mode} isOpen={isOpen} />} />
+            <Route path="/stat" element={<Statistic page={activePage} mode={mode} isOpen={isOpen} />} />
+            <Route path="/scor" element={<ScoringArea page={activePage} mode={mode} isOpen={isOpen} />} />
             <Route path="/logout" element={<Logout isLogin={isLogin} />} />
           </Routes>
           <Header mode={mode} setMode={setMode} isOpen={isOpen} setMenu={setMenu} />

@@ -128,7 +128,7 @@ if (grade == 2) {
           <p className={styles.tag} style={mode === 'light' ? {color: '#adabab'} :  {color: '#6F738E'}} >관리자 페이지<HiChevronDown size={18} /></p>
           <ul className={mode === 'light' ? styles.light_ul : styles.dark_ul}>  
             <Link className={page === 5 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="/stat" onClick={() => onChangePage(5)}><li><p>통계분석</p></li></Link>
-            <Link className={page === 6 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="" onClick={() => onChangePage(6)}><li><p>계정관리</p></li></Link>
+            <Link className={page === 6 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="/scor" onClick={() => onChangePage(6)}><li><p>계정관리</p></li></Link>
             <Link className={page === 7 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="" onClick={() => onChangePage(7)}><li><p>점수 영역관리</p></li></Link>
             <Link className={page === 8 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="" onClick={() => onChangePage(8)}><li><p>학생 등록</p></li></Link>
           </ul>

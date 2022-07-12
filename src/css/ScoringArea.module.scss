@@ -1,0 +1,377 @@
+* {
+  body {
+    .open_main {
+      position: absolute;
+      right: 24px;
+      bottom: 70px;
+      width: calc((100% - 256px) - 48px);
+      height: calc((100% - 134px));
+      min-width: 320px;
+    }
+
+    .hide_main {
+      position: absolute;
+      right: 24px;
+      bottom: 70px;
+      width: calc(100% - 48px);
+      height: calc((100% - 134px));
+      min-width: 320px;
+    }
+
+    .listHeader {
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .title {
+        font-size: 22px;
+        font-weight: 700;
+
+        span {
+          font-size: 22px;
+        }
+      }
+
+      .page {
+        display: flex;
+        align-items: center;
+
+        .light_page {
+          color: #8993A7;
+        }
+
+        .dark_page {
+          color: #6F738E;
+        }
+
+        span {
+          margin-right: 12px;
+        }
+
+        input {
+          width: 36px;
+          height: 24px;
+          border: none;
+          outline: none;
+          border-radius: 3px;
+          text-align: center;
+          margin-right: 5px;
+        }
+      }
+
+      .btn {
+        display: flex;
+        margin-left: 20px;
+
+        .left {
+          margin-right: 10px;
+        }
+
+        label {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 24px;
+          height: 24px;
+          border-radius: 3px;
+        }
+      }
+    }
+
+    .listBox {
+      height: calc(100% - 70px);
+      border-radius: 4px;
+
+      .navbar { 
+        position: absolute;
+        width: 100%;
+        height: 64px;
+        bottom: 0px;
+        display: none;
+        >div {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          >a {
+            display: block;
+            text-align: center;
+          }
+        }
+      }
+      .Box {
+        width: 100%;
+        height: 100%;
+        padding: 0 24px;
+        border-radius: 4px;
+        .listBoxHeader {
+          height: 62px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          div:nth-child(1) {
+            font-weight: 500;
+          }
+
+          .div {
+            display: flex;
+            align-items: center;
+            >div {
+              span {
+                display: none;
+              }
+              >div {
+                box-shadow: none; 
+              }
+            }
+
+            a { 
+              color: #0684c4;
+              margin-right: 24px;
+              display: flex;
+              align-items: center;
+            }
+
+            >div {
+              width: 110px;
+            }
+
+            .btn {
+              display: inline-block;
+              width: 100px;
+              height: 36px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 3px;
+            }
+          }
+        }
+        .content {
+          >input {
+            display: none;
+          }
+          display: flex;
+          width: 100%;
+          height: calc(100% - 86px);
+          .part {
+            flex: 1;
+            height: 100%;
+            background: #F3F5F7;
+            border-radius: 4px;
+            >div {
+              cursor: pointer;
+              position: relative;
+              height: 42px;
+              padding-left: 48px;
+              display: flex;
+              &:hover {
+                background: #00000006;
+              }
+              align-items: center;
+              &::after {
+                position: absolute;
+                left: 24px;
+                border-radius: 50%;
+                content: '';
+                width: 12px;
+                height: 12px;
+                background: #8C8EA0;
+              }
+            }
+          }
+        }
+        .contentBox {
+          display: flex;
+          width: 100%;
+          height: calc(100% - 84px);
+          >div {
+            flex: 1;
+            height: 100%;
+            background: red;
+            margin-left: 24px;
+            border-radius: 4px;
+            .sub {
+              padding-left: 24px;
+              display: flex;
+              align-items: center;
+              width: 100%;
+              height: 42px;
+              font-weight: 500;
+              margin-bottom: 24px;
+            }
+            .box1 {
+              padding: 0 24px;
+              >h4 {
+                font-weight: 400;
+                margin-bottom: 10px;
+              }
+              >input {
+                width: 100%;
+                height: 50px;
+                border: none;
+                outline: none;
+                border-radius: 4px;
+                padding-left: 24px;
+              }
+            }
+          }
+          >div:nth-child(1) {
+            margin-left: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media (max-width: 1480px) {
+  body {
+    .open_main {
+      position: absolute;
+      right: 24px;
+      bottom: 70px;
+      width: calc((100% - 48px));
+      height: calc((100% - 134px));
+    }
+
+    .hide_main {
+      position: absolute;
+      right: 24px;
+      bottom: 70px;
+      width: calc((100% - 48px));
+      height: calc((100% - 134px));
+    }
+
+    .listBox {
+      table {
+        tr:nth-child(1) {
+          .class {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 720px) {
+  * {
+    body {
+      .open_main {
+        width: 100%;
+        height: calc(100% - 64px);
+        left: 0;
+        bottom: 0;
+      }
+
+      .hide_main {
+        width: 100%;
+        height: calc(100% - 64px);
+        left: 0;
+        bottom: 0;
+      }
+
+      .listHeader {
+        height: 42px;
+        padding: 0 24px;
+
+        .title {
+          font-size: 14px;
+
+          span {
+            font-size: 14px;
+          }
+        }
+
+        .btn {
+          display: none;
+        }
+      }
+
+      .listBox {
+        .navbar {
+          display: flex;
+        }
+        .Box {
+          padding: 0;
+          border-radius: 0;
+
+          .listBoxHeader {
+            padding: 0 24px;
+            height: 50px;
+
+            >div:nth-child(1) {
+              display: none;
+            }
+
+            .div {
+              a {
+                display: none;
+              }
+
+              .btn {
+                width: 80px;
+                height: 32px;
+              }
+            }
+          }
+
+          .contentBox {
+            display: block;
+            >div {
+              margin-left: 0;
+              height: auto;
+            }
+          }
+
+          table {
+            thead,
+            tbody {
+              tr:nth-child(1) {
+                .number {
+                  width: 60px;
+                }
+
+                .user {
+                  width: 200px;
+
+                  span {
+                    display: none;
+                  }
+
+                  div {
+                    display: block;
+                  }
+                }
+
+                .fic {
+                  display: none;
+                }
+              }
+
+              tr:nth-child(2) {
+                .file {
+                  display: none;
+                }
+              }
+            }
+
+            thead {
+              tr>td {
+                height: 50px;
+              }
+            }
+          }
+        }
+      }
+      .submitbtn {
+        display: none;
+      }
+    }
+  }
+
+}

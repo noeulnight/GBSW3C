@@ -15,6 +15,9 @@ import StudentListPage from "./sub/StudentListPage";
 import HallOfFame from './HallOfFame'
 import Introduce from './3C_Introduce'
 import Statistics from './Statistics'
+import ScoringArea from './ScoringArea'
+import Account from './Account'
+import TeacherStuAdd from "./sub/TeacherStuAdd";
 import useSessionStorage from "../components/UseSessionStorage";
 
 const TeacherMain = ({ mode, isOpen, selectPage }) => {
@@ -39,10 +42,10 @@ const TeacherMain = ({ mode, isOpen, selectPage }) => {
               {selectPage === 2 && "학생 리스트"}
               {selectPage === 3 && "명예의 전당"}
               {selectPage === 4 && "3C 인증제"}
-              {selectPage === 5 && "통계분석"}
-              {selectPage === 6 && "계정관리"}
-              {selectPage === 7 && "점수 영역관리"}
-              {selectPage === 8 && "학생 등록"}
+              {/* {selectPage === 5 && "통계분석"} */}
+              {selectPage === 5 && "계정관리"}
+              {selectPage === 6 && "점수 영역관리"}
+              {selectPage === 7 && "학생 등록"}
             </span>
           </div>
           {selectPage === 1 && <div className={styles.page}>
@@ -89,10 +92,10 @@ const TeacherMain = ({ mode, isOpen, selectPage }) => {
           { selectPage === 2 && <StudentListPage mode={mode}/> }
           { selectPage === 3 && <HallOfFame mode={mode}/> }
           { selectPage === 4 && <Introduce mode={mode}/> }
-          { selectPage === 5 && <Statistic mode={mode}/> }
-          { selectPage === 6 && <SubmitPage mode={mode}/> }
-          { selectPage === 7 && <SubmitPage mode={mode}/> }
-          { selectPage === 8 && <SubmitPage mode={mode}/> }
+          {/* { selectPage === 5 && <Statistics mode={mode}/> } */}
+          { selectPage === 5 && <Account page={selectPage} mode={mode} isOpen={isOpen} /> }
+          { selectPage === 6 && <ScoringArea page={selectPage} mode={mode} isOpen={isOpen} /> }
+          { selectPage === 7 && <TeacherStuAdd mode={mode}/> }
         </div>
       </div>
     </div>

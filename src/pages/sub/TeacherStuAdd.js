@@ -16,7 +16,7 @@ const TeacherStuAdd = ({ mode }) => {
 const [fullChecked, setFullchecked] = useState(false);
   const [items, setItems] = useState([
     {
-      name: "김무일",
+      name: "정영훈",
       id: "gbsw301",
       sid: "2209",
       department: "소프트웨어개발과 ",

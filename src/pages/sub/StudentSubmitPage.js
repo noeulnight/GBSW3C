@@ -21,7 +21,7 @@ const StudentSubmitPage = ({mode, page, depart}) => {
   const filterOptions = [
     { value: "all", label: "전체보기" },
     { value: "open", label: "열림" },
-    { value: "closed", label: "닫침" },
+    { value: "closed", label: "닫힘" },
   ];
   useEffect(() => {
     fetchData(filterStr);

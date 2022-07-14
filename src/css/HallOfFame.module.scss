@@ -1,6 +1,6 @@
 * {
   .open_main, .hide_main {
-    min-width: 320px;
+    min-width: 256px;
   }
 
   .open_main {
@@ -247,7 +247,7 @@
                 }
 
                 td:nth-child(2) {
-                  width: 200px;
+                  width: 100px;
 
                   span {
                     display: none;

@@ -1,40 +1,12 @@
 * {
   body {
-
-    // .light_select {
-    //   p {
-    //     margin-bottom: 5px;
-    //   }
-    //   >div {
-    //     >div {
-    //       >div {
-    //         >span {
-    //           display: none;
-    //         }
-    //       }
-    //     }
-    //   }
-    // }
-    // .dark_select {
-    //   p {
-    //     margin-bottom: 5px;
-    //   }
-    // }
-    // textarea {
-    //   &::placeholder {
-    //     color: #ACB2CB;
-    //   }
-    //   &:focus-visible {
-    //     outline: none;
-    //   }
-    // }
     .open_main {
       position: absolute;
       right: 24px;
       bottom: 70px;
       width: calc((100% - 256px) - 48px);
       height: calc((100% - 134px));
-      min-width: 320px;
+      min-width: 256px;
     }
 
     .hide_main {
@@ -43,7 +15,7 @@
       bottom: 70px;
       width: calc(100% - 48px);
       height: calc((100% - 134px));
-      min-width: 320px;
+      min-width: 256px;
     }
 
     .navbar { 

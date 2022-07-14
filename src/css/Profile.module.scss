@@ -57,7 +57,7 @@
       padding: 10px 0;
       border-bottom: 1px solid #191919;
       .name {
-        font-size: 20px;
+        font-size: 18px;
         font-weight: 500;
         display: block;
       }
@@ -206,7 +206,9 @@
           }
       
           .context {
-            padding: 0 24px;            
+            margin-top: 30px;
+            padding: 0 24px;   
+            justify-content: left;         
           }
         }
       }

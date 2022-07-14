@@ -1,5 +1,5 @@
 import React from "react";
-import img from "../img/3C.png"
+import img from "../img/New3.png"
 import styles from '../css/3C_Intoduce.module.scss'
 
 const Introduce = ({ mode, isOpen }) => {
@@ -32,7 +32,7 @@ const Introduce = ({ mode, isOpen }) => {
             다양한 방법이 있는데 그 중 조건을 만족한 것을 신청하면 <br />
             포인트를 얻을 수 있다.
           </p>
-          <a href="http://viewer20.gyo6.net:8080/SynapDocViewServer/viewer/doc.html?key=ac720a6703974861af67e57b7e3a7dec&convType=img&convLocale=en_US&contextPath=/SynapDocViewServer" >자세한 내용은 이곳을 눌러 확인하세요</a>
+          <a href="http://viewer20.gyo6.net:8080/SynapDocViewServer/viewer/doc.html?key=ac720a6703974861af67e57b7e3a7dec&convType=img&convLocale=en_US&contextPath=/SynapDocViewServer" style={mode === 'light' ? {color: '#0320b1'} : {color: '#0684c4'}} >자세한 내용은 이곳을 눌러 확인하세요</a>
           {/* 대충 설치 위치 */}
         </div>
       </div>

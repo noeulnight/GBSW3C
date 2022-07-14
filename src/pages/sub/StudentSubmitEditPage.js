@@ -160,7 +160,7 @@ const StudentSubmitPostPage = ({ mode, isOpen }) => {
                 isSearchable={false}
                 onChange={onCategoryChange}
                 options={categories?.map((v) => ({ value: v.categoryId, label: v.label })) || []}
-                placeholder="여기를 클릭해 카테고리를 선택하세요."/>
+                placeholder="카테고리를 선택하세요."/>
               </div>
               <div>
               <p>서브 카테고리 선택</p>
@@ -226,7 +226,7 @@ const StudentSubmitPostPage = ({ mode, isOpen }) => {
                 isDisabled={!category}
                 onChange={onSubCategoryChange}
                 options={category ? categories.find((v) => v.categoryId === category).children.map((v) => ({ value: v.subcategoryId, label: v.label })) : []}
-                placeholder="카테고리를 먼저 선택해주세요."/>
+                placeholder="카테고리 선택해주세요."/>
               </div>
             </div>
             <div className={styles.editor}>

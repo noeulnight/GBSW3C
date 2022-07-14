@@ -16,6 +16,7 @@ import StudentSubmitPage from "./sub/StudentSubmitPage";
 import HallOfFame from './HallOfFame'
 import Introduce from './3C_Introduce'
 import Profile from './Profile'
+import PasswordChange from './PasswordChange'
 import useSessionStorage from "../components/UseSessionStorage";
 
 const StudentMain = ({ mode, isOpen, selectPage }) => {
@@ -27,7 +28,7 @@ const StudentMain = ({ mode, isOpen, selectPage }) => {
   const filterOptions = [
     { value: "all", label: "전체보기" },
     { value: "open", label: "열림" },
-    { value: "closed", label: "닫침" },
+    { value: "closed", label: "닫힘" },
   ];
 
   useEffect(() => {
@@ -72,6 +73,7 @@ const StudentMain = ({ mode, isOpen, selectPage }) => {
               {selectPage === 2 && "명예의 전당"}
               {selectPage === 3 && "3C 인증제"}
               {selectPage === 4 && "프로필"}
+              {selectPage === 5 && "비밀번호 재설정"}
             </span>
           </div>
           {selectPage === 1 && <div className={styles.page}>
@@ -118,6 +120,7 @@ const StudentMain = ({ mode, isOpen, selectPage }) => {
           { selectPage === 2 && <HallOfFame mode={mode}/> }
           { selectPage === 3 && <Introduce mode={mode}/> }
           { selectPage === 4 && <Profile mode={mode} isOpen={isOpen}/> }
+          { selectPage === 5 && <PasswordChange mode={mode} isOpen={isOpen}/> }
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom'
-import img from "../img/3C.png"
+//import img from "../img/3C.png"
 import styles from '../css/3C_Intoduce_nonav.module.scss'
 
 const IntroduceNonav = ({ mode, isOpen }) => {

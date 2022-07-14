@@ -20,6 +20,7 @@ import PasswordChange from './pages/PasswordChange'
 import './css/Reset.modele.scss'
 import Statistic from './pages/Statistics';
 import ScoringArea from './pages/ScoringArea'
+import Account from './pages/Account'
 
 function App () {
   const [ isOpen, setMenu ] = useState(true);
@@ -54,17 +55,17 @@ function App () {
         <div>
             <Routes>
               <Route path="/" element={<StudentMain mode={mode} isOpen={isOpen} selectPage={activePage} />} />
-              {/* <Route path="/submit" element={<StudentSubmitPostPage mode={mode} isOpen={isOpen} />} />
+              <Route path="/submit" element={<StudentSubmitPostPage mode={mode} isOpen={isOpen} />} />
               <Route path="/posts/:id" element={<StudentSubmitView mode={mode} isOpen={isOpen} />} />
               <Route path="/edit/:id" element={<StudentSubmitView mode={mode} isOpen={isOpen} />} />
               <Route path="/upload/:id" element={<StudentSubmitFilePage mode={mode} isOpen={isOpen} />} />
-              <Route path="/ranking" element={<HallOfFame mode={mode} isOpen={isOpen}/>} />
+              {/* <Route path="/ranking" element={<HallOfFame mode={mode} isOpen={isOpen}/>} />
               <Route path="/profile" element={<Profile mode={mode} isOpen={isOpen}/>} />
               <Route path="/introduce" element={<Introduce isOpen={isOpen} mode={mode}/>} /> */}
               <Route path="/logout" element={<Logout isLogin={isLogin} />} />
               <Route path="/resetpw" element={<PasswordChange isOpen={isOpen} mode={mode} />} />
             </Routes>
-          <Header mode={mode} setMode={setMode} isOpen={isOpen} setMenu={setMenu}/>
+          <Header mode={mode} setMode={setMode} isOpen={isOpen} setMenu={setMenu} />
           <Navigation grade={grade} mode={mode} isOpen={isOpen} page={activePage} onChangePage={onChangePage} />
         </div>
       )
@@ -85,7 +86,8 @@ function App () {
           <Routes>
             <Route path="/" element={<AdminMain selectPage={activePage} mode={mode} isOpen={isOpen} />} />
             <Route path="/stat" element={<Statistic page={activePage} mode={mode} isOpen={isOpen} />} />
-            <Route path="/scor" element={<ScoringArea page={activePage} mode={mode} isOpen={isOpen} />} />
+            <Route path="/acc" element={<Account page={activePage} mode={mode} isOpen={isOpen} />} />
+            <Route path="/area" element={<ScoringArea page={activePage} mode={mode} isOpen={isOpen} />} />
             <Route path="/logout" element={<Logout isLogin={isLogin} />} />
           </Routes>
           <Header mode={mode} setMode={setMode} isOpen={isOpen} setMenu={setMenu} />
@@ -93,7 +95,7 @@ function App () {
         </div>
       )
     }
-  }
+  }  
 }
 
 export default App

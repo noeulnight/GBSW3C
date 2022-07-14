@@ -1,23 +1,6 @@
 * {
   body {
-    .open_main {
-      position: absolute;
-      right: 24px;
-      bottom: 70px;
-      width: calc((100% - 256px) - 48px);
-      height: calc((100% - 134px));
-      min-width: 320px;
-    }
-
-    .hide_main {
-      position: absolute;
-      right: 24px;
-      bottom: 70px;
-      width: calc(100% - 48px);
-      height: calc((100% - 134px));
-      min-width: 320px;
-    }
-
+    
     .listHeader {
       height: 70px;
       display: flex;
@@ -102,7 +85,7 @@
       }
       .Box {
         width: 100%;
-        height: calc(100% - 70px);
+        height: 100%;
         padding: 0 24px;
         border-radius: 4px;
         .listBoxHeader {
@@ -146,97 +129,6 @@
               align-items: center;
               justify-content: center;
               border-radius: 3px;
-            }
-          }
-        }
-
-        table {
-          width: 100%;
-          border-collapse: collapse;
-          .error {
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-          thead,
-          tbody {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            border-radius: 3px;
-            padding: 0 24px;
-            cursor: pointer;
-
-            &:hover {
-              background-color: #00000008;
-            }
-
-            tr>td {
-              height: 60px;
-            }
-
-            tr:nth-child(1) {
-              .number {
-                width: 82px;
-              }
-
-              .user {
-                width: 120px;
-
-                div {
-                  display: none;
-                }
-              }
-
-              .class {
-                width: 164px;
-              }
-
-              .area {
-                width: 102px;
-              }
-
-              .fic {
-                width: 134px;
-              }
-
-              .rate {
-                span {
-                  display: inline-block;
-                  display: flex;
-                  align-items: center;
-
-                  >div {
-                    margin-left: 13px;
-                  }
-                }
-              }
-            }
-
-            tr:nth-child(2) {
-              text-align: right;
-
-              .file {
-                width: 30px;
-                height: 36px;
-
-                .light_file {
-                  width: 30px;
-                  height: 36px;
-                  background: url(../img/light_file.png) 50% 50% / cover;
-                }
-
-                .dark_file {
-                  width: 30px;
-                  height: 36px;
-                  background: url(../img/dark_file.png) 50% 50% / cover;
-                }
-              }
-
-              .day {
-                width: 130px;
-              }
             }
           }
         }

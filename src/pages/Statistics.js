@@ -17,32 +17,19 @@ import StudentSubmitPage from "./sub/StudentSubmitPage"
 const Statistic = ({ mode, isOpen }) => {
 
   return (
-    <div>
-      <div className={isOpen === true ? styles.open_main : styles.hide_main}>
-        <div
-          className={styles.listHeader}
-          style={mode === "light" ? { color: "#191919" } : { color: "#fff" }}
+    <div className={styles.listBox}>
+      <div className={styles.Box} style={mode === 'light' ? {background: '#fff'} : {background: '#2F3146'}}>
+        <div className={styles.listBoxHeader}>
+          <div
+            style={
+              mode === "light" ? { color: "#191919" } : { color: "#fff" }
+            }
           >
-          <div className={styles.title}>
-            사용자 페이지/
-            <span style={{ color: "#0684c4" }}>통계분석</span>
+            통계분석
           </div>
+          
         </div>
-        <div className={styles.listBox}>
-          <div className={styles.Box} style={mode === 'light' ? {background: '#fff'} : {background: '#2F3146'}}>
-            <div className={styles.listBoxHeader}>
-              <div
-                style={
-                  mode === "light" ? { color: "#191919" } : { color: "#fff" }
-                }
-              >
-                통계분석
-              </div>
-              
-            </div>
-          </div>
-        </div>
-      </div>  
+      </div>
     </div>
   );
 };

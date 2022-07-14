@@ -87,7 +87,7 @@ const [fullChecked, setFullchecked] = useState(false);
             style={
               mode === "light"
                 ? { background: "#FFFFFF" }
-                : { background: "#2F3146" }
+                : { background: "#2F3146" }   
             }
             className={styles.Box}
           >

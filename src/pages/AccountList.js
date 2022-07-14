@@ -16,7 +16,7 @@ import {
 } from "react-icons/hi";
 import { FaCheck, FaPlus, FaTrashAlt } from "react-icons/fa";
 import Select from "react-select";
-import styles from "../css/ScoringArea.module.scss";
+import styles from "../css/AccountList.module.scss";
 import StudentSubmitPage from "./sub/StudentSubmitPage"
 
 const ScoringArea = ({ mode, isOpen }) => {
@@ -25,31 +25,37 @@ const ScoringArea = ({ mode, isOpen }) => {
   const [fullChecked, setFullchecked] = useState(false);
   const [items, setItems] = useState([
     {
-      classification: "실무역량",
-      type: "자격증 취득",
-      area: "정보처리 산업기사",
-      score: 30,
-      maxScore: 60,
+      keys: "1기",
+      type: "김무일",
+      area: "소프트웨어개발과",
+      number: 2201,
+      id: "sw2_01",
       date: "2022-04-25",
       checked: false,
+      authority: '학생',
+      teacher: '정영훈',
     },
     {
-      classification: "실무역량",
-      type: "자격증 취득",
-      area: "정보처리 기능사",
-      score: 15,
-      maxScore: 60,
+      keys: "1기",
+      type: "박대형",
+      area: "소프트웨어개발과",
+      number: 2202,
+      id: "sw2_02",
       date: "2022-04-25",
       checked: false,
+      authority: '학생',
+      teacher: '정영훈',
     },
     {
-      classification: "실무역량",
-      type: "자격증 취득",
-      area: "리눅스 마스터",
-      score: 15,
-      maxScore: 60,
+      keys: "1기",
+      type: "김윤현",
+      area: "소프트웨어개발과",
+      number: 2203,
+      id: "sw2_03",
       date: "2022-04-25",
       checked: false,
+      authority: '학생',
+      teacher: '정영훈',
     },
   ]);
 
@@ -93,7 +99,7 @@ const ScoringArea = ({ mode, isOpen }) => {
             style={
               mode === "light" ? { color: "#191919" } : { color: "#fff" }
             }>
-            점수 영역관리
+            계정관리
           </div>
           <div className={styles.div}>
             <a href="">
@@ -102,13 +108,6 @@ const ScoringArea = ({ mode, isOpen }) => {
                 size={18}
               />{" "}
               추가하기
-            </a>
-            <a href="">
-              <HiPencil
-                style={{ position: "relative", top: "2px" }}
-                size={18}
-              />{" "}
-              수정하기
             </a>
             <a href="">
               <HiTrash
@@ -157,15 +156,18 @@ const ScoringArea = ({ mode, isOpen }) => {
                   </label>
                 </div>
               </td>
-              <td className={styles.classification}>
-                분류
+              <td className={styles.keys}>
+                기수
               </td>
-              <td className={styles.type}>종류</td>
-              <td className={styles.area}>영역</td>
-              <td className={styles.score}>점수</td>
+              <td className={styles.type}>학생이름</td>
+              <td className={styles.area}>학과</td>
+              <td className={styles.score}>학번</td>
+              <td className={styles.score}>아이디</td>
             </tr>
             <tr>
-              <td className={styles.date}>등록/수정일</td>
+              <td className={styles.date}>권한</td>
+              <td className={styles.date}>담당자</td>
+              <td className={styles.date}>신청일</td>
             </tr>
           </thead>
           {items.map((item, index) => {
@@ -180,17 +182,29 @@ const ScoringArea = ({ mode, isOpen }) => {
                       </label>
                     </div>
                   </td>{" "}
-                  <td className={styles.classification} style={ mode === "light" ? { color: "#8993A7" } : { color: "#8C8EA0" }}>
-                    <span>{item.classification}</span>
+                  <td className={styles.keys} style={ mode === "light" ? { color: "#8993A7" } : { color: "#8C8EA0" }}>
+                    <span>{item.keys}</span>
                   </td>
                   <td className={styles.type}>{item.type}</td>
                   <td className={styles.area}>{item.area}</td>
                   <td className={styles.score}>
-                    {item.score}점 <br />
-                    최대 {item.maxScore}점
+                    {item.number}
+                  </td>
+                  <td className={styles.score}>
+                    {item.id}
                   </td>
                 </tr>
                 <tr>
+                  <td className={styles.date}>
+                    <span>
+                      {item.authority}
+                    </span>
+                  </td>
+                  <td className={styles.date}>
+                    <span>
+                      {item.teacher}
+                    </span>
+                  </td>
                   <td className={styles.date}>
                     <span>
                       {item.date}

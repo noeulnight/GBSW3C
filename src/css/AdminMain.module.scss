@@ -82,6 +82,9 @@
     .listBox {
       height: calc((100% - 70px));
       border-radius: 4px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       .navbar {
         position: absolute;

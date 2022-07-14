@@ -135,13 +135,12 @@ if (grade == 2) {
             {/* <Link className={page === 5 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="" onClick={() => onChangePage(5)}><li><p>통계분석</p></li></Link> */}
             <Link className={page === 5 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="" onClick={() => onChangePage(5)}><li><p>계정관리</p></li></Link>
             <Link className={page === 6 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="" onClick={() => onChangePage(6)}><li><p>점수 영역관리</p></li></Link>
-            <Link className={page === 7 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="" onClick={() => onChangePage(7)}><li><p>학생 등록</p></li></Link>
           </ul>
         </div>
         </div>
 
         <div className={styles.outBox}>
-          <div><Link to="/resetpw">비밀번호 재설정</Link></div>
+          <div><Link to="/" onClick={() => onChangePage(7)}>비밀번호 재설정</Link></div>
           <div><Link to="/logout">로그아웃</Link></div>
         </div>
       </div>

@@ -20,7 +20,7 @@ import PasswordChange from './pages/PasswordChange'
 import './css/Reset.modele.scss'
 import Statistic from './pages/Statistics';
 import ScoringArea from './pages/ScoringArea'
-import Account from './pages/Account'
+import AccountList from './pages/AccountList'
 
 function App () {
   const [ isOpen, setMenu ] = useState(true);
@@ -86,7 +86,7 @@ function App () {
           <Routes>
             <Route path="/" element={<AdminMain selectPage={activePage} mode={mode} isOpen={isOpen} />} />
             <Route path="/stat" element={<Statistic page={activePage} mode={mode} isOpen={isOpen} />} />
-            <Route path="/acc" element={<Account page={activePage} mode={mode} isOpen={isOpen} />} />
+            <Route path="/acc" element={<AccountList page={activePage} mode={mode} isOpen={isOpen} />} />
             <Route path="/area" element={<ScoringArea page={activePage} mode={mode} isOpen={isOpen} />} />
             <Route path="/logout" element={<Logout isLogin={isLogin} />} />
           </Routes>

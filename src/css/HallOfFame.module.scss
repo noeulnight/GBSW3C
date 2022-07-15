@@ -1,5 +1,7 @@
 * {
-  .open_main, .hide_main {
+
+  .open_main,
+  .hide_main {
     min-width: 256px;
   }
 
@@ -8,7 +10,7 @@
     height: 100%;
     border-radius: 4px;
   }
-  
+
   .hide_main {
     width: 100%;
     height: 100%;
@@ -24,7 +26,7 @@
       font-size: 22px;
       font-weight: 700;
       color: rgb(6, 132, 196);
-    }    
+    }
   }
 
   .listBox {
@@ -37,17 +39,20 @@
       height: 64px;
       bottom: 0;
       display: none;
+
       >div {
         flex: 1;
         display: flex;
         align-items: center;
         justify-content: center;
+
         >a {
           display: block;
           text-align: center;
         }
       }
     }
+
     .Box {
       width: 100%;
       height: 100%;
@@ -84,11 +89,11 @@
           tr:nth-child(1) {
 
             td:nth-child(1) {
-              width: 120px;
+              width: 65px;
             }
 
             td:nth-child(2) {
-              width: 240px;
+              width: 100px;
 
               div {
                 display: none;
@@ -96,22 +101,23 @@
             }
 
             td:nth-child(3) {
-              width: 240px;
+              width: 100px;
             }
 
             td:nth-child(4) {
-              width: 50px;
+              width: 100px;
             }
           }
 
           tr:nth-child(2) {
-            td {
-              width: 240px;
+            >td {
+              text-align: right;
+              width: 300px;
 
               span {
-                display: inline-block;
                 display: flex;
                 align-items: center;
+                justify-content: right;
 
                 >div {
                   margin-left: 13px;
@@ -164,6 +170,7 @@
               display: none;
             }
           }
+
           tr:nth-child(2) {
             td {
               width: 180px;
@@ -213,6 +220,7 @@
         .navbar {
           display: flex;
         }
+
         .Box {
           padding: 0;
           border-radius: 0;

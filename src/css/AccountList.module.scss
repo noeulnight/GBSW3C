@@ -73,7 +73,7 @@
 
         tr:nth-child(1) {
           .checkBox {
-            width: 130px;
+            width: 65px;
 
             >div {
               >label {
@@ -126,35 +126,46 @@
           }
 
           .keys {
-            width: 170px;
+            width: 100px;
 
             div {
               display: none;
             }
           }
 
-          .type {
-            width: 170px;
+          .name {
+            width: 100px;
           }
 
           .area {
-            width: 200px;
+            width: 150px;
           }
 
-          .score {
-            width: 150px;
+          .number {
+            width: 100px;
+          }
+
+          .id {
+            width: 100px;
           }
 
         }
         
         tr:nth-child(2) {
+          td {
+            text-align: right;
+          }
+          .authority {
+            width: 120px;
+          }
+          .teacher {
+            width: 120px;
+          }
           .date {
-            width: 100px;
+            width: 150px;
 
             span {
-              display: inline-block;
-              display: flex;
-              align-items: center;
+              text-align: right;
             }
           }   
         }

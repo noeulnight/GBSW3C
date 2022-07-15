@@ -4,6 +4,7 @@ import useSessionStorage from "./UseSessionStorage"
 import styles from '../css/Navigation.module.scss'
 import { HiChevronDown } from "react-icons/hi";
 import profile from '../img/user.png'
+import logo from '../img/3c2.png'
 import Chart from "./Chart"
 const Navigation = ({ grade, mode, isOpen, page, onChangePage }) => {
 const [active, setActive] = useSessionStorage("active", 1)
@@ -24,9 +25,9 @@ return (
   <div className={isOpen === true ? styles.show_nav : styles.hide_nav}>
     <div className={styles.navigation} style={mode === 'light' ? {backgroundColor: '#fff'} : {backgroundColor: '#2F3146'}}>
       <Link to="" onClick={() => onChangePage(1)}>
-        <div className={styles.logo} style={mode === 'light' ? {color: '#191919', borderBottomColor: '#f1f1f1'} :  {color: '#fff', borderBottomColor: '#2A2C42'}}>
-          Gbsw Logo
-        </div>
+          <div className={styles.logo} style={mode === 'light' ? {color: '#191919', borderBottomColor: '#f1f1f1'} :  {color: '#fff', borderBottomColor: '#2A2C42'}}>
+            <img src={logo} style={{width: "130px"}} />
+          </div>
       </Link>
       <div className={styles.profile}>
         <div>
@@ -65,7 +66,7 @@ if (grade == 1) {
       <div className={styles.navigation} style={mode === 'light' ? {backgroundColor: '#fff'} : {backgroundColor: '#2F3146'}}>
         <Link to="" onClick={() => onChangePage(1)}>
           <div className={styles.logo} style={mode === 'light' ? {color: '#191919', borderBottomColor: '#f1f1f1'} :  {color: '#fff', borderBottomColor: '#2A2C42'}}>
-            Gbsw Logo
+            <img src={logo} style={{width: "130px"}} />
           </div>
         </Link>
         <div className={styles.profile}>
@@ -105,7 +106,7 @@ if (grade == 2) {
       <div className={styles.navigation} style={mode === 'light' ? {backgroundColor: '#fff'} : {backgroundColor: '#2F3146'}}>
         <Link to="" onClick={() => onChangePage(1)}>
           <div className={styles.logo} style={mode === 'light' ? {color: '#191919', borderBottomColor: '#f1f1f1'} :  {color: '#fff', borderBottomColor: '#2A2C42'}}>
-            Gbsw Logo
+            <img src={logo} style={{width: "130px"}} />
           </div>
         </Link>
         <div className={styles.profile}>

@@ -14,7 +14,7 @@ const PasswordChange = ({isOpen, mode}) => {
         <div className={styles.inputForm}>
           <input type='password' placeholder='현재 비밀번호 입력' onChange={(e) => setPassword(e.target.value)} style={mode === 'light' ? {borderColor: '#ACB2CB', color: '#191919', background: '#F3F5F7'} : {borderColor: '#6F738E', color: '#fff', background: '#2B2E44'}}/>
           <input type='password' placeholder='새로운 비밀번호 입력' onChange={(e) => setNewPassword(e.target.value)} style={mode === 'light' ? {borderColor: '#ACB2CB', color: '#191919', background: '#F3F5F7'} : {borderColor: '#6F738E', color: '#fff', background: '#2B2E44'}}/>
-          <input type='password' placeholder='새로운 비밀번호(확인) 입력' onChange={(e) => setCheckPassword(e.target.value)} style={mode === 'light' ? {borderColor: '#ACB2CB', color: '#191919', background: '#F3F5F7'} : {borderColor: '#6F738E', color: '#fff', background: '#2B2E44'}}/>
+          <input type='password' placeholder='새로운 비밀번호 입력 (확인)' onChange={(e) => setCheckPassword(e.target.value)} style={mode === 'light' ? {borderColor: '#ACB2CB', color: '#191919', background: '#F3F5F7'} : {borderColor: '#6F738E', color: '#fff', background: '#2B2E44'}}/>
         </div>
         <div className={styles.btn}>
           <input type='submit' value="변경" />

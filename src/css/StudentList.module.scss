@@ -6,11 +6,13 @@
     height: 64px;
     bottom: 0;
     display: none;
+
     >div {
       flex: 1;
       display: flex;
       align-items: center;
       justify-content: space-around;
+
       >a {
         display: block;
         text-align: center;
@@ -73,7 +75,7 @@
 
         tr:nth-child(1) {
           .checkBox {
-            width: 130px;
+            width: 65px;
 
             >div {
               >label {
@@ -126,7 +128,7 @@
           }
 
           .user {
-            width: 170px;
+            width: 100px;
 
             div {
               display: none;
@@ -134,11 +136,11 @@
           }
 
           .sid {
-            width: 170px;
+            width: 100px;
           }
 
           .class {
-            width: 200px;
+            width: 170px;
           }
 
           .phoneNumber {
@@ -146,23 +148,28 @@
           }
 
         }
-        
+
         tr:nth-child(2) {
+          >td {
+            text-align: right;
+          }
+
           .rate {
             width: 300px;
 
             span {
-              display: inline-block;
               display: flex;
               align-items: center;
+              justify-content: right;
 
               >div {
                 margin-left: 13px;
               }
             }
-          }   
+          }
         }
       }
+
       thead {
         tr:nth-child(1) {
           td:nth-child(1) {
@@ -170,6 +177,7 @@
               .light_ck {
                 border-color: #ACB2CB;
               }
+
               .dark_ck {
                 border-color: #6F738E;
               }
@@ -265,7 +273,7 @@
               .phoneNumber {
                 width: 150px;
               }
-              
+
               .user {
                 width: 97px;
 
@@ -315,6 +323,7 @@
         border-radius: 0;
 
         table {
+
           thead,
           tbody {
             tr:nth-child(1) {
@@ -325,7 +334,7 @@
               .phoneNumber {
                 width: 100px;
               }
-              
+
               .user {
                 width: 75px;
               }

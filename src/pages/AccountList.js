@@ -26,7 +26,7 @@ const ScoringArea = ({ mode, isOpen }) => {
   const [items, setItems] = useState([
     {
       keys: "1기",
-      type: "김무일",
+      name: "김무일",
       area: "소프트웨어개발과",
       number: 2201,
       id: "sw2_01",
@@ -37,7 +37,7 @@ const ScoringArea = ({ mode, isOpen }) => {
     },
     {
       keys: "1기",
-      type: "박대형",
+      name: "박대형",
       area: "소프트웨어개발과",
       number: 2202,
       id: "sw2_02",
@@ -48,7 +48,7 @@ const ScoringArea = ({ mode, isOpen }) => {
     },
     {
       keys: "1기",
-      type: "김윤현",
+      name: "김윤현",
       area: "소프트웨어개발과",
       number: 2203,
       id: "sw2_03",
@@ -159,14 +159,14 @@ const ScoringArea = ({ mode, isOpen }) => {
               <td className={styles.keys}>
                 기수
               </td>
-              <td className={styles.type}>학생이름</td>
+              <td className={styles.name}>이름</td>
               <td className={styles.area}>학과</td>
-              <td className={styles.score}>학번</td>
-              <td className={styles.score}>아이디</td>
+              <td className={styles.number}>학번</td>
+              <td className={styles.id}>아이디</td>
             </tr>
             <tr>
-              <td className={styles.date}>권한</td>
-              <td className={styles.date}>담당자</td>
+              <td className={styles.authority}>권한</td>
+              <td className={styles.teacher}>담당자</td>
               <td className={styles.date}>신청일</td>
             </tr>
           </thead>
@@ -185,22 +185,22 @@ const ScoringArea = ({ mode, isOpen }) => {
                   <td className={styles.keys} style={ mode === "light" ? { color: "#8993A7" } : { color: "#8C8EA0" }}>
                     <span>{item.keys}</span>
                   </td>
-                  <td className={styles.type}>{item.type}</td>
+                  <td className={styles.name}>{item.name}</td>
                   <td className={styles.area}>{item.area}</td>
-                  <td className={styles.score}>
+                  <td className={styles.number}>
                     {item.number}
                   </td>
-                  <td className={styles.score}>
+                  <td className={styles.id}>
                     {item.id}
                   </td>
                 </tr>
                 <tr>
-                  <td className={styles.date}>
+                  <td className={styles.authority}>
                     <span>
                       {item.authority}
                     </span>
                   </td>
-                  <td className={styles.date}>
+                  <td className={styles.teacher}>
                     <span>
                       {item.teacher}
                     </span>

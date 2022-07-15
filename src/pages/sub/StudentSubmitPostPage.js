@@ -177,6 +177,7 @@ const StudentSubmitPostPage = ({ mode, isOpen }) => {
                   }),
                   option: (provided, state) => ({
                     ...provided,
+                    zIndex: 9999999,
                     ...(mode == "light"
                       ? {
                         color: state.isFocused ? 'white' : "black",
@@ -196,7 +197,11 @@ const StudentSubmitPostPage = ({ mode, isOpen }) => {
                       : {
                         color: '#8C8EA0'
                       }),
-                  })
+                  }),
+                  container: (provided) => ({
+                    ...provided,
+                    zIndex: 9999999,
+                  }),
                 }}
                 isSearchable={false}
                 onChange={onCategoryChange}
@@ -261,6 +266,10 @@ const StudentSubmitPostPage = ({ mode, isOpen }) => {
                       : {
                         color: '#8C8EA0'
                       }),
+                  }),
+                  container: (provided) => ({
+                    ...provided,
+                    zIndex: 9999998,
                   })
                 }}
                 isSearchable={false}

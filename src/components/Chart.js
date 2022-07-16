@@ -55,11 +55,11 @@ const Chart = ({ mode }) => {
 
   useEffect(() => {
     fetch('/api/score/v1/score/@me')
-      .then((res) => res.json())
+    .then((res) => res.status === 403 ? (sessionStorage.clear() || window.location.reload()) : res.json())
       .then((res) => setMyScore(res.data.score))
 
     fetch('/api/score/v1/score/@max')
-      .then((res) => res.json())
+    .then((res) => res.status === 403 ? (sessionStorage.clear() || window.location.reload()) : res.json())
       .then((res) => setMaxScore(res.data.maxScore))
   }, [])
 

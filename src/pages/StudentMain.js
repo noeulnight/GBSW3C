@@ -19,7 +19,7 @@ import Profile from './Profile'
 import PasswordChange from './PasswordChange'
 import useSessionStorage from "../components/UseSessionStorage";
 
-const StudentMain = ({ mode, isOpen, selectPage }) => {
+const StudentMain = ({ mode, isOpen, selectPage, onChangePage }) => {
   const [depart, setDepart] = useState('로딩중...')
   const [page, setPage] = useState(0)
   const [items, setItems] = useState(null);
@@ -47,10 +47,10 @@ const StudentMain = ({ mode, isOpen, selectPage }) => {
 
   async function fetchData() {
     const me = await fetch(`/api/auth/v1/@me`)
-      .then((res) => res.json())
+    .then((res) => res.status === 403 ? (sessionStorage.clear() || window.location.reload()) : res.json())
 
     const depart = await fetch(`/api/auth/v1/departs?depid=${me.data.currentUser.depid}`)
-      .then((res) => res.json())
+    .then((res) => res.status === 403 ? (sessionStorage.clear() || window.location.reload()) : res.json())
     setDepart(depart.data.desc)
   }
 
@@ -116,11 +116,11 @@ const StudentMain = ({ mode, isOpen, selectPage }) => {
           </div>}
         </div>
         <div className={styles.listBox}>
-          { selectPage === 1 && <StudentSubmitPage key={page + depart} depart={depart} page={page} mode={mode}/> }
+          { selectPage === 1 && <StudentSubmitPage key={page + depart} setPage={setPageFn} depart={depart} page={page} mode={mode}/> }
           { selectPage === 2 && <HallOfFame mode={mode}/> }
           { selectPage === 3 && <Introduce mode={mode}/> }
           { selectPage === 4 && <Profile mode={mode} isOpen={isOpen}/> }
-          { selectPage === 5 && <PasswordChange mode={mode} isOpen={isOpen}/> }
+          { selectPage === 5 && <PasswordChange mode={mode} isOpen={isOpen} onChangePage={onChangePage}/> }
         </div>
       </div>
     </div>

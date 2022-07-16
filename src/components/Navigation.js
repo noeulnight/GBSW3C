@@ -14,7 +14,7 @@ const [depart, setDepart] = useState(null)
 
 useEffect(() => {
   (async () => {
-    const res = await fetch('/api/auth/v1/@me').then((res) => res.json())
+    const res = await fetch('/api/auth/v1/@me').then((res) => res.status === 403 ? (sessionStorage.clear() || window.location.reload()) : res.json())
     setUser(res.data.currentUser)
     setDepart(res.data.depart.desc)
   })()

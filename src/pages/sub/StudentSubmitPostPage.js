@@ -12,7 +12,7 @@ import {
   HiRefresh,
   HiReply,
 } from "react-icons/hi";
-import { FaChevronLeft, FaChevronRight, FaPlus, FaBackspace } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight, FaPlus, FaBackspace, FaDownload } from "react-icons/fa";
 import Select from 'react-select'
 import { useNavigate, Link } from "react-router-dom";
 
@@ -30,6 +30,7 @@ const StudentSubmitPostPage = ({ mode, isOpen }) => {
   
   function onCategoryChange (e) {
     setCategory(e.value)
+    setSubcategory(null)
   }
 
   function onSubCategoryChange (e) {
@@ -41,13 +42,13 @@ const StudentSubmitPostPage = ({ mode, isOpen }) => {
   }
 
   async function addImageBlobHook (_, callback) {
-    callback('https://cdn.discordapp.com/attachments/530043751901429762/992254980000071711/notsupport.png')
+    callback('https://cdn.discordapp.com/attachments/55043751901429762/992254980000071711/notsupport.png')
   }
 
   useEffect(() => {
     (async () => {
-      const res = await fetch('/api/board/v1/categories').then((res) => res.json())
-      setCategories(res.data.categories)
+      const res = await fetch('/api/board/v1/categories').then((res) => res.status === 403 ? window.location.reload() : res.json())
+      setCategories(res.data.categories.filter((v) => v.children.length > 0))
       setLoading(false)
     })()
   }, [])
@@ -68,7 +69,7 @@ const StudentSubmitPostPage = ({ mode, isOpen }) => {
         content,
         subcategoryId: subcategory
       })
-    }).then((res) => res.json())
+    }).then((res) => res.status === 403 ? window.location.reload() : res.json())
 
     if (data.success) {
       navigation('/upload/' + data.data.postId)
@@ -86,7 +87,7 @@ const StudentSubmitPostPage = ({ mode, isOpen }) => {
           position: 'absolute',
           top: 0, left: 0,
           width: '100vw', height: '100vh',
-          zIndex: 100, backgroundColor: '#00000099', 
+          zIndex: 5099, backgroundColor: '#00000099', 
           display: 'flex', justifyContent: 'center', 
           alignItems: 'center', color: 'white' }}>
           처리중입니다...
@@ -163,6 +164,17 @@ const StudentSubmitPostPage = ({ mode, isOpen }) => {
                     ? { color: "#8993A7" }
                     : { color: "#8C8EA0" }),
                   }),
+                  menuList: (provided) => ({
+                    ...provided,
+                    ...(mode == "light"
+                      ? {
+                        border: "1px solid #ACB2CB",
+                      }
+                      : {
+                        border: "1px solid #6F738E",
+                      }),
+
+                  }),
                   menu: (provided) => ({
                     ...provided,
                     ...(mode == "light"
@@ -177,7 +189,7 @@ const StudentSubmitPostPage = ({ mode, isOpen }) => {
                   }),
                   option: (provided, state) => ({
                     ...provided,
-                    zIndex: 9999999,
+                    zIndex: 50,
                     ...(mode == "light"
                       ? {
                         color: state.isFocused ? 'white' : "black",
@@ -200,7 +212,7 @@ const StudentSubmitPostPage = ({ mode, isOpen }) => {
                   }),
                   container: (provided) => ({
                     ...provided,
-                    zIndex: 9999999,
+                    zIndex: 50,
                   }),
                 }}
                 isSearchable={false}
@@ -233,6 +245,17 @@ const StudentSubmitPostPage = ({ mode, isOpen }) => {
                       ? { color: "#8993A7" }
                       : { color: "#8C8EA0" }),
                   }),
+                  menuList: (provided) => ({
+                    ...provided,
+                    ...(mode == "light"
+                      ? {
+                        border: "1px solid #ACB2CB",
+                      }
+                      : {
+                        border: "1px solid #6F738E",
+                      }),
+
+                  }),
                   menu: (provided) => ({
                     ...provided,
                     ...(mode == "light"
@@ -269,14 +292,15 @@ const StudentSubmitPostPage = ({ mode, isOpen }) => {
                   }),
                   container: (provided) => ({
                     ...provided,
-                    zIndex: 9999998,
+                    zIndex: 50,
                   })
                 }}
                 isSearchable={false}
                 isDisabled={!category}
                 onChange={onSubCategoryChange}
+                value={categories?.find((v) => v.categoryId === category)?.children?.filter((v) => v.subcategoryId === subcategory) || []}
                 options={category ? categories.find((v) => v.categoryId === category).children.map((v) => ({ value: v.subcategoryId, label: v.label })) : []}
-                placeholder="카테고리 먼저 선택해주세요."/>
+                placeholder={category !== null ? "여기를 눌러주세요." : "카테고리 먼저 선택해주세요."}/>
               </div>
             </div>
             <div className={styles.editor}>

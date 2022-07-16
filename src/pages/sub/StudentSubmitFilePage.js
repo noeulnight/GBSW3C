@@ -36,7 +36,7 @@ const StudentSubmitFilePostPage = ({ mode, isOpen }) => {
 
   async function fetchData() {
     setLoading(true)
-    const data = await fetch('/api/board/v1/posts/' + postId + '/@me').then((res) => res.json())
+    const data = await fetch('/api/board/v1/posts/' + postId + '/@me').then((res) => res.status === 403 ? (sessionStorage.clear() || window.location.reload()) : res.json())
     if (data.success) {
       setFile(data.data.post.files)
       setPost(data.data.post)
@@ -58,7 +58,7 @@ const StudentSubmitFilePostPage = ({ mode, isOpen }) => {
         postId: parseInt(postId),
         fileName: file.name
       })
-    }).then((res) => res.json())
+    }).then((res) => res.status === 403 ? (sessionStorage.clear() || window.location.reload()) : res.json())
 
     if (data.success) {
       await fetch(data.data.url, {

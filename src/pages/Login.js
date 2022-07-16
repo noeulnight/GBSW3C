@@ -21,7 +21,7 @@ const Login = ({ isLogin, setGrade }) => {
         user_id: id,
         password: pw,
       }),
-    }).then((res) => res.json())
+    }).then((res) => res.status === 403 ? (sessionStorage.clear() || window.location.reload()) : res.json())
       .catch(() => ({ success: false }));
     setLoading(false)
 
@@ -33,7 +33,7 @@ const Login = ({ isLogin, setGrade }) => {
     document.cookie = `SESSION_TOKEN=${res.data.token}`;
 
     setLoading(true)
-    const me = await fetch("/api/auth/v1/@me").then((res) => res.json());
+    const me = await fetch("/api/auth/v1/@me").then((res) => res.status === 403 ? (sessionStorage.clear() || window.location.reload()) : res.json());
     if (me.data.permissions.includes("ADMINISTRATOR")) {
       setGrade(2);
     } else if (me.data.permissions.includes("VIEW_REQUESTS")) {

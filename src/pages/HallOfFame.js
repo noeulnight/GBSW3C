@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
 import ProgressBar from "@ramonak/react-progress-bar";
-import { FaPlus } from "react-icons/fa";
+import { HiRefresh } from "react-icons/hi";
 import styles from "../css/HallOfFame.module.scss";
 
 const HallOfFame = ({ mode, isOpen }) => {
-  const [items, setItems] = useState([
-    {
-      name: "김무일",
-      ranking: 1,
-      job: "웹 개발자",
-      generation: 1,
-      achievement_rate: 90
-    }
-  ]);
+  const [items, setItems] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      // TODO: 1년뒤에 데이터가 쌓이면 명예의 전당이 보임 (처음 1년은 안보여줌)
+      setItems([])
+    })()
+  }, [])
 
   return (
     <div className={isOpen === true ? styles.open_main : styles.hide_main}>
@@ -42,7 +41,7 @@ const HallOfFame = ({ mode, isOpen }) => {
             )}
             {items !== null && items?.length < 1 && (
               <tbody style={{display: "flex", justifyContent: "center", paddingTop: 10}}>
-                랭킹이 등록되지 않았습니다.
+                랭킹이 등록되지 않았습니다. (랭킹은 1년마다 갱신됩니다.)
               </tbody>
             )}
             {items !== null &&

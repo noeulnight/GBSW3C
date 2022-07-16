@@ -14,7 +14,7 @@ import { FaPlus } from "react-icons/fa";
 import Select from "react-select";
 import styles from "../../css/StudentMain.module.scss";
 
-const StudentSubmitPage = ({mode, page, depart}) => {
+const StudentSubmitPage = ({mode, page, depart, setPage }) => {
   const navigate = useNavigate();
   const [items, setItems] = useState(null);
   const [filterStr, setFilterStr] = useState("all");
@@ -44,20 +44,25 @@ const StudentSubmitPage = ({mode, page, depart}) => {
     }
 
     const res = await fetch("/api/board/v1/posts/@me?page=" + page + str).then((res) =>
-      res.json()
-    );
+      res.status === 403 ? (sessionStorage.clear() || window.location.reload()) : res.json()    );
 
     const rates = []
     for (const post of res.data.posts) {
       if (rates[post.subCategory.parentId] === undefined) {
         rates[post.subCategory.parentId] =
           await fetch(`/api/score/v1/score/@me?category=${post.subCategory.parentId}`)
-            .then((res) => res.json())
+          .then((res) => res.status === 403 ? (sessionStorage.clear() || window.location.reload()) : res.json())
             .then((v) => v.data.score)
       }
     }
 
     if (!res) alert("제출 목록을 가져오는데 예상치 못한 오류가 발생했습니다.");
+
+    if (res.data.posts.length < 1 && page > 0) {
+      setPage(page - 1)
+      setItems([])
+      return
+    }
 
     setItems(res.data.posts.map((post) => ({
       number: post.postId,

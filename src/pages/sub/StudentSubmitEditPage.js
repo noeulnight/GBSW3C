@@ -46,7 +46,7 @@ const StudentSubmitPostPage = ({ mode, isOpen }) => {
 
   useEffect(() => {
     (async () => {
-      const res = await fetch('/api/board/v1/categories').then((res) => res.json())
+      const res = await fetch('/api/board/v1/categories').then((res) => res.status === 403 ? (sessionStorage.clear() || window.location.reload()) : res.json())
       setCategories(res.data.categories)
       setLoading(false)
     })()
@@ -63,7 +63,7 @@ const StudentSubmitPostPage = ({ mode, isOpen }) => {
         content,
         subcategoryId: subcategory
       })
-    }).then((res) => res.json())
+    }).then((res) => res.status === 403 ? (sessionStorage.clear() || window.location.reload()) : res.json())
 
     if (data.success) {
       navigation('/upload/' + data.data.postId)

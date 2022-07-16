@@ -54,7 +54,7 @@ function App () {
       return (
         <div>
             <Routes>
-              <Route path="/" element={<StudentMain mode={mode} isOpen={isOpen} selectPage={activePage} />} />
+              <Route path="/" element={<StudentMain onChangePage={onChangePage} mode={mode} isOpen={isOpen} selectPage={activePage} />} />
               <Route path="/submit" element={<StudentSubmitPostPage mode={mode} isOpen={isOpen} />} />
               <Route path="/posts/:id" element={<StudentSubmitView mode={mode} isOpen={isOpen} />} />
               <Route path="/edit/:id" element={<StudentSubmitView mode={mode} isOpen={isOpen} />} />

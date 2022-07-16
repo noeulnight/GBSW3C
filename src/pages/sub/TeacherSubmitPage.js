@@ -44,15 +44,14 @@ const TeacherSubmitPage = ({mode, page, depart}) => {
     }
 
     const res = await fetch("/api/board/v1/posts/@me?page=" + page + str).then((res) =>
-      res.json()
-    );
+      res.status === 403 ? (sessionStorage.clear() || window.location.reload()) : res.json()    );
 
     const rates = []
     for (const post of res.data.posts) {
       if (rates[post.subCategory.parentId] === undefined) {
         rates[post.subCategory.parentId] =
           await fetch(`/api/score/v1/score/@me?category=${post.subCategory.parentId}`)
-            .then((res) => res.json())
+          .then((res) => res.status === 403 ? (sessionStorage.clear() || window.location.reload()) : res.json())
             .then((v) => v.data.score)
       }
     }

@@ -16,7 +16,7 @@ import moment from "moment";
 const SubmitPage = ({ mode, page, setPage }) => {
   const [items, setItems] = useState(null)
 const [fullChecked, setFullchecked] = useState(false);
-   const [filterStr, setFilterStr] = useState("all");
+  const [filterStr, setFilterStr] = useState("all");
   const filterOptions = [
     { value: "all", label: "전체보기" },
     { value: "open", label: "열림" },
@@ -24,7 +24,7 @@ const [fullChecked, setFullchecked] = useState(false);
   ];
 
   useEffect(() => {
-    fetchData();
+    fetchData(filterStr);
   }, []);
 
   function onFilterChange(e) {
@@ -32,7 +32,7 @@ const [fullChecked, setFullchecked] = useState(false);
     fetchData(e.value);
   }
 
-  async function fetchData() {
+  async function fetchData(filterStr) {
     setItems(null)
 
     let str = "";
@@ -96,7 +96,7 @@ const [fullChecked, setFullchecked] = useState(false);
         <>
         <div className={styles.navbar} style={mode === 'light' ? {background: '#F3F5F7'} : {background: '#2B2E44'}}>
             <div>
-              <a href="" style={mode === 'light' ? {color: '#ACB2CB'} : {color: '#6F738E'}}>
+              <button href="" style={mode === 'light' ? {color: '#ACB2CB'} : {color: '#6F738E'}} onClick={() => onAction('RESOLVE')}>
                 <div>
                 <FaCheck
                   style={{ position: "relative", top: "3px" }}
@@ -104,10 +104,10 @@ const [fullChecked, setFullchecked] = useState(false);
                 />{" "}
                 </div>
                 수락하기
-              </a>
+              </button>
             </div>
             <div>
-              <a href="" style={mode === 'light' ? {color: '#ACB2CB'} : {color: '#6F738E'}}>
+              <button href="" style={mode === 'light' ? {color: '#ACB2CB'} : {color: '#6F738E'}}  onClick={() => onAction('REJECT')}>
                 <div>
                 <FaPlus
                   style={{ position: "relative", top: "3px", transform: 'rotate(-45deg)' }}
@@ -115,7 +115,7 @@ const [fullChecked, setFullchecked] = useState(false);
                 />{" "}
                 </div>
                 거절하기
-              </a>
+              </button>
             </div>
           </div>
           <div
@@ -149,7 +149,7 @@ const [fullChecked, setFullchecked] = useState(false);
                   />{" "}
                   거절하기
                 </button> 
-               <Select
+                <Select
                   isSearchable={false}
                   styles={{
                     control: (provided) => ({
@@ -206,7 +206,7 @@ const [fullChecked, setFullchecked] = useState(false);
                   onChange={onFilterChange}
                   options={filterOptions}
                 />
-             </div>
+              </div>
             </div>
             <table>
               <thead
@@ -251,15 +251,11 @@ const [fullChecked, setFullchecked] = useState(false);
                   <td className={styles.file}>파일</td>
                   <td className={styles.day}>
                     신청일
-                    <HiChevronDown
-                      size={14}
-                      style={{ position: "relative", left: "3px", top: "2px" }}
-                    />
                   </td>
                 </tr>
               </thead>
               {items === null && (
-                 <tbody
+                <tbody
                   style={
                     mode === "light"
                       ? { color: "#ACB2CB" }
@@ -324,10 +320,10 @@ const [fullChecked, setFullchecked] = useState(false);
                           >
                             <HiCheck size={18} />
                           </label>
- 
+
                             </>
                           )}
-                       </div>
+                        </div>
                       </td>{" "}
                       <td 
                         className={styles.user}

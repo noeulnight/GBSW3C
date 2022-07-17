@@ -85,7 +85,7 @@ if (grade == 1) {
           <p className={styles.tag} style={mode === 'light' ? {color: '#adabab'} :  {color: '#6F738E'}} >교사 페이지<HiChevronDown size={18} /></p>
           <ul className={mode === 'light' ? styles.light_ul : styles.dark_ul}>  
             <Link className={page === 1 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="" onClick={() => onChangepage(1)}><li><p>신청 리스트</p></li></Link>
-            <Link className={page === 2 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="" onClick={() => onChangepage(2)}><li><p>학생 리스트</p></li></Link>
+            <Link className={page === 2 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="" onClick={() => onChangepage(2)}><li><p>점수 부여</p></li></Link>
             <Link className={page === 3 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="" onClick={() => onChangepage(3)}><li><p>명예의 전당</p></li></Link>
             <Link className={page === 4 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="" onClick={() => onChangepage(4)}><li><p>3C 인증제</p></li></Link>
             <Link className={page === 5 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="" onClick={() => onChangepage(5)}><li><p>프로필</p></li></Link>
@@ -122,10 +122,10 @@ if (grade == 2) {
         </div>
         <div className={styles.listsBox}>
         <div className={lists === 1 ? styles.list : null} to="" onClick={() => setLists(1)}>
-          <p className={styles.tag} style={mode === 'light' ? {color: '#adabab'} :  {color: '#6F738E'}} >사용자 페이지<HiChevronDown size={18} /></p>
+          <p className={styles.tag} style={mode === 'light' ? {color: '#adabab'} :  {color: '#6F738E'}} >교사 페이지<HiChevronDown size={18} /></p>
           <ul className={mode === 'light' ? styles.light_ul : styles.dark_ul}>  
             <Link className={page === 1 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="" onClick={() => onChangePage(1)}><li><p>신청 리스트</p></li></Link>
-            <Link className={page === 2 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="" onClick={() => onChangePage(2)}><li><p>학생 리스트</p></li></Link>
+            <Link className={page === 2 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="" onClick={() => onChangePage(2)}><li><p>점수 부여</p></li></Link>
             <Link className={page === 3 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="" onClick={() => onChangePage(3)}><li><p>명예의 전당</p></li></Link>
             <Link className={page === 4 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="" onClick={() => onChangePage(4)}><li><p>3C 인증제</p></li></Link>
           </ul>

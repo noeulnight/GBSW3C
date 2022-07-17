@@ -249,6 +249,23 @@
   }
 }
 
+@media (max-width: 300px) {
+  * {
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+  
+      .show_nav {
+        min-width: 200px;
+      }
+  
+      .hide_nav {
+        min-width: 200px;
+      }
+    }
+  }
+}
+
 @media (max-height: 756px) {
   * {
     body {
@@ -261,3 +278,5 @@
     }
   }
 }
+
+

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ProgressBar from "@ramonak/react-progress-bar";
 import {
   HiChevronLeft,
@@ -7,9 +7,11 @@ import {
   HiPlus,
   HiX,
   HiCheck,
-  HiTrash
+  HiTrash,
+  HiPencil
 } from "react-icons/hi";
 import { FaCheck, FaPlus, FaTrashAlt } from "react-icons/fa";
+import { AiFillDelete } from "react-icons/ai";
 import styles from "../../css/StudentList.module.scss";
 
 const StudentListPage = ({ mode }) => {
@@ -18,7 +20,7 @@ const [fullChecked, setFullchecked] = useState(false);
     {
       name: "김무일",
       id: "gbsw301",
-      sid: "2209",
+      keys: "1기",
       department: "소프트웨어개발과 ",
       phone: "010-1234-1234",
       achievement_rate: 40,
@@ -27,7 +29,7 @@ const [fullChecked, setFullchecked] = useState(false);
     {
       name: "변예준",
       id: "gbsw301",
-      sid: "2210",
+      keys: "1기",
       department: "소프트웨어개발과",
       phone: "010-1234-1234",
       achievement_rate: 25,
@@ -36,13 +38,20 @@ const [fullChecked, setFullchecked] = useState(false);
     {
       name: "김창환",
       id: "gbsw301",
-      sid: "2211",
+      keys: "1기",
       department: "소프트웨어개발과",
       phone: "010-1234-1234",
       achievement_rate: 90,
       checked: false,
     },
   ]);
+
+  useEffect(() => {
+    (async () => {
+      await fetch('/api/auth/v1/students/filter')
+        .the
+    })()
+  }, [])
 
   const onCheck = (index) => () => {
     items[index].checked = !items[index].checked;
@@ -60,15 +69,9 @@ const [fullChecked, setFullchecked] = useState(false);
           <div>
             <a href="" style={mode === 'light' ? {color: '#ACB2CB'} : {color: '#6F738E'}}>
               <div>
-                <FaPlus style={{ position: "relative", top: "3px" }} size={22} />{" "}
+                <HiPencil style={ { position: "relative", top: "3px" }} size={22} />{" "}
               </div>
-              학생 등록하기
-            </a>
-            <a href="" style={mode === 'light' ? {color: '#ACB2CB'} : {color: '#6F738E'}}>
-              <div>
-                <FaTrashAlt style={ { position: "relative", top: "3px" }} size={22} />{" "}
-              </div>
-              학생 삭제하기
+              학생 점수부여
             </a>
           </div>
         </div>
@@ -83,22 +86,15 @@ const [fullChecked, setFullchecked] = useState(false);
               style={
                 mode === "light" ? { color: "#191919" } : { color: "#fff" }
               }>
-              학생 리스트
+              점수 부여
             </div>
             <div className={styles.div}>
               <a href="">
-                <HiPlus
+                <HiPencil
                   style={{ position: "relative", top: "2px" }}
                   size={18}
                 />{" "}
-                학생 등록하기
-              </a>
-              <a href="">
-                <HiTrash
-                  style={{ position: "relative", top: "2px" }}
-                  size={18}
-                />{" "}
-                학생 삭제하기
+                점수 부여하기
               </a>
               <span
                 style={
@@ -144,12 +140,12 @@ const [fullChecked, setFullchecked] = useState(false);
                   <span>이름</span>
                   <div>유저아이디</div>
                 </td>
-                <td className={styles.sid}>학번</td>
+                <td className={styles.keys}>기수</td>
                 <td className={styles.class}>학과</td>
                 <td className={styles.phoneNumber}>전화번호</td>
               </tr>
               <tr>
-                <td className={styles.rate}>달성률</td>
+                <td className={styles.rate}>삭제하기</td>
               </tr>
             </thead>
             {items.map((item, index) => {
@@ -168,26 +164,13 @@ const [fullChecked, setFullchecked] = useState(false);
                       <span>{item.name}</span>
                       <div>{item.id}</div>
                     </td>
-                    <td className={styles.sid}>{item.sid}</td>
+                    <td className={styles.keys}>{item.keys}</td>
                     <td className={styles.class}>{item.department}</td>
                     <td className={styles.phoneNumber}>{item.phone}</td>
                   </tr>
                   <tr>
                     <td className={styles.rate}>
-                      <span>
-                        {item.achievement_rate}%
-                          <ProgressBar
-                            completed={item.achievement_rate}
-                            height={"13px"}
-                            width={"200px"}
-                            labelSize={"0px"}
-                            bgColor={"rgba(6, 132, 196, 0.77)"}
-                            borderRadius={"3px"}
-                            baseBgColor={
-                            mode === "light" ? "#f1f1f1" : "#383850"
-                          }
-                        />
-                      </span>
+                      <button style={mode === 'light' ? {color: '#ACB2CB'} : {color: '#6F738E'}}><AiFillDelete size={24}/></button>
                     </td>
                   </tr>
                 </tbody>

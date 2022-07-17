@@ -65,13 +65,14 @@ const Chart = ({ mode }) => {
 
   const data = mode === 'light' ? light_data : dark_data
 
-  if (maxScore !== null && myScore != null)
+  if (maxScore !== null && myScore !== null)
     data.datasets[0].data = [myScore, maxScore - myScore]
 
   return (
     <div>
       <div style={{ position: 'relative'}}>
-        <Doughnut data={data} options={options} style={{ width: '300px'}}/>
+        {!(maxScore !== null && myScore !== null) && <Doughnut data={data} options={options} style={{ width: '300px'}}/>}
+        {maxScore !== null && myScore !== null && <Doughnut data={data} options={options} style={{ width: '300px'}}/>}
         <div style={{position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}>
           <p style={mode === 'light' ? {color: '#8993A7', fontWeight: '600'} :  {color: '#8C8EA0', fontWeight: '600'}}>{myScore !== null ? (myScore + '점') : '로딩중..'}</p>
           <p style={mode === 'light' ? {color: '#8993A7'} :  {color: '#8C8EA0'}}>{maxScore !== null && myScore != null ? (Math.round(myScore / maxScore * 1000) / 10 + '%') : '...'}</p>

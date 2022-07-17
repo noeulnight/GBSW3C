@@ -143,6 +143,10 @@
             width: 170px;
           }
 
+          .keys {
+            width: 100px;
+          }
+
           .phoneNumber {
             width: 150px;
           }
@@ -156,14 +160,14 @@
 
           .rate {
             width: 300px;
-
-            span {
-              display: flex;
-              align-items: center;
-              justify-content: right;
-
-              >div {
-                margin-left: 13px;
+            button {
+              border: none;
+              outline: none;
+              background: transparent;
+            }
+            svg {
+              &:hover {
+                fill: red;
               }
             }
           }

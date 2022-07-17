@@ -39,7 +39,7 @@ const TeacherMain = ({ mode, isOpen, selectPage }) => {
             사용자 페이지/
             <span style={{ color: "#0684c4" }}>
               {selectPage === 1 && "신청 리스트"}
-              {selectPage === 2 && "학생 리스트"}
+              {selectPage === 2 && "학생 점수부여"}
               {selectPage === 3 && "명예의 전당"}
               {selectPage === 4 && "3C 인증제"}
               {/* {selectPage === 5 && "통계분석"} */}

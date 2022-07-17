@@ -28,7 +28,6 @@ const ScoringArea = ({ mode, isOpen }) => {
       keys: "1기",
       name: "김무일",
       area: "소프트웨어개발과",
-      number: 2201,
       id: "sw2_01",
       date: "2022-04-25",
       checked: false,
@@ -39,7 +38,6 @@ const ScoringArea = ({ mode, isOpen }) => {
       keys: "1기",
       name: "박대형",
       area: "소프트웨어개발과",
-      number: 2202,
       id: "sw2_02",
       date: "2022-04-25",
       checked: false,
@@ -50,7 +48,6 @@ const ScoringArea = ({ mode, isOpen }) => {
       keys: "1기",
       name: "김윤현",
       area: "소프트웨어개발과",
-      number: 2203,
       id: "sw2_03",
       date: "2022-04-25",
       checked: false,
@@ -161,7 +158,6 @@ const ScoringArea = ({ mode, isOpen }) => {
               </td>
               <td className={styles.name}>이름</td>
               <td className={styles.area}>학과</td>
-              <td className={styles.number}>학번</td>
               <td className={styles.id}>아이디</td>
             </tr>
             <tr>
@@ -187,9 +183,6 @@ const ScoringArea = ({ mode, isOpen }) => {
                   </td>
                   <td className={styles.name}>{item.name}</td>
                   <td className={styles.area}>{item.area}</td>
-                  <td className={styles.number}>
-                    {item.number}
-                  </td>
                   <td className={styles.id}>
                     {item.id}
                   </td>

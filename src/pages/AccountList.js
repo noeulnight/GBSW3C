@@ -56,6 +56,23 @@ const ScoringArea = ({ mode, isOpen }) => {
     },
   ]);
 
+  useEffect(() => {
+    (async () => {
+      const res = await fetch('/api/auth/v1/users')
+        .then((res) => res.json())
+      
+      setItems(res.data.map((v) => ({
+        keys: !v.cardinal ? '선생님' : `${v.cardinal}기`,
+        name: v.name,
+        area: 'a',
+        id: v.userid,
+        date: '이거 뭐냐?',
+        authority: !v.cardinal ? '선생님' : '학생',
+        teacher: v.phone
+      })))
+    })()
+  }, [])
+
   const onCheck = (index) => () => {
     items[index].checked = !items[index].checked;
     setItems([...items]);
@@ -162,7 +179,7 @@ const ScoringArea = ({ mode, isOpen }) => {
             </tr>
             <tr>
               <td className={styles.authority}>권한</td>
-              <td className={styles.teacher}>담당자</td>
+              <td className={styles.teacher}>SMS 수신 P.</td>
               <td className={styles.date}>신청일</td>
             </tr>
           </thead>

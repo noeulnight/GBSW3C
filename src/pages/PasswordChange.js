@@ -36,8 +36,8 @@ const PasswordChange = ({isOpen, mode, onChangePage}) => {
     }).then((res) => res.status === 403 ? (sessionStorage.clear() || window.location.reload()) : res.json())
 
     if (data.success) {
-      alert("비밀번호가 성공적으로 변경되었습니다.")
-      onChangePage(1)
+      alert("비밀번호가 성공적으로 변경되었습니다. (보안을 위해 다시 로그인해 주십시오)")
+      window.location.reload()
       return
     }
 

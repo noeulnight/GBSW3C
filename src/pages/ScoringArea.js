@@ -23,35 +23,23 @@ const ScoringArea = ({ mode, isOpen }) => {
   const [lists, setLists] = useSessionStorage("lists", 1)
   const [titles, setTitles] = useSessionStorage("titles", 1)
   const [fullChecked, setFullchecked] = useState(false);
-  const [items, setItems] = useState([
-    {
-      classification: "실무역량",
-      type: "자격증 취득",
-      area: "정보처리 산업기사",
-      score: 30,
-      maxScore: 60,
-      date: "2022-04-25",
-      checked: false,
-    },
-    {
-      classification: "실무역량",
-      type: "자격증 취득",
-      area: "정보처리 기능사",
-      score: 15,
-      maxScore: 60,
-      date: "2022-04-25",
-      checked: false,
-    },
-    {
-      classification: "실무역량",
-      type: "자격증 취득",
-      area: "리눅스 마스터",
-      score: 15,
-      maxScore: 60,
-      date: "2022-04-25",
-      checked: false,
-    },
-  ]);
+  const [items, setItems] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      const res = await fetch('/api/board/v1/categories')
+        .then((res) => res.json())
+      
+      setItems(res.data.categories.map((v) => v.children).flat().map((v) => ({
+        classification: v.parent.description,
+        type: v.parent.label,
+        area: v.label,
+        score: v.score,
+        maxScore: v.parent.maxScore,
+        date: `${v.parent.evalDateStart.substr(0, 2)}월 ${v.parent.evalDateStart.substr(2, 2)}일 ~ ${v.parent.evalDateStop.substr(0, 2)}월 ${v.parent.evalDateStop.substr(2, 2)}일` 
+      })))
+    })() 
+  }, [])
 
   const onCheck = (index) => () => {
     items[index].checked = !items[index].checked;
@@ -168,7 +156,25 @@ const ScoringArea = ({ mode, isOpen }) => {
               <td className={styles.date}>등록/수정일</td>
             </tr>
           </thead>
-          {items.map((item, index) => {
+          {items === null && (
+            <tbody style={ mode === "light" ? { color: "#ACB2CB" } : { color: "#6F738E" }}>
+              <tr>
+                <td colspan={6}>
+                  로딩중...
+                </td>
+              </tr>
+            </tbody>
+          )}
+          {items !== null && items.length < 1 && (
+            <tbody style={ mode === "light" ? { color: "#ACB2CB" } : { color: "#6F738E" }}>
+              <tr>
+                <td colspan={6}>
+                  영역 목록이 비어있습니다
+                </td>
+              </tr>
+            </tbody>
+          )}
+          {items !== null && items?.map((item, index) => {
             return (
               <tbody key={index} style={ mode === "light" ? { color: "#ACB2CB" } : { color: "#6F738E" }}>
                 <tr>

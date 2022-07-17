@@ -256,7 +256,7 @@ const StudentSubmitPage = ({mode, page, depart, setPage }) => {
                           : { color: "#6F738E" }
                       }
                     >
-                      <tr style={item.closed ? { textDecoration: 'line-through', opacity: 0.6 } : {}}>
+                      <tr style={item.closed ? { textdecoration: 'line-through', opacity: 0.6 } : {}}>
                         <td className={styles.number} style={{ color: "#0684c4" }}>
                           {item.closed ? '완료' : item.number}
                         </td>

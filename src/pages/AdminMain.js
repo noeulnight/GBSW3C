@@ -88,7 +88,7 @@ const TeacherMain = ({ mode, isOpen, selectPage }) => {
           </div>}
         </div>
         <div className={styles.listBox}>
-          { selectPage === 1 && <SubmitPage mode={mode}/> }
+          { selectPage === 1 && <SubmitPage mode={mode} key={page} page={page} setPage={setPage}/> }
           { selectPage === 2 && <StudentListPage mode={mode}/> }
           { selectPage === 3 && <HallOfFame mode={mode}/> }
           { selectPage === 4 && <Introduce mode={mode}/> }

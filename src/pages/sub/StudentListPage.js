@@ -17,40 +17,20 @@ import styles from "../../css/StudentList.module.scss";
 
 const StudentListPage = ({ mode }) => {
 const [fullChecked, setFullchecked] = useState(false);
-  const [items, setItems] = useState([
-    {
-      name: "김무일",
-      id: "gbsw301",
-      keys: "1기",
-      department: "소프트웨어개발과 ",
-      phone: "010-1234-1234",
-      achievement_rate: 40,
-      checked: false,
-    },
-    {
-      name: "변예준",
-      id: "gbsw301",
-      keys: "1기",
-      department: "소프트웨어개발과",
-      phone: "010-1234-1234",
-      achievement_rate: 25,
-      checked: false,
-    },
-    {
-      name: "김창환",
-      id: "gbsw301",
-      keys: "1기",
-      department: "소프트웨어개발과",
-      phone: "010-1234-1234",
-      achievement_rate: 90,
-      checked: false,
-    },
-  ]);
+  const [items, setItems] = useState(null);
 
   useEffect(() => {
     (async () => {
-      await fetch('/api/auth/v1/students/filter')
-        .the
+      const res = await fetch('/api/auth/v1/students/filter')
+        .then((res) => res.json())
+      
+      setItems(res.data.map((v) => ({
+        name: v.name,
+        id: v.userid,
+        keys: `${v.cardinal}기`,
+        department: "소프트웨어개발과",
+        phone: v.phone
+      })))
     })()
   }, [])
 
@@ -149,7 +129,25 @@ const [fullChecked, setFullchecked] = useState(false);
                 <td className={styles.rate}>삭제하기</td>
               </tr>
             </thead>
-            {items.map((item, index) => {
+            {items === null && (
+              <tbody>
+                <tr>
+                  <td colspan={4}>
+                    로딩중...
+                  </td>
+                </tr>
+              </tbody>
+            )}
+            {items !== null && items.length < 1 && (
+              <tbody>
+                <tr>
+                  <td colspan={4}>
+                    학생 리스트가 비어있습니다
+                  </td>
+                </tr>
+              </tbody>
+            )}
+            {items !== null && items.map((item, index) => {
               return (
                 <tbody key={index} style={ mode === "light" ? { color: "#ACB2CB" } : { color: "#6F738E" }}>
                   <tr>

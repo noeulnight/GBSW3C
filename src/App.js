@@ -21,7 +21,8 @@ import './css/Reset.modele.scss'
 import Statistic from './pages/Statistics';
 import ScoringArea from './pages/ScoringArea'
 import AccountList from './pages/AccountList'
-import Account from './pages/Account'
+import Account from './pages/sub/ScoringAreaAdd'
+import StudentListPageAdd from "./pages/sub/StudentListPageAdd";
 
 function App () {
   const [ isOpen, setMenu ] = useState(true);
@@ -89,8 +90,9 @@ function App () {
             <Route path="/stat" element={<Statistic page={activePage} mode={mode} isOpen={isOpen} />} />
             <Route path="/acc" element={<AccountList page={activePage} mode={mode} isOpen={isOpen} />} />
             <Route path="/area" element={<ScoringArea page={activePage} mode={mode} isOpen={isOpen} />} />
+            <Route path="/sco" element={<StudentListPageAdd page={activePage} mode={mode} isOpen={isOpen} />} />
             <Route path="/logout" element={<Logout isLogin={isLogin} />} />
-            <Route path="/account" element={<Account />} />
+            <Route path="/account" element={<Account mode={mode} isOpen={isOpen} />} />
           </Routes>
           <Header mode={mode} setMode={setMode} isOpen={isOpen} setMenu={setMenu} />
           <Navigation grade={grade} mode={mode} isOpen={isOpen} page={activePage} onChangePage={onChangePage} />

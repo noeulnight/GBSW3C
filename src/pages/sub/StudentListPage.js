@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ProgressBar from "@ramonak/react-progress-bar";
+import { Link, useNavigate } from "react-router-dom";
 import {
   HiChevronLeft,
   HiChevronRight,
@@ -67,12 +68,12 @@ const [fullChecked, setFullchecked] = useState(false);
       <>
         <div className={styles.navbar} style={mode === 'light' ? {background: '#F3F5F7'} : {background: '#2B2E44'}}>
           <div>
-            <a href="" style={mode === 'light' ? {color: '#ACB2CB'} : {color: '#6F738E'}}>
+            <Link to="/sco" style={mode === 'light' ? {color: '#ACB2CB'} : {color: '#6F738E'}}>
               <div>
                 <HiPencil style={ { position: "relative", top: "3px" }} size={22} />{" "}
               </div>
               학생 점수부여
-            </a>
+            </Link>
           </div>
         </div>
         <div style={
@@ -89,13 +90,13 @@ const [fullChecked, setFullchecked] = useState(false);
               점수 부여
             </div>
             <div className={styles.div}>
-              <a href="">
+              <Link to="/sco">
                 <HiPencil
                   style={{ position: "relative", top: "2px" }}
                   size={18}
                 />{" "}
                 점수 부여하기
-              </a>
+              </Link>
               <span
                 style={
                   mode == "light"

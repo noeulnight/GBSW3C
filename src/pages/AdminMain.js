@@ -36,7 +36,7 @@ const TeacherMain = ({ mode, isOpen, selectPage }) => {
           style={mode === "light" ? { color: "#191919" } : { color: "#fff" }}
         >
           <div className={styles.title}>
-            사용자 페이지/
+            교사 페이지/
             <span style={{ color: "#0684c4" }}>
               {selectPage === 1 && "신청 리스트"}
               {selectPage === 2 && "학생 점수부여"}

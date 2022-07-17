@@ -74,7 +74,7 @@ const Chart = ({ mode }) => {
         <Doughnut data={data} options={options} style={{ width: '300px'}}/>
         <div style={{position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}>
           <p style={mode === 'light' ? {color: '#8993A7', fontWeight: '600'} :  {color: '#8C8EA0', fontWeight: '600'}}>{myScore !== null ? (myScore + '점') : '로딩중..'}</p>
-          <p style={mode === 'light' ? {color: '#8993A7'} :  {color: '#8C8EA0'}}>{maxScore !== null && myScore != null ? (myScore / maxScore * 100 + '%') : '...'}</p>
+          <p style={mode === 'light' ? {color: '#8993A7'} :  {color: '#8C8EA0'}}>{maxScore !== null && myScore != null ? (Math.round(myScore / maxScore * 1000) / 10 + '%') : '...'}</p>
         </div>
       </div>
       <p style={mode === 'light' ? {color: '#8993A7', marginTop: '10px'} :  {color: '#8C8EA0', marginTop: '10px'}}>전체 달성률</p>

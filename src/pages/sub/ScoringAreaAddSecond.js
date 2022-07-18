@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
   HiChevronLeft,
   HiChevronRight,
@@ -46,16 +46,16 @@ const ScoringAreaAddSecond = ({ mode, isOpen }) => {
               </div>
             </div>
             <div className={styles.inputForm}>
-              
+              <input type="number" placeholder="점수를 입력하세요" />
             </div>
             <div className={styles.btn}>
-              <Link to="/">
+              <Link to="/ScoringAreaAdd">
                 <button className={styles.cancelbtn} style={{ alignSelf: 'center', cursor: 'pointer', border: 'none', backgroundColor: 'gray', color: 'white', padding: 10, fontSize: 16, borderRadius: 4}}>
-                  취소
+                  돌아가기
                 </button>
               </Link>
               <button className={styles.submitbtn} style={{ marginLeft: 10, cursor: 'pointer', alignSelf: 'center', border: 'none', backgroundColor: 'rgb(6, 132, 196)', color: 'white', padding: 10, fontSize: 16, borderRadius: 4}}>
-                다음
+                확인
               </button>
             </div>
           </div>

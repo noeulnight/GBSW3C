@@ -292,7 +292,6 @@ const SubmitPage = ({ mode, page, depart, setPage }) => {
               {items && items.map((item, index) => {
                 return (
                   <tbody
-                    onClick={() => navigate('/posts/' + item.number)}
                     key={index}
                     style={
                       mode === "light"
@@ -329,6 +328,7 @@ const SubmitPage = ({ mode, page, depart, setPage }) => {
                         </div>
                       </td>{" "}
                       <td 
+                        onClick={() => navigate('/posts/' + item.number)}
                         className={styles.user}
                         style={
                           mode === "light"
@@ -347,7 +347,7 @@ const SubmitPage = ({ mode, page, depart, setPage }) => {
                           {item.classification2}
                         </div>
                       </td>
-                      <td className={styles.fic}>
+                      <td className={styles.fic} onClick={() => navigate('/posts/' + item.number)}>
                         {item.classification1}
                         <div
                           style={
@@ -361,7 +361,7 @@ const SubmitPage = ({ mode, page, depart, setPage }) => {
                       </td>
                     </tr>
                     <tr>
-                      <td className={styles.file}>
+                      <td className={styles.file} onClick={() => navigate('/posts/' + item.number)}>
                         <div
                           className={
                             item.file != null
@@ -372,7 +372,7 @@ const SubmitPage = ({ mode, page, depart, setPage }) => {
                           }
                         ></div>
                       </td>
-                      <td className={styles.day}>{item.date}</td>
+                      <td className={styles.day} onClick={() => navigate('/posts/' + item.number)}>{item.date}</td>
                     </tr>
                   </tbody>
                 );

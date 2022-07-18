@@ -72,18 +72,18 @@ const ScoringArea = ({ mode, isOpen, page, onChangePage }) => {
     <>
       <div className={styles.navbar} style={mode === 'light' ? {background: '#F3F5F7'} : {background: '#2B2E44'}}>
         <div>
-          <a href="" style={mode === 'light' ? {color: '#ACB2CB'} : {color: '#6F738E'}}>
+          <button onClick={() => onChangePage(8)} href="" style={mode === 'light' ? {color: '#ACB2CB'} : {color: '#6F738E'}}>
             <div>
               <FaPlus style={{ position: "relative", top: "3px" }} size={22} />{" "}
             </div>
             학생 등록하기
-          </a>
-          <a href="" style={mode === 'light' ? {color: '#ACB2CB'} : {color: '#6F738E'}}>
+          </button>
+          <button onClick={onDelete} href="" style={mode === 'light' ? {color: '#ACB2CB'} : {color: '#6F738E'}}>
             <div>
               <FaTrashAlt style={ { position: "relative", top: "3px" }} size={22} />{" "}
             </div>
             학생 삭제하기
-          </a>
+          </button>
         </div>
       </div>
       <div style={

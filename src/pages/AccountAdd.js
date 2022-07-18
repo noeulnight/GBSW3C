@@ -60,9 +60,9 @@ const AccountAdd = ({ mode, isOpen,  onChangePage }) => {
       {loading && (
         <div style={{
           position: 'absolute',
-          top: 0, left: "-24px",
+          top: '-64px', left: '-286px',
           width: '100vw', height: '100vh',
-          zIndex: 5099, backgroundColor: '#00000099', 
+          zIndex: 1000, backgroundColor: '#00000099', 
           display: 'flex', justifyContent: 'center', 
           alignItems: 'center', color: 'white' }}>
           처리중입니다...
@@ -112,72 +112,67 @@ const AccountAdd = ({ mode, isOpen,  onChangePage }) => {
             </div>
             <div className={styles.category}>
               <div>
-                <p>이름</p>
-                <input 
-                  required
-                  type="text" 
-                  placeholder="이름" 
-                  onChange={(e) => setName(e.target.value)}
-                  style={mode === 'light'
-                    ? {color: "#191919", background: '#F3F5F7', border: "1px solid #ACB2CB", padding: '8px', borderRadius: '5px' }
-                    : {color: '#6F738E', background: '#2B2E44', border: "1px solid #6F738E", padding: '8px', borderRadius: '5px'}
-                  } 
-                />
-                <p>기수</p>
-                <input 
-                  required
-                  type="number" 
-                  placeholder="기수" 
-                  onChange={(e) => setCardinal(e.target.value)}
-                  style={mode === 'light'
-                    ? {color: "#191919", background: '#F3F5F7', border: "1px solid #ACB2CB", padding: '8px', borderRadius: '5px' }
-                    : {color: '#6F738E', background: '#2B2E44', border: "1px solid #6F738E", padding: '8px', borderRadius: '5px'}
-                  } 
-                />
-                <p>전화번호</p>
-                <input 
-                  required
-                  type="text" 
-                  maxLength="13"
-                  onChange={(e) => setPhone(e.target.value)}
-                  pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
-                  placeholder="하이픈(-)을 포함하여 전화번호를 입력해주세요." 
-                  style={mode === 'light'
-                    ? {color: "#191919", background: '#F3F5F7', border: "1px solid #ACB2CB", padding: '8px', borderRadius: '5px' }
-                    : {color: '#6F738E', background: '#2B2E44', border: "1px solid #6F738E", padding: '8px', borderRadius: '5px'}
-                  } 
-                />
-                <p>학과 선택</p>
-                <Select
-                  styles={{
-                    control: (provided) => ({
-                      cursor: 'pointer',
-                      ...provided,
-                      ...(mode == "light"
-                        ? {
-                            border: "1px solid #ACB2CB",
-                            backgroundColor: "#F3F5F7",
-                          }
-                        : {
-                            border: "1px solid #6F738E",
-                            backgroundColor: "#2B2E44",
-                          }),
-                    }),
-                    singleValue: (provided) => ({
-                      ...provided,
-                      ...(mode == "light"
-                      ? { color: "#8993A7" }
-                      : { color: "#8C8EA0" }),
-                    }),
-                    menuList: (provided) => ({
-                      ...provided,
-                      ...(mode == "light"
-                        ? {
-                          border: "1px solid #ACB2CB",
-                        }
-                        : {
-                          border: "1px solid #6F738E",
-              }),
+                <div>
+                  <div>
+                    <p>이름</p>
+                    <input 
+                      required
+                      type="text" 
+                      placeholder="이름" 
+                      onChange={(e) => setName(e.target.value)}
+                      style={mode === 'light'
+                        ? {color: "#191919", background: '#F3F5F7', border: "1px solid #ACB2CB", padding: '8px', borderRadius: '5px' }
+                        : {color: '#6F738E', background: '#2B2E44', border: "1px solid #6F738E", padding: '8px', borderRadius: '5px'}
+                      } 
+                    />
+                  </div>
+                  <div>
+                    <p>기수</p>
+                    <input 
+                      required
+                      type="number" 
+                      placeholder="기수" 
+                      onChange={(e) => setCardinal(e.target.value)}
+                      style={mode === 'light'
+                        ? {color: "#191919", background: '#F3F5F7', border: "1px solid #ACB2CB", padding: '8px', borderRadius: '5px' }
+                        : {color: '#6F738E', background: '#2B2E44', border: "1px solid #6F738E", padding: '8px', borderRadius: '5px'}
+                      } 
+                    />
+                  </div>
+                </div>
+                <div>
+                  <div>
+                    <p>전화번호</p>
+                    <input 
+                      required
+                      type="text" 
+                      maxLength="13"
+                      onChange={(e) => setPhone(e.target.value)}
+                      pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
+                      placeholder="하이픈(-)을 포함하여 전화번호를 입력해주세요." 
+                      style={mode === 'light'
+                        ? {color: "#191919", background: '#F3F5F7', border: "1px solid #ACB2CB", padding: '8px', borderRadius: '5px' }
+                        : {color: '#6F738E', background: '#2B2E44', border: "1px solid #6F738E", padding: '8px', borderRadius: '5px'}
+                      } 
+                    />
+                  </div>
+                  <div>
+                    <p>학과 선택</p>
+                    <Select
+                      styles={{
+                        control: (provided) => ({
+                          cursor: 'pointer',
+                          ...provided,
+                          ...(mode == "light"
+                            ? {
+                                border: "1px solid #ACB2CB",
+                                backgroundColor: "#F3F5F7",
+                              }
+                            : {
+                                border: "1px solid #6F738E",
+                                backgroundColor: "#2B2E44",
+                              }),
+                        }),
                         singleValue: (provided) => ({
                           ...provided,
                           ...(mode == "light"
@@ -192,46 +187,63 @@ const AccountAdd = ({ mode, isOpen,  onChangePage }) => {
                             }
                             : {
                               border: "1px solid #6F738E",
+                    }),
+                            singleValue: (provided) => ({
+                              ...provided,
+                              ...(mode == "light"
+                              ? { color: "#8993A7" }
+                              : { color: "#8C8EA0" }),
                             }),
+                            menuList: (provided) => ({
+                              ...provided,
+                              ...(mode == "light"
+                                ? {
+                                  border: "1px solid #ACB2CB",
+                                }
+                                : {
+                                  border: "1px solid #6F738E",
+                                }),
 
-                        }),
-                        menu: (provided) => ({
-                          ...provided,
-                          ...(mode == "light"
-                            ? {
-                              color: "black",
-                              backgroundColor: "#F3F5F7",
-                            }
-                            : {
-                              color: "white",
-                              backgroundColor: "#383850",
+                            }),
+                            menu: (provided) => ({
+                              ...provided,
+                              ...(mode == "light"
+                                ? {
+                                  color: "black",
+                                  backgroundColor: "#F3F5F7",
+                                }
+                                : {
+                                  color: "white",
+                                  backgroundColor: "#383850",
+                                }),
+                            }),
+                            option: (provided, state) => ({
+                              ...provided,
+                              zIndex: 50,
+                              ...(mode == "light"
+                                ? {
+                                  color: state.isFocused ? 'white' : "black",
+                                  backgroundColor: state.isFocused ? 'rgb(6, 132, 196)' :  "#F3F5F7",
+                                }
+                                : {
+                                  color: state.isFocused ? 'white' : "white",
+                                  backgroundColor: state.isFocused ? 'rgb(6, 132, 196)' : "#383850",
+                                }),
                             }),
                         }),
-                        option: (provided, state) => ({
+                        container: (provided) => ({
                           ...provided,
                           zIndex: 50,
-                          ...(mode == "light"
-                            ? {
-                              color: state.isFocused ? 'white' : "black",
-                              backgroundColor: state.isFocused ? 'rgb(6, 132, 196)' :  "#F3F5F7",
-                            }
-                            : {
-                              color: state.isFocused ? 'white' : "white",
-                              backgroundColor: state.isFocused ? 'rgb(6, 132, 196)' : "#383850",
-                            }),
                         }),
-                    }),
-                    container: (provided) => ({
-                      ...provided,
-                      zIndex: 50,
-                    }),
-                  }}
-                  isSearchable={false}
-                  onChange={(e) => setDepart(e.value)}
-                  options={departs?.filter((v) => v.depid > 1).map((v) => ({ value: v.depid, label: v.desc })) || []}
-                  placeholder="학과를 선택하세요."/>
+                      }}
+                      isSearchable={false}
+                      onChange={(e) => setDepart(e.value)}
+                      options={departs?.filter((v) => v.depid > 1).map((v) => ({ value: v.depid, label: v.desc })) || []}
+                      placeholder="학과를 선택하세요."/>
+                  </div>
+                </div>
               </div>
-  </div>
+            </div>
             <p style={{
               ...(mode == "light"
               ? {
@@ -243,7 +255,7 @@ const AccountAdd = ({ mode, isOpen,  onChangePage }) => {
             }}>
             {message}
             </p>
-            <button type="submit" style={{ cursor: 'pointer', alignSelf: 'center', border: 'none', backgroundColor: 'rgb(6, 132, 196)', color: 'white', padding: 10, fontSize: 16, borderRadius: 4}}>
+            <button className={styles.btn} type="submit" style={{ cursor: 'pointer', alignSelf: 'center', border: 'none', backgroundColor: 'rgb(6, 132, 196)', color: 'white', padding: 10, fontSize: 16, borderRadius: 4}}>
               제출
             </button>
           </div>

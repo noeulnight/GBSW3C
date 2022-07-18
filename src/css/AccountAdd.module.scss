@@ -120,6 +120,7 @@
         }
       }
       .Box {
+        position: relative;
         width: 100%;
         height: 100%;
         padding: 0 24px;
@@ -128,25 +129,33 @@
         .category {
           display: flex;
           >div {
-            flex: 1;
-            p {
-              margin-bottom: 5px;
-            }
-            input {
-              width: 100%;
-              &:focus {
-                border: 1px solid red;
+            display: flex;
+            width: 100%;
+            >div {
+              flex: 1;
+              p {
+                margin-bottom: 5px;
+              }
+              >div {
+                >input {
+                  width: 100%;
+                  margin-bottom: 20px;
+                  &:focus-visible {
+                    outline: 1px solid #0684c4;
+                  }
+                }
               }
             }
-          }
-          >div:nth-child(1) {
-            margin-right: 40px;
+            >div:nth-child(1) {
+              margin-right: 40px;
+            }
           }
         }
 
         .btn {
-          position: relative;
-          top: 48px;
+          position: absolute;
+          bottom: 24px;
+          right: 24px;
           display: flex;
           justify-content: flex-end;
         }
@@ -257,15 +266,22 @@
             }
           }
           .category {
-            display: block;
-            >div:nth-child(1) {
-              margin-right: 0;
+            display: flex;
+            >div {
+              display: block;
+              width: 100%;
+              >div {
+                >div {
+                  >input {
+                    width: 100%;
+                    margin-bottom: 20px;
+                  }
+                }
+              }
+              >div:nth-child(1) {
+                margin-right: 0px;
+              }
             }
-          }
-
-          .editor {
-            margin: 24px 0;
-            height: calc(100% - 314px);
           }
 
           .btn {

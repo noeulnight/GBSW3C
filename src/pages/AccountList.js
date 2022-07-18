@@ -180,7 +180,7 @@ const ScoringArea = ({ mode, isOpen, page, onChangePage }) => {
             <tr>
               <td className={styles.authority}>권한</td>
               <td className={styles.teacher}>SMS 수신 P.</td>
-              <td className={styles.date}>신청일</td>
+              <td className={styles.date}>등록/수정일</td>
             </tr>
           </thead>
           {items.map((item, index) => {

@@ -78,6 +78,7 @@ function App () {
           <Routes>
             <Route path="/" element={<TeacherMain mode={mode} isOpen={isOpen} />} />
             <Route path="/logout" element={<Logout isLogin={isLogin} />} />
+              <Route path="/posts/:id" element={<StudentSubmitView mode={mode} isOpen={isOpen} />} />
           </Routes>
           <Header mode={mode} setMode={setMode} isOpen={isOpen} setMenu={setMenu} />
           <Navigation grade={grade} mode={mode} isOpen={isOpen} />
@@ -94,6 +95,7 @@ function App () {
             <Route path="/sco" element={<StudentListPageAdd page={activePage} mode={mode} isOpen={isOpen} />} />
             <Route path="/logout" element={<Logout isLogin={isLogin} />} />
             <Route path="/account" element={<Account mode={mode} isOpen={isOpen} />} />
+            <Route path="/posts/:id" element={<StudentSubmitView mode={mode} isOpen={isOpen} />} />
             <Route path="/ScoringAreaAdd" element={<ScoringAreaAdd mode={mode} isOpen={isOpen} />} />
           </Routes>
           <Header mode={mode} setMode={setMode} isOpen={isOpen} setMenu={setMenu} />

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import ProgressBar from "@ramonak/react-progress-bar";
-import { Link, useNavigate } from "react-router-dom";
 import {
   HiChevronLeft,
   HiChevronRight,
@@ -15,7 +14,7 @@ import { FaCheck, FaPlus, FaTrashAlt } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
 import styles from "../../css/StudentList.module.scss";
 
-const StudentListPage = ({ mode }) => {
+const StudentListPage = ({ mode, onChangePage }) => {
 const [fullChecked, setFullchecked] = useState(false);
   const [items, setItems] = useState(null);
 
@@ -48,12 +47,12 @@ const [fullChecked, setFullchecked] = useState(false);
       <>
         <div className={styles.navbar} style={mode === 'light' ? {background: '#F3F5F7'} : {background: '#2B2E44'}}>
           <div>
-            <Link to="/sco" style={mode === 'light' ? {color: '#ACB2CB'} : {color: '#6F738E'}}>
+            <button onClick={() => onChangePage(9)} style={mode === 'light' ? {color: '#ACB2CB'} : {color: '#6F738E'}}>
               <div>
                 <HiPencil style={ { position: "relative", top: "3px" }} size={22} />{" "}
               </div>
               학생 점수부여
-            </Link>
+            </button>
           </div>
         </div>
         <div style={
@@ -70,13 +69,13 @@ const [fullChecked, setFullchecked] = useState(false);
               점수 부여
             </div>
             <div className={styles.div}>
-              <Link to="/sco">
+            <button onClick={() => onChangePage(9)}>
                 <HiPencil
                   style={{ position: "relative", top: "2px" }}
                   size={18}
                 />{" "}
                 점수 부여하기
-              </Link>
+              </button>
               <span
                 style={
                   mode == "light"

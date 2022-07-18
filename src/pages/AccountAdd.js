@@ -38,7 +38,7 @@ const AccountAdd = ({ mode, isOpen }) => {
   }, [])
 
   async function onSubmit (e) {
-    e.preventDefault()
+    e.preventㅇefault()
 
     setLoading(true)
     const data = await fetch('/api/auth/v1/students', {
@@ -65,7 +65,7 @@ const AccountAdd = ({ mode, isOpen }) => {
   }
 
   return (
-      <div>
+      <>
       {loading && (
         <div style={{
           position: 'absolute',
@@ -252,7 +252,7 @@ const AccountAdd = ({ mode, isOpen }) => {
           </div>
         </form>
       </div>
-    </div>
+    </>
   );
 }
 

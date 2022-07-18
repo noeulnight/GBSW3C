@@ -80,7 +80,7 @@ const StudentSubmitPostPage = ({ mode, isOpen }) => {
     setMessage('오류가 발생했습니다! 모두 입력했는지 확인한 후 다시 시도해 보세요')
   }
 
-  return (
+  return ( 
       <div>
       {loading && (
         <div style={{

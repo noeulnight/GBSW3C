@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState, createRef } from "react";
 import {
   HiChevronLeft,
   HiChevronRight,
@@ -13,6 +13,19 @@ import { Link } from "react-router-dom";
 import styles from '../../css/ScoringAreaAdd.module.scss'
 
 const ScoringAreaAdd = ({ mode, isOpen }) => {
+  const [categories, setCategories] = useState(null)
+  const [category, setCategory] = useState(null)
+  const [subcategory, setSubcategory] = useState(null)
+
+  function onCategoryChange (e) {
+    setCategory(e.value)
+    setSubcategory(null)
+  }
+
+  function onSubCategoryChange (e) {
+    setSubcategory(e.value)
+  }
+
   return (
     <div>
       <div className={isOpen === true ? styles.open_main : styles.hide_main}>
@@ -44,9 +57,13 @@ const ScoringAreaAdd = ({ mode, isOpen }) => {
               <div style={mode === 'light' ? {color: '#191919'} : {color: '#FFF'}}>
                 신청하기
               </div>
-              
             </div>
-
+            <div className={styles.name}>
+              <div className={styles.type}>
+                <p>종류 이름</p>
+                <input className={styles.type} />
+              </div>
+            </div>
             <div className={styles.btn}>
               <Link to="/">
                 <button className={styles.cancelbtn} style={{ alignSelf: 'center', cursor: 'pointer', border: 'none', backgroundColor: 'gray', color: 'white', padding: 10, fontSize: 16, borderRadius: 4}}>

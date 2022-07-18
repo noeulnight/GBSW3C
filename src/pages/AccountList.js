@@ -23,55 +23,25 @@ const ScoringArea = ({ mode, isOpen, page, onChangePage }) => {
   const [lists, setLists] = useSessionStorage("lists", 1)
   const [titles, setTitles] = useSessionStorage("titles", 1)
   const [fullChecked, setFullchecked] = useState(false);
-  const [items, setItems] = useState([
-    {
-      keys: "1기",
-      name: "김무일",
-      area: "소프트웨어개발과",
-      id: "sw2_01",
-      date: "2022-04-25",
-      checked: false,
-      authority: '학생',
-      teacher: '정영훈',
-    },
-    {
-      keys: "1기",
-      name: "박대형",
-      area: "소프트웨어개발과",
-      id: "sw2_02",
-      date: "2022-04-25",
-      checked: false,
-      authority: '학생',
-      teacher: '정영훈',
-    },
-    {
-      keys: "1기",
-      name: "김윤현",
-      area: "소프트웨어개발과",
-      id: "sw2_03",
-      date: "2022-04-25",
-      checked: false,
-      authority: '학생',
-      teacher: '정영훈',
-    },
-  ]);
+  const [items, setItems] = useState(null);
 
   useEffect(() => {
-    (async () => {
-      const res = await fetch('/api/auth/v1/users')
-        .then((res) => res.json())
-      
-      setItems(res.data.map((v) => ({
-        keys: !v.cardinal ? '선생님' : `${v.cardinal}기`,
-        name: v.name,
-        area: 'a',
-        id: v.userid,
-        date: '이거 뭐냐?',
-        authority: !v.cardinal ? '선생님' : '학생',
-        teacher: v.phone
-      })))
-    })()
+    fetchData()
   }, [])
+  
+  const fetchData = async () => {
+    const res = await fetch('/api/auth/v1/users')
+      .then((res) => res.json())
+    
+    setItems(res.data.map((v) => ({
+      keys: !v.cardinal ? '선생님' : `${v.cardinal}기`,
+      name: v.name,
+      area: 'a',
+      id: v.userid,
+      authority: !v.cardinal ? '선생님' : '학생',
+      teacher: v.phone
+    })))
+  }
 
   const onCheck = (index) => () => {
     items[index].checked = !items[index].checked;
@@ -83,6 +53,20 @@ const ScoringArea = ({ mode, isOpen, page, onChangePage }) => {
     setItems([...items.map((v) => ({ ...v, checked: !fullChecked }))]);
     setFullchecked(!fullChecked);
   };
+  
+  const onDelete = () => {
+    const todo = items.filter((v) => v.checked)
+
+    if (!confirm('다음 유저를 삭제 할까요? (되돌릴 수  없습니다): \n' + todo.map((v) => v.name).join(', '))) {
+      return
+    }
+
+    for (const item of todo) {
+      fetch('/api/auth/v1/users?userId=' + item.name, {
+        method: 'DELETE'
+      }).then(fetchData)
+    }
+  }
 
   return (
     <>
@@ -121,26 +105,15 @@ const ScoringArea = ({ mode, isOpen, page, onChangePage }) => {
                 style={{ position: "relative", top: "2px" }}
                 size={18}
               />{" "}
-              추가하기
+              학생 추가하기
             </button>
-            <a href="">
+            <button onClick={onDelete}>
               <HiTrash
                 style={{ position: "relative", top: "2px" }}
                 size={18}
               />{" "}
               삭제하기
-            </a>
-            <span
-              style={
-                mode == "light"
-                  ? { border: "1px solid #ACB2CB", color: "#ACB2CB" }
-                  : { border: "1px solid #6F738E", color: "#6F738E" }
-              }
-              className={styles.btn}
-            >
-              전체보기
-              <HiChevronDown size={18} />
-            </span>
+            </button>
           </div>
         </div>
         <table>
@@ -178,12 +151,29 @@ const ScoringArea = ({ mode, isOpen, page, onChangePage }) => {
               <td className={styles.id}>아이디</td>
             </tr>
             <tr>
-              <td className={styles.authority}>권한</td>
+              <td className={styles.authority}>구분</td>
               <td className={styles.teacher}>SMS 수신 P.</td>
-              <td className={styles.date}>등록/수정일</td>
             </tr>
           </thead>
-          {items.map((item, index) => {
+          {items === null && (
+              <tbody style={ mode === "light" ? { color: "#ACB2CB" } : { color: "#6F738E" }}>
+                <tr>
+                  <td>
+                    계정 목록을 불러오는 중 입니다.
+                  </td>
+                </tr>
+              </tbody>
+          )}
+          {items !== null && items.length < 1 && (
+              <tbody style={ mode === "light" ? { color: "#ACB2CB" } : { color: "#6F738E" }}>
+                <tr>
+                  <td>
+                    계정 리스트가 비어있습니다
+                  </td>
+                </tr>
+              </tbody>
+          )}
+          {items !== null && items.map((item, index) => {
             return (
               <tbody key={index} style={ mode === "light" ? { color: "#ACB2CB" } : { color: "#6F738E" }}>
                 <tr>
@@ -213,11 +203,6 @@ const ScoringArea = ({ mode, isOpen, page, onChangePage }) => {
                   <td className={styles.teacher}>
                     <span>
                       {item.teacher}
-                    </span>
-                  </td>
-                  <td className={styles.date}>
-                    <span>
-                      {item.date}
                     </span>
                   </td>
                 </tr>

@@ -21,6 +21,8 @@ import AccountList from './AccountList'
 import PasswordChange from './PasswordChange'
 import useSessionStorage from "../components/UseSessionStorage";
 import StudentListPageAdd from './sub/StudentListPageAdd';
+import ScoringAreaAdd from './ScoringAreaEdit'
+import RoleList from './RoleList'
 
 const TeacherMain = ({ mode, isOpen, selectPage, onChangePage }) => {
   const [active, setActive] = useSessionStorage("active")
@@ -55,6 +57,7 @@ const TeacherMain = ({ mode, isOpen, selectPage, onChangePage }) => {
               {selectPage === 7 && "비밀번호 재설정"}
               {selectPage === 8 && "계정관리/추가"}
               {selectPage === 9 && "학생 점수부여/점수부여"}
+              {selectPage === 11 && "역할관리"}
             </span>
           </div>
           {selectPage < 3 && <div className={styles.page}>
@@ -103,10 +106,12 @@ const TeacherMain = ({ mode, isOpen, selectPage, onChangePage }) => {
           { selectPage === 4 && <Introduce mode={mode}/> }
           {/* { selectPage === 5 && <Statistics mode={mode}/> } */}
           { selectPage === 5 && <AccountList page={selectPage} onChangePage={onChangePage} mode={mode} isOpen={isOpen} /> }
-          { selectPage === 6 && <ScoringArea page={selectPage} mode={mode} isOpen={isOpen} /> }
+          { selectPage === 6 && <ScoringArea page={selectPage} onChangePage={onChangePage} mode={mode} isOpen={isOpen} /> }
           { selectPage === 7 && <PasswordChange mode={mode}/> }
           { selectPage === 8 && <AccountAdd  onChangePage={onChangePage} mode={mode} isOpen={isOpen} /> }
           { selectPage === 9 && <StudentListPageAdd mode={mode} isOpen={isOpen} />}
+          { selectPage === 10 && <ScoringAreaAdd mode={mode} isOpen={isOpen} />}
+          { selectPage === 11 && <RoleList mode={mode} isOpen={isOpen} />}
         </div>
       </div>
     </div>

@@ -16,10 +16,10 @@ import {
 } from "react-icons/hi";
 import { FaCheck, FaPlus, FaTrashAlt } from "react-icons/fa";
 import Select from "react-select";
-import styles from "../css/ScoringArea.module.scss";
+import styles from "../css/AccountList.module.scss";
 import StudentSubmitPage from "./sub/StudentSubmitPage"
 
-const ScoringArea = ({ mode, isOpen, onChangePage }) => {
+const ScoringArea = ({ mode, isOpen, page, onChangePage }) => {
   const [lists, setLists] = useSessionStorage("lists", 1)
   const [titles, setTitles] = useSessionStorage("titles", 1)
   const [fullChecked, setFullchecked] = useState(false);
@@ -28,20 +28,15 @@ const ScoringArea = ({ mode, isOpen, onChangePage }) => {
   useEffect(() => {
     fetchData()
   }, [])
-
+  
   const fetchData = async () => {
-    const res = await fetch('/api/board/v1/categories')
+    const res = await fetch('/api/auth/v1/roles')
       .then((res) => res.json())
     
-    setItems(res.data.categories.map((v) => v.children).flat().map((v) => ({
-      classification: v.parent.description,
-      categoryId: v.parent.categoryId,
-      id: v.subcategoryId,
-      type: v.parent.label,
-      area: v.label,
-      score: v.score,
-      maxScore: v.parent.maxScore,
-      date: `${v.parent.evalDateStart.substr(0, 2)}월 ${v.parent.evalDateStart.substr(2, 2)}일 ~ ${v.parent.evalDateStop.substr(0, 2)}월 ${v.parent.evalDateStop.substr(2, 2)}일` 
+    setItems(res.data.map((v) => ({
+      keys: v.roleid,
+      name: v.label,
+      id: v.userid
     })))
   }
 
@@ -55,14 +50,16 @@ const ScoringArea = ({ mode, isOpen, onChangePage }) => {
     setItems([...items.map((v) => ({ ...v, checked: !fullChecked }))]);
     setFullchecked(!fullChecked);
   };
-
+  
   const onDelete = () => {
-    const todo = items.filter(v => v.checked)
+    const todo = items.filter((v) => v.checked)
 
-    if (todo.length < 1) return
-    if (!confirm('다음 영역을 삭제 할까요? (되돌릴 수 없습니다): \n' + todo.map(v => v.area).join(', '))) return
+    if (!confirm('다음 역할을 삭제 할까요? (되돌릴 수 없습니다): \n' + todo.map((v) => v.name).join(', '))) {
+      return
+    }
+
     for (const item of todo) {
-      fetch('/api/board/v1/categories/' + item.categoryId + '/' + item.id, {
+      fetch('/api/auth/v1/roles?roleId=' + item.keys, {
         method: 'DELETE'
       }).then(fetchData)
     }
@@ -72,17 +69,17 @@ const ScoringArea = ({ mode, isOpen, onChangePage }) => {
     <>
       <div className={styles.navbar} style={mode === 'light' ? {background: '#F3F5F7'} : {background: '#2B2E44'}}>
         <div>
-          <Link to="/ScoringAreaAdd" style={mode === 'light' ? {color: '#ACB2CB'} : {color: '#6F738E'}}>
+          <a href="" style={mode === 'light' ? {color: '#ACB2CB'} : {color: '#6F738E'}}>
             <div>
               <FaPlus style={{ position: "relative", top: "3px" }} size={22} />{" "}
             </div>
-            학생 등록하기
-          </Link>
+            역할 등록하기
+          </a>
           <a href="" style={mode === 'light' ? {color: '#ACB2CB'} : {color: '#6F738E'}}>
             <div>
               <FaTrashAlt style={ { position: "relative", top: "3px" }} size={22} />{" "}
             </div>
-            학생 삭제하기
+            역할 삭제하기
           </a>
         </div>
       </div>
@@ -97,22 +94,15 @@ const ScoringArea = ({ mode, isOpen, onChangePage }) => {
             style={
               mode === "light" ? { color: "#191919" } : { color: "#fff" }
             }>
-            점수 영역관리
+            역할관리
           </div>
           <div className={styles.div}>
-            <Link to="/ScoringAreaAdd">
+            <button onClick={() => onChangePage(8)}>
               <HiPlus
                 style={{ position: "relative", top: "2px" }}
                 size={18}
               />{" "}
-              추가하기
-            </Link>
-            <button onClick={() => onChangePage(10)}>
-              <HiPencil
-                style={{ position: "relative", top: "2px" }}
-                size={18}
-              />{" "}
-              수정하기
+              역할 추가하기
             </button>
             <button onClick={onDelete}>
               <HiTrash
@@ -121,17 +111,6 @@ const ScoringArea = ({ mode, isOpen, onChangePage }) => {
               />{" "}
               삭제하기
             </button>
-            <span
-              style={
-                mode == "light"
-                  ? { border: "1px solid #ACB2CB", color: "#ACB2CB" }
-                  : { border: "1px solid #6F738E", color: "#6F738E" }
-              }
-              className={styles.btn}
-            >
-              전체보기
-              <HiChevronDown size={18} />
-            </span>
           </div>
         </div>
         <table>
@@ -161,36 +140,32 @@ const ScoringArea = ({ mode, isOpen, onChangePage }) => {
                   </label>
                 </div>
               </td>
-              <td className={styles.classification}>
-                분류
+              <td className={styles.keys}>
+                아이디
               </td>
-              <td className={styles.type}>종류</td>
-              <td className={styles.area}>영역</td>
-              <td className={styles.score}>점수</td>
-            </tr>
-            <tr>
-              <td className={styles.date}>등록/수정일</td>
+              <td className={styles.name}>역할</td>
+              <td className={styles.id}>유저아이디</td>
             </tr>
           </thead>
           {items === null && (
-            <tbody style={ mode === "light" ? { color: "#ACB2CB" } : { color: "#6F738E" }}>
-              <tr>
-                <td colspan={6}>
-                  로딩중...
-                </td>
-              </tr>
-            </tbody>
+              <tbody style={ mode === "light" ? { color: "#ACB2CB" } : { color: "#6F738E" }}>
+                <tr>
+                  <td>
+                    역할 목록을 불러오는 중 입니다.
+                  </td>
+                </tr>
+              </tbody>
           )}
           {items !== null && items.length < 1 && (
-            <tbody style={ mode === "light" ? { color: "#ACB2CB" } : { color: "#6F738E" }}>
-              <tr>
-                <td colspan={6}>
-                  영역 목록이 비어있습니다
-                </td>
-              </tr>
-            </tbody>
+              <tbody style={ mode === "light" ? { color: "#ACB2CB" } : { color: "#6F738E" }}>
+                <tr>
+                  <td>
+                    역할 리스트가 비어있습니다
+                  </td>
+                </tr>
+              </tbody>
           )}
-          {items !== null && items?.map((item, index) => {
+          {items !== null && items.map((item, index) => {
             return (
               <tbody key={index} style={ mode === "light" ? { color: "#ACB2CB" } : { color: "#6F738E" }}>
                 <tr>
@@ -202,21 +177,14 @@ const ScoringArea = ({ mode, isOpen, onChangePage }) => {
                       </label>
                     </div>
                   </td>{" "}
-                  <td className={styles.classification} style={ mode === "light" ? { color: "#8993A7" } : { color: "#8C8EA0" }}>
-                    <span>{item.classification}</span>
+                  <td className={styles.keys} style={ mode === "light" ? { color: "#8993A7" } : { color: "#8C8EA0" }}>
+                    <span>{item.keys}</span>
                   </td>
-                  <td className={styles.type}>{item.type}</td>
-                  <td className={styles.area}>{item.area}</td>
-                  <td className={styles.score}>
-                    {item.score}점 <br />
-                    최대 {item.maxScore}점
+                  <td className={styles.name}>
+                    {item.name}
                   </td>
-                </tr>
-                <tr>
-                  <td className={styles.date}>
-                    <span>
-                      {item.date}
-                    </span>
+                  <td className={styles.id}>
+                    {item.id}
                   </td>
                 </tr>
               </tbody>

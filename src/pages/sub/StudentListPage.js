@@ -14,15 +14,21 @@ import { FaCheck, FaPlus, FaTrashAlt } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
 import styles from "../../css/StudentList.module.scss";
 
-const StudentListPage = ({ mode, onChangePage }) => {
+const StudentListPage = ({ mode, onChangePage, page, setPage }) => {
 const [fullChecked, setFullchecked] = useState(false);
   const [items, setItems] = useState(null);
 
   useEffect(() => {
     (async () => {
-      const res = await fetch('/api/auth/v1/students/filter')
+      const res = await fetch('/api/auth/v1/users?onlyStudent=true&page=' + (page + 1))
         .then((res) => res.json())
       
+      if (res.data.length < 1 && page > 0) {
+        setPage(page - 1)
+        setItems([])
+        return
+      }
+
       setItems(res.data.map((v) => ({
         name: v.name,
         id: v.userid,
@@ -76,17 +82,6 @@ const [fullChecked, setFullchecked] = useState(false);
                 />{" "}
                 점수 부여하기
               </button>
-              <span
-                style={
-                  mode == "light"
-                    ? { border: "1px solid #ACB2CB", color: "#ACB2CB" }
-                    : { border: "1px solid #6F738E", color: "#6F738E" }
-                }
-                className={styles.btn}
-              >
-                전체보기
-                <HiChevronDown size={18} />
-              </span>
             </div>
           </div>
           <table>

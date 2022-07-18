@@ -30,6 +30,11 @@ const TeacherMain = ({ mode, isOpen, selectPage, onChangePage }) => {
     console.log('active page', selectPage);
     setActive(selectPage)
   }, [selectPage])
+
+  const setPageFn = (v) => {
+    setPage(v)
+  }
+
   return (
     <div>
       <div className={isOpen === true ? styles.open_main : styles.hide_main}>
@@ -52,7 +57,7 @@ const TeacherMain = ({ mode, isOpen, selectPage, onChangePage }) => {
               {selectPage === 9 && "학생 점수부여/점수부여"}
             </span>
           </div>
-          {selectPage === 1 && <div className={styles.page}>
+          {selectPage < 3 && <div className={styles.page}>
             <div
               className={
                 mode === "light" ? styles.light_page : styles.dark_page
@@ -93,7 +98,7 @@ const TeacherMain = ({ mode, isOpen, selectPage, onChangePage }) => {
         </div>
         <div className={styles.listBox}>
           { selectPage === 1 && <SubmitPage mode={mode} key={page} page={page} setPage={setPage}/> }
-          { selectPage === 2 && <StudentListPage mode={mode}/> }
+          { selectPage === 2 && <StudentListPage mode={mode}key={page} page={page} setPage={setPage}/> }
           { selectPage === 3 && <HallOfFame mode={mode}/> }
           { selectPage === 4 && <Introduce mode={mode}/> }
           {/* { selectPage === 5 && <Statistics mode={mode}/> } */}

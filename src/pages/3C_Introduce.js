@@ -32,7 +32,7 @@ const Introduce = ({ mode, isOpen }) => {
             다양한 방법이 있는데 그 중 조건을 만족한 것을 신청하면 <br />
             포인트를 얻을 수 있다.
           </p>
-          <a href="http://viewer20.gyo6.net:8080/SynapDocViewServer/viewer/doc.html?key=ac720a6703974861af67e57b7e3a7dec&convType=img&convLocale=en_US&contextPath=/SynapDocViewServer" style={mode === 'light' ? {color: '#0320b1'} : {color: '#0684c4'}} >자세한 내용은 이곳을 눌러 확인하세요</a>
+          <a target="_blank" href="https://3c-uploaded.s3.ap-northeast-2.amazonaws.com/files/2022%EB%85%84+3C%EC%9D%B8%EC%A6%9D%EC%A0%9C+%EA%B8%B0%EC%A4%80.pdf" style={mode === 'light' ? {color: '#0320b1'} : {color: '#0684c4'}} >자세한 내용은 이곳을 눌러 확인하세요</a>
           {/* 대충 설치 위치 */}
         </div>
       </div>

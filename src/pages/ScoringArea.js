@@ -26,20 +26,24 @@ const ScoringArea = ({ mode, isOpen }) => {
   const [items, setItems] = useState(null);
 
   useEffect(() => {
-    (async () => {
-      const res = await fetch('/api/board/v1/categories')
-        .then((res) => res.json())
-      
-      setItems(res.data.categories.map((v) => v.children).flat().map((v) => ({
-        classification: v.parent.description,
-        type: v.parent.label,
-        area: v.label,
-        score: v.score,
-        maxScore: v.parent.maxScore,
-        date: `${v.parent.evalDateStart.substr(0, 2)}월 ${v.parent.evalDateStart.substr(2, 2)}일 ~ ${v.parent.evalDateStop.substr(0, 2)}월 ${v.parent.evalDateStop.substr(2, 2)}일` 
-      })))
-    })() 
+    fetchData()
   }, [])
+
+  const fetchData = async () => {
+    const res = await fetch('/api/board/v1/categories')
+      .then((res) => res.json())
+    
+    setItems(res.data.categories.map((v) => v.children).flat().map((v) => ({
+      classification: v.parent.description,
+      categoryId: v.parent.categoryId,
+      id: v.subcategoryId,
+      type: v.parent.label,
+      area: v.label,
+      score: v.score,
+      maxScore: v.parent.maxScore,
+      date: `${v.parent.evalDateStart.substr(0, 2)}월 ${v.parent.evalDateStart.substr(2, 2)}일 ~ ${v.parent.evalDateStop.substr(0, 2)}월 ${v.parent.evalDateStop.substr(2, 2)}일` 
+    })))
+  }
 
   const onCheck = (index) => () => {
     items[index].checked = !items[index].checked;
@@ -51,6 +55,17 @@ const ScoringArea = ({ mode, isOpen }) => {
     setItems([...items.map((v) => ({ ...v, checked: !fullChecked }))]);
     setFullchecked(!fullChecked);
   };
+
+  const onDelete = () => {
+    const todo = items.filter(v => v.checked)
+
+    if (!confirm('다음 영역을 삭제 할까요? (되돌릴 수 없습니다): \n' + todo.map(v => v.area).join(', '))) return
+    for (const item of todo) {
+      fetch('/api/board/v1/categories/' + item.categoryId + '/' + item.id, {
+        method: 'DELETE'
+      }).then(fetchData)
+    }
+  }
 
   return (
     <>
@@ -98,24 +113,13 @@ const ScoringArea = ({ mode, isOpen }) => {
               />{" "}
               수정하기
             </a>
-            <a href="">
+            <button onClick={onDelete}>
               <HiTrash
                 style={{ position: "relative", top: "2px" }}
                 size={18}
               />{" "}
               삭제하기
-            </a>
-            <span
-              style={
-                mode == "light"
-                  ? { border: "1px solid #ACB2CB", color: "#ACB2CB" }
-                  : { border: "1px solid #6F738E", color: "#6F738E" }
-              }
-              className={styles.btn}
-            >
-              전체보기
-              <HiChevronDown size={18} />
-            </span>
+            </button>
           </div>
         </div>
         <table>

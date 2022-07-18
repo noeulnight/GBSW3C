@@ -36,7 +36,7 @@ const ScoringArea = ({ mode, isOpen, page, onChangePage }) => {
     setItems(res.data.map((v) => ({
       keys: !v.cardinal ? '선생님' : `${v.cardinal}기`,
       name: v.name,
-      area: 'a',
+      area: v.dep.desc,
       id: v.userid,
       authority: !v.cardinal ? '선생님' : '학생',
       teacher: v.phone
@@ -57,7 +57,7 @@ const ScoringArea = ({ mode, isOpen, page, onChangePage }) => {
   const onDelete = () => {
     const todo = items.filter((v) => v.checked)
 
-    if (!confirm('다음 유저를 삭제 할까요? (되돌릴 수  없습니다): \n' + todo.map((v) => v.name).join(', '))) {
+    if (!confirm('다음 유저를 삭제 할까요? (되돌릴 수 없습니다): \n' + todo.map((v) => v.name).join(', '))) {
       return
     }
 

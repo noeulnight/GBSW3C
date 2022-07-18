@@ -62,7 +62,7 @@ const ScoringArea = ({ mode, isOpen, page, onChangePage }) => {
     }
 
     for (const item of todo) {
-      fetch('/api/auth/v1/users?userId=' + item.name, {
+      fetch('/api/auth/v1/users?userId=' + item.id, {
         method: 'DELETE'
       }).then(fetchData)
     }

@@ -105,7 +105,7 @@ const ScoringArea = ({ mode, isOpen, page, onChangePage }) => {
                 style={{ position: "relative", top: "2px" }}
                 size={18}
               />{" "}
-              학생 추가하기
+              계정 추가하기
             </button>
             <button onClick={onDelete}>
               <HiTrash

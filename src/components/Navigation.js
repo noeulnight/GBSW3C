@@ -136,6 +136,7 @@ if (grade == 2) {
             {/* <Link className={page === 5 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="" onClick={() => onChangePage(5)}><li><p>통계분석</p></li></Link> */}
             <Link className={page === 5 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="" onClick={() => onChangePage(5)}><li><p>계정관리</p></li></Link>
             <Link className={page === 6 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="" onClick={() => onChangePage(6)}><li><p>점수 영역관리</p></li></Link>
+            <Link className={page === 11 ? mode === 'light' ? styles.light_checked : styles.dark_checked : null} to="" onClick={() => onChangePage(11)}><li><p>역할관리</p></li></Link>
           </ul>
         </div>
         </div>

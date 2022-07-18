@@ -20,7 +20,7 @@ const [fullChecked, setFullchecked] = useState(false);
 
   useEffect(() => {
     (async () => {
-      const res = await fetch('/api/auth/v1/users?onlyStudent=true&page=' + (page + 1))
+      const res = await fetch('/api/auth/v1/students?page=' + (page + 1))
         .then((res) => res.json())
       
       if (res.data.length < 1 && page > 0) {
@@ -33,7 +33,7 @@ const [fullChecked, setFullchecked] = useState(false);
         name: v.name,
         id: v.userid,
         keys: `${v.cardinal}기`,
-        department: "소프트웨어개발과",
+        department: v.dep.desc,
         phone: v.phone
       })))
     })()

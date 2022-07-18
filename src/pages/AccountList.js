@@ -36,7 +36,7 @@ const ScoringArea = ({ mode, isOpen, page, onChangePage }) => {
     setItems(res.data.map((v) => ({
       keys: !v.cardinal ? '선생님' : `${v.cardinal}기`,
       name: v.name,
-      area: 'a',
+      area: v.dep.desc,
       id: v.userid,
       authority: !v.cardinal ? '선생님' : '학생',
       teacher: v.phone

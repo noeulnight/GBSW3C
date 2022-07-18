@@ -120,17 +120,6 @@ const ScoringArea = ({ mode, isOpen }) => {
               />{" "}
               삭제하기
             </button>
-            <span
-              style={
-                mode == "light"
-                  ? { border: "1px solid #ACB2CB", color: "#ACB2CB" }
-                  : { border: "1px solid #6F738E", color: "#6F738E" }
-              }
-              className={styles.btn}
-            >
-              전체보기
-              <HiChevronDown size={18} />
-            </span>
           </div>
         </div>
         <table>

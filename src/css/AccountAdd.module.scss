@@ -134,6 +134,9 @@
             }
             input {
               width: 100%;
+              &:focus {
+                border: 1px solid red;
+              }
             }
           }
           >div:nth-child(1) {

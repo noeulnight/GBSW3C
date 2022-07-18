@@ -8,9 +8,8 @@ import { FaChevronLeft, FaChevronRight, FaPlus, FaBackspace, FaDownload } from "
 import Select from 'react-select'
 import { useNavigate, Link } from "react-router-dom";
 
-import styles from "../css/AccountAdd.module.scss";
-
-const AccountAdd = ({ mode, isOpen }) => {
+import styles from "../css/AccountAdd.module.scss"
+const AccountAdd = ({ mode, isOpen,  onChangePage }) => {
   const editor = createRef()
   const [loading, setLoading] = useState(true)
   const [departs, setDeparts] = useState(null)
@@ -30,7 +29,7 @@ const AccountAdd = ({ mode, isOpen }) => {
   }, [])
 
   async function onSubmit (e) {
-    e.preventㅇefault()
+    e.preventDefault()
 
     setLoading(true)
     const data = await fetch('/api/auth/v1/students', {
@@ -38,8 +37,8 @@ const AccountAdd = ({ mode, isOpen }) => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        cardinal,
+        body: JSON.stringify({
+          cardinal,
         users: [
           { name, phone }
         ],
@@ -48,7 +47,7 @@ const AccountAdd = ({ mode, isOpen }) => {
     }).then((res) => res.status === 403 ? window.location.reload() : res.json())
 
     if (data.success) {
-      navigation('/')
+      onChangePage(5)
       return
     }
 
@@ -112,67 +111,73 @@ const AccountAdd = ({ mode, isOpen }) => {
               <div style={mode === 'light' ? {color: '#191919'} : {color: '#FFF'}}>신청하기</div>
             </div>
             <div className={styles.category}>
-                <div>
-                  <div>
-                    <p>이름</p>
-                    <input 
-                      required
-                      type="text" 
-                      placeholder="이름" 
-                      onChange={(e) => setName(e.value)}
-                      style={mode === 'light'
-                        ? {color: "#191919", background: '#F3F5F7', border: "1px solid #ACB2CB", padding: '8px', borderRadius: '5px' }
-                        : {color: '#6F738E', background: '#2B2E44', border: "1px solid #6F738E", padding: '8px', borderRadius: '5px'}
-                      } 
-                    />
-                  </div>
-                  <div>
-                    <p>기수</p>
-                    <input 
-                      required
-                      type="number" 
-                      placeholder="기수" 
-                      onChange={(e) => setCardinal(e.value)}
-                      style={mode === 'light'
-                        ? {color: "#191919", background: '#F3F5F7', border: "1px solid #ACB2CB", padding: '8px', borderRadius: '5px' }
-                        : {color: '#6F738E', background: '#2B2E44', border: "1px solid #6F738E", padding: '8px', borderRadius: '5px'}
-                      } 
-                    />
-                  </div>
-                </div>
-                <div>
-                  <div>
-                    <p>전화번호</p>
-                    <input 
-                      required
-                      type="text" 
-                      maxLength="13"
-                      onChange={(e) => setPhone(e.value)}
-                      pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
-                      placeholder="하이픈(-)을 포함하여 전화번호를 입력해주세요." 
-                      style={mode === 'light'
-                        ? {color: "#191919", background: '#F3F5F7', border: "1px solid #ACB2CB", padding: '8px', borderRadius: '5px' }
-                        : {color: '#6F738E', background: '#2B2E44', border: "1px solid #6F738E", padding: '8px', borderRadius: '5px'}
-                      } 
-                    />  
-                  </div>
-                  <div>
-                    <p>학과 선택</p>
-                    <Select
-                      styles={{
-                        control: (provided) => ({
-                          cursor: 'pointer',
-                          ...provided,
-                          ...(mode == "light"
-                            ? {
-                                border: "1px solid #ACB2CB",
-                                backgroundColor: "#F3F5F7",
-                              }
-                            : {
-                                border: "1px solid #6F738E",
-                                backgroundColor: "#2B2E44",
-                              }),
-                        }),
+              <div>
+                <p>이름</p>
+                <input 
+                  required
+                  type="text" 
+                  placeholder="이름" 
+                  onChange={(e) => setName(e.target.value)}
+                  style={mode === 'light'
+                    ? {color: "#191919", background: '#F3F5F7', border: "1px solid #ACB2CB", padding: '8px', borderRadius: '5px' }
+                    : {color: '#6F738E', background: '#2B2E44', border: "1px solid #6F738E", padding: '8px', borderRadius: '5px'}
+                  } 
+                />
+                <p>기수</p>
+                <input 
+                  required
+                  type="number" 
+                  placeholder="기수" 
+                  onChange={(e) => setCardinal(e.target.value)}
+                  style={mode === 'light'
+                    ? {color: "#191919", background: '#F3F5F7', border: "1px solid #ACB2CB", padding: '8px', borderRadius: '5px' }
+                    : {color: '#6F738E', background: '#2B2E44', border: "1px solid #6F738E", padding: '8px', borderRadius: '5px'}
+                  } 
+                />
+                <p>전화번호</p>
+                <input 
+                  required
+                  type="text" 
+                  maxLength="13"
+                  onChange={(e) => setPhone(e.target.value)}
+                  pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
+                  placeholder="하이픈(-)을 포함하여 전화번호를 입력해주세요." 
+                  style={mode === 'light'
+                    ? {color: "#191919", background: '#F3F5F7', border: "1px solid #ACB2CB", padding: '8px', borderRadius: '5px' }
+                    : {color: '#6F738E', background: '#2B2E44', border: "1px solid #6F738E", padding: '8px', borderRadius: '5px'}
+                  } 
+                />
+                <p>학과 선택</p>
+                <Select
+                  styles={{
+                    control: (provided) => ({
+                      cursor: 'pointer',
+                      ...provided,
+                      ...(mode == "light"
+                        ? {
+                            border: "1px solid #ACB2CB",
+                            backgroundColor: "#F3F5F7",
+                          }
+                        : {
+                            border: "1px solid #6F738E",
+                            backgroundColor: "#2B2E44",
+                          }),
+                    }),
+                    singleValue: (provided) => ({
+                      ...provided,
+                      ...(mode == "light"
+                      ? { color: "#8993A7" }
+                      : { color: "#8C8EA0" }),
+                    }),
+                    menuList: (provided) => ({
+                      ...provided,
+                      ...(mode == "light"
+                        ? {
+                          border: "1px solid #ACB2CB",
+                        }
+                        : {
+                          border: "1px solid #6F738E",
+              }),
                         singleValue: (provided) => ({
                           ...provided,
                           ...(mode == "light"
@@ -215,28 +220,18 @@ const AccountAdd = ({ mode, isOpen }) => {
                               backgroundColor: state.isFocused ? 'rgb(6, 132, 196)' : "#383850",
                             }),
                         }),
-                        placeholder: (provided) => ({
-                          ...provided,
-                          ...(mode == "light"
-                            ? {
-                              color: '#8993A7'
-                            }
-                            : {
-                              color: '#8C8EA0'
-                            }),
-                        }),
-                        container: (provided) => ({
-                          ...provided,
-                          zIndex: 50,
-                        }),
-                      }}
-                      isSearchable={false}
-                      onChange={(e) => setDepart(e.value)}
-                      options={departs?.map((v) => ({ value: v.depid, label: v.desc })) || []}
-                      placeholder="학과를 선택하세요."/>
-                  </div>
-                </div>
-            </div>
+                    }),
+                    container: (provided) => ({
+                      ...provided,
+                      zIndex: 50,
+                    }),
+                  }}
+                  isSearchable={false}
+                  onChange={(e) => setDepart(e.value)}
+                  options={departs?.filter((v) => v.depid > 1).map((v) => ({ value: v.depid, label: v.desc })) || []}
+                  placeholder="학과를 선택하세요."/>
+              </div>
+  </div>
             <p style={{
               ...(mode == "light"
               ? {

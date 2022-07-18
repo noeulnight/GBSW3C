@@ -105,7 +105,7 @@ const TeacherMain = ({ mode, isOpen, selectPage, onChangePage }) => {
           { selectPage === 5 && <AccountList page={selectPage} onChangePage={onChangePage} mode={mode} isOpen={isOpen} /> }
           { selectPage === 6 && <ScoringArea page={selectPage} mode={mode} isOpen={isOpen} /> }
           { selectPage === 7 && <PasswordChange mode={mode}/> }
-          { selectPage === 8 && <AccountAdd mode={mode} isOpen={isOpen} /> }
+          { selectPage === 8 && <AccountAdd  onChangePage={onChangePage} mode={mode} isOpen={isOpen} /> }
           { selectPage === 9 && <StudentListPageAdd mode={mode} isOpen={isOpen} />}
         </div>
       </div>

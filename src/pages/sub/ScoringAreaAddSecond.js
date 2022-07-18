@@ -45,7 +45,9 @@ const ScoringAreaAddSecond = ({ mode, isOpen }) => {
                 신청하기
               </div>
             </div>
-
+            <div className={styles.inputForm}>
+              
+            </div>
             <div className={styles.btn}>
               <Link to="/">
                 <button className={styles.cancelbtn} style={{ alignSelf: 'center', cursor: 'pointer', border: 'none', backgroundColor: 'gray', color: 'white', padding: 10, fontSize: 16, borderRadius: 4}}>

@@ -23,6 +23,7 @@ import ScoringArea from './pages/ScoringArea'
 import AccountList from './pages/AccountList'
 import Account from './pages/sub/ScoringAreaAdd'
 import ScoringAreaAdd from "./pages/sub/ScoringAreaAdd";
+import ScoringAreaAddSecond from "./pages/sub/ScoringAreaAddSecond";
 import StudentListPageAdd from "./pages/sub/StudentListPageAdd";
 
 function App () {
@@ -97,6 +98,7 @@ function App () {
             <Route path="/account" element={<Account mode={mode} isOpen={isOpen} />} />
             <Route path="/posts/:id" element={<StudentSubmitView mode={mode} isOpen={isOpen} />} />
             <Route path="/ScoringAreaAdd" element={<ScoringAreaAdd mode={mode} isOpen={isOpen} />} />
+            <Route path="/ScoringAreaAddSecond" element={<ScoringAreaAddSecond mode={mode} isOpen={isOpen} />} />
           </Routes>
           <Header mode={mode} setMode={setMode} isOpen={isOpen} setMenu={setMenu} />
           <Navigation grade={grade} mode={mode} isOpen={isOpen} page={activePage} onChangePage={onChangePage} />

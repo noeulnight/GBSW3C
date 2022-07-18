@@ -81,6 +81,7 @@ const [fullChecked, setFullchecked] = useState(false);
                   size={18}
                 />{" "}
                 점수 부여하기
+     
               </button>
             </div>
           </div>

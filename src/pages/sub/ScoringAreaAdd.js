@@ -7,8 +7,6 @@ import {
   HiRefresh,
   HiReply,
 } from "react-icons/hi";
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css'
 import { FaChevronLeft, FaChevronRight, FaPlus, FaBackspace, FaDownload } from "react-icons/fa";
 import Select from 'react-select'
 import { Link } from "react-router-dom";
@@ -59,101 +57,105 @@ const ScoringAreaAdd = ({ mode, isOpen }) => {
             </div>
             <div className={styles.inputForm}>
               <div className={styles.first}>
-              <div className={styles.name}>
-                <div className={styles.type}>
-                  <p>종류 이름</p>
-                  <input />
-                </div>
-                <div className={styles.classification}>
-                  <p>분류 이름</p>
-                  <input />
+                <div className={styles.name}>
+                  <div className={styles.type}>
+                    <p>종류 이름</p>
+                    <input />
+                  </div>
+                  <div className={styles.classification}>
+                    <p>분류 이름</p>
+                    <input />
+                  </div>
                 </div>
               </div>
-              <div className={styles.maxScore}>
-                <p>최대 점수</p>
-                <input type='number' />
-              </div>
-            </div>
-            <div className={styles.second}>
-              <div className={styles.select}>
-                <p>관리자 선택</p>
-                <Select
-                styles={{
-                  control: (provided) => ({
-                    cursor: 'pointer',
-                    ...provided,
-                    ...(mode == "light"
-                      ? {
+              <div className={styles.second}>
+                <div className={styles.maxScore}>
+                  <p>최대 점수</p>
+                  <input type='number' />
+                </div>
+                <div className={styles.select}>
+                  <p>관리자 선택</p>
+                  <Select
+                  styles={{
+                    control: (provided) => ({
+                      cursor: 'pointer',
+                      ...provided,
+                      ...(mode == "light"
+                        ? {
+                            border: "1px solid #ACB2CB",
+                            backgroundColor: "#F3F5F7",
+                          }
+                        : {
+                            border: "1px solid #6F738E",
+                            backgroundColor: "#2B2E44",
+                          }),
+                    }),
+                    singleValue: (provided) => ({
+                      ...provided,
+                      ...(mode == "light"
+                      ? { color: "#8993A7" }
+                      : { color: "#8C8EA0" }),
+                    }),
+                    menuList: (provided) => ({
+                      ...provided,
+                      ...(mode == "light"
+                        ? {
                           border: "1px solid #ACB2CB",
+                        }
+                        : {
+                          border: "1px solid #6F738E",
+                        }),
+
+                    }),
+                    menu: (provided) => ({
+                      ...provided,
+                      ...(mode == "light"
+                        ? {
+                          color: "black",
                           backgroundColor: "#F3F5F7",
                         }
-                      : {
-                          border: "1px solid #6F738E",
-                          backgroundColor: "#2B2E44",
+                        : {
+                          color: "white",
+                          backgroundColor: "#383850",
                         }),
-                  }),
-                  singleValue: (provided) => ({
-                    ...provided,
-                    ...(mode == "light"
-                    ? { color: "#8993A7" }
-                    : { color: "#8C8EA0" }),
-                  }),
-                  menuList: (provided) => ({
-                    ...provided,
-                    ...(mode == "light"
-                      ? {
-                        border: "1px solid #ACB2CB",
-                      }
-                      : {
-                        border: "1px solid #6F738E",
-                      }),
-
-                  }),
-                  menu: (provided) => ({
-                    ...provided,
-                    ...(mode == "light"
-                      ? {
-                        color: "black",
-                        backgroundColor: "#F3F5F7",
-                      }
-                      : {
-                        color: "white",
-                        backgroundColor: "#383850",
-                      }),
-                  }),
-                  option: (provided, state) => ({
-                    ...provided,
-                    zIndex: 50,
-                    ...(mode == "light"
-                      ? {
-                        color: state.isFocused ? 'white' : "black",
-                        backgroundColor: state.isFocused ? 'rgb(6, 132, 196)' :  "#F3F5F7",
-                      }
-                      : {
-                        color: state.isFocused ? 'white' : "white",
-                        backgroundColor: state.isFocused ? 'rgb(6, 132, 196)' : "#383850",
-                      }),
-                  }),
-                  placeholder: (provided) => ({
-                    ...provided,
-                    ...(mode == "light"
-                      ? {
-                        color: '#8993A7'
-                      }
-                      : {
-                        color: '#8C8EA0'
-                      }),
-                  }),
-                  container: (provided) => ({
-                    ...provided,
-                    zIndex: 50,
-                  }),
-                }}
-                isSearchable={false}
-                onChange={onCategoryChange}
-                options={categories?.map((v) => ({ value: v.categoryId, label: v.label })) || []}
-                placeholder="카테고리를 선택하세요."/>
+                    }),
+                    option: (provided, state) => ({
+                      ...provided,
+                      zIndex: 50,
+                      ...(mode == "light"
+                        ? {
+                          color: state.isFocused ? 'white' : "black",
+                          backgroundColor: state.isFocused ? 'rgb(6, 132, 196)' :  "#F3F5F7",
+                        }
+                        : {
+                          color: state.isFocused ? 'white' : "white",
+                          backgroundColor: state.isFocused ? 'rgb(6, 132, 196)' : "#383850",
+                        }),
+                    }),
+                    placeholder: (provided) => ({
+                      ...provided,
+                      ...(mode == "light"
+                        ? {
+                          color: '#8993A7'
+                        }
+                        : {
+                          color: '#8C8EA0'
+                        }),
+                    }),
+                    container: (provided) => ({
+                      ...provided,
+                      zIndex: 50,
+                    }),
+                  }}
+                  isSearchable={false}
+                  onChange={onCategoryChange}
+                  options={categories?.map((v) => ({ value: v.categoryId, label: v.label })) || []}
+                  placeholder="카테고리를 선택하세요."/>
                 </div>
+              </div>
+              <div className={styles.Calendar}>
+                <p>신청 가능 기간</p>
+                <input type='date' className={styles.firstCalendar} /> ~ <input type='date' className={styles.secondCalendar} />
               </div>
             </div>
 
@@ -163,9 +165,11 @@ const ScoringAreaAdd = ({ mode, isOpen }) => {
                   취소
                 </button>
               </Link>
-              <button className={styles.submitbtn} style={{ marginLeft: 10, cursor: 'pointer', alignSelf: 'center', border: 'none', backgroundColor: 'rgb(6, 132, 196)', color: 'white', padding: 10, fontSize: 16, borderRadius: 4}}>
-                다음
-              </button>
+              <Link to="/ScoringAreaAddSecond">
+                <button className={styles.submitbtn} style={{ marginLeft: 10, cursor: 'pointer', alignSelf: 'center', border: 'none', backgroundColor: 'rgb(6, 132, 196)', color: 'white', padding: 10, fontSize: 16, borderRadius: 4}}>
+                  다음
+                </button>
+              </Link>
             </div>
           </div>
         </div>

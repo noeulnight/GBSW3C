@@ -94,7 +94,7 @@ const StudentSubmitPostPage = ({ mode, isOpen }) => {
         </div>
       )}
       <div className={isOpen === true ? styles.open_main : styles.hide_main}>
-      <div
+        <div
             className={styles.navbar}
             style={
               mode === "light"

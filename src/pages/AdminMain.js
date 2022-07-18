@@ -16,11 +16,12 @@ import HallOfFame from './HallOfFame'
 import Introduce from './3C_Introduce'
 import Statistics from './Statistics'
 import ScoringArea from './ScoringArea'
+import AccountAdd from './AccountAdd'
 import AccountList from './AccountList'
 import PasswordChange from './PasswordChange'
 import useSessionStorage from "../components/UseSessionStorage";
 
-const TeacherMain = ({ mode, isOpen, selectPage }) => {
+const TeacherMain = ({ mode, isOpen, selectPage, onChangePage }) => {
   const [active, setActive] = useSessionStorage("active")
   const [page, setPage] = useState(0)
 
@@ -46,6 +47,7 @@ const TeacherMain = ({ mode, isOpen, selectPage }) => {
               {selectPage === 5 && "계정관리"}
               {selectPage === 6 && "점수 영역관리"}
               {selectPage === 7 && "비밀번호 재설정"}
+              {selectPage === 8 && "계정관리/추가"}
             </span>
           </div>
           {selectPage === 1 && <div className={styles.page}>
@@ -93,9 +95,10 @@ const TeacherMain = ({ mode, isOpen, selectPage }) => {
           { selectPage === 3 && <HallOfFame mode={mode}/> }
           { selectPage === 4 && <Introduce mode={mode}/> }
           {/* { selectPage === 5 && <Statistics mode={mode}/> } */}
-          { selectPage === 5 && <AccountList page={selectPage} mode={mode} isOpen={isOpen} /> }
+          { selectPage === 5 && <AccountList page={selectPage} onChangePage={onChangePage} mode={mode} isOpen={isOpen} /> }
           { selectPage === 6 && <ScoringArea page={selectPage} mode={mode} isOpen={isOpen} /> }
           { selectPage === 7 && <PasswordChange mode={mode}/> }
+          { selectPage === 8 && <AccountAdd mode={mode} isOpen={isOpen} /> }
         </div>
       </div>
     </div>

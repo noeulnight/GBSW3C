@@ -19,7 +19,7 @@ import Select from "react-select";
 import styles from "../css/AccountList.module.scss";
 import StudentSubmitPage from "./sub/StudentSubmitPage"
 
-const ScoringArea = ({ mode, isOpen }) => {
+const ScoringArea = ({ mode, isOpen, page, onChangePage }) => {
   const [lists, setLists] = useSessionStorage("lists", 1)
   const [titles, setTitles] = useSessionStorage("titles", 1)
   const [fullChecked, setFullchecked] = useState(false);
@@ -99,13 +99,13 @@ const ScoringArea = ({ mode, isOpen }) => {
             계정관리
           </div>
           <div className={styles.div}>
-            <a href="">
+            <button onClick={() => onChangePage(8)}>
               <HiPlus
                 style={{ position: "relative", top: "2px" }}
                 size={18}
               />{" "}
               추가하기
-            </a>
+            </button>
             <a href="">
               <HiTrash
                 style={{ position: "relative", top: "2px" }}

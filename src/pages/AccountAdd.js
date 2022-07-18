@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
-import useSessionStorage from "../components/UseSessionStorage"
+import React, { useEffect, useState, createRef } from "react";
 import ProgressBar from "@ramonak/react-progress-bar";
-import { Link } from "react-router-dom";
+import { Editor } from '@toast-ui/react-editor'
+import '@toast-ui/editor/dist/toastui-editor.css'
+import '@toast-ui/editor/dist/theme/toastui-editor-dark.css';
+
 import {
   HiChevronLeft,
   HiChevronRight,
@@ -9,208 +11,249 @@ import {
   HiPlus,
   HiRefresh,
   HiReply,
-  HiSearch,
-  HiCheck,
-  HiTrash,
-  HiPencil
 } from "react-icons/hi";
-import { FaCheck, FaPlus, FaTrashAlt } from "react-icons/fa";
-import Select from "react-select";
-import styles from "../css/AccountList.module.scss";
-import StudentSubmitPage from "./sub/StudentSubmitPage"
+import { FaChevronLeft, FaChevronRight, FaPlus, FaBackspace, FaDownload } from "react-icons/fa";
+import Select from 'react-select'
+import { useNavigate, Link } from "react-router-dom";
 
-const ScoringArea = ({ mode, isOpen }) => {
-  const [lists, setLists] = useSessionStorage("lists", 1)
-  const [titles, setTitles] = useSessionStorage("titles", 1)
-  const [fullChecked, setFullchecked] = useState(false);
-  const [items, setItems] = useState([
-    {
-      keys: "1기",
-      name: "김무일",
-      area: "소프트웨어개발과",
-      id: "sw2_01",
-      date: "2022-04-25",
-      checked: false,
-      authority: '학생',
-      teacher: '정영훈',
-    },
-    {
-      keys: "1기",
-      name: "박대형",
-      area: "소프트웨어개발과",
-      id: "sw2_02",
-      date: "2022-04-25",
-      checked: false,
-      authority: '학생',
-      teacher: '정영훈',
-    },
-    {
-      keys: "1기",
-      name: "김윤현",
-      area: "소프트웨어개발과",
-      id: "sw2_03",
-      date: "2022-04-25",
-      checked: false,
-      authority: '학생',
-      teacher: '정영훈',
-    },
-  ]);
+import styles from "../css/AccountAdd.module.scss";
 
-  const onCheck = (index) => () => {
-    items[index].checked = !items[index].checked;
-    setItems([...items]);
-    setFullchecked(false);
-  };
+const AccountAdd = ({ mode, isOpen }) => {
+  const editor = createRef()
+  const [loading, setLoading] = useState(true)
+  const [departs, setDeparts] = useState(null)
+  const [depart, setDepart] = useState(null) 
+  const [name, setName] = useState(null)
+  const [cardinal, setCardinal] = useState(null)
+  const [phone, setPhone] = useState(null)
+  const [message, setMessage] = useState(null)
+  const navigation = useNavigate()
+  
+  useEffect(() => {
+    (async () => {
+      const res = await fetch('/api/auth/v1/departs').then((res) => res.status === 403 ? window.location.reload() : res.json())
+      setDeparts(res.data)
+      setLoading(false)
+    })()
+  }, [])
 
-  const onFullCheck = () => {
-    setItems([...items.map((v) => ({ ...v, checked: !fullChecked }))]);
-    setFullchecked(!fullChecked);
-  };
+  async function onSubmit (e) {
+    e.preventDefault()
+
+    setLoading(true)
+    const data = await fetch('/api/auth/v1/students', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        cardinal,
+        users: [
+          { name, phone }
+        ],
+        dep: depart
+      })
+    }).then((res) => res.status === 403 ? window.location.reload() : res.json())
+
+    if (data.success) {
+      navigation('/')
+      return
+    }
+
+    setLoading(false)
+    setMessage('오류가 발생했습니다! 모두 입력했는지 확인한 후 다시 시도해 보세요')
+  }
 
   return (
-    <>
-      <div className={styles.navbar} style={mode === 'light' ? {background: '#F3F5F7'} : {background: '#2B2E44'}}>
-        <div>
-          <a href="" style={mode === 'light' ? {color: '#ACB2CB'} : {color: '#6F738E'}}>
-            <div>
-              <FaPlus style={{ position: "relative", top: "3px" }} size={22} />{" "}
-            </div>
-            학생 등록하기
-          </a>
-          <a href="" style={mode === 'light' ? {color: '#ACB2CB'} : {color: '#6F738E'}}>
-            <div>
-              <FaTrashAlt style={ { position: "relative", top: "3px" }} size={22} />{" "}
-            </div>
-            학생 삭제하기
-          </a>
+      <div>
+      {loading && (
+        <div style={{
+          position: 'absolute',
+          top: 0, left: 0,
+          width: '100vw', height: '100vh',
+          zIndex: 5099, backgroundColor: '#00000099', 
+          display: 'flex', justifyContent: 'center', 
+          alignItems: 'center', color: 'white' }}>
+          처리중입니다...
         </div>
-      </div>
-      <div style={
-          mode === "light"
-            ? { background: "#FFFFFF" }
-            : { background: "#2F3146" }
-          }
-          className={styles.Box}>
-        <div className={styles.listBoxHeader}>
-          <div
-            style={
-              mode === "light" ? { color: "#191919" } : { color: "#fff" }
-            }>
-            계정관리
-          </div>
-          <div className={styles.div}>
-            <a href="">
-              <HiPlus
-                style={{ position: "relative", top: "2px" }}
-                size={18}
-              />{" "}
-              추가하기
-            </a>
-            <a href="">
-              <HiTrash
-                style={{ position: "relative", top: "2px" }}
-                size={18}
-              />{" "}
-              삭제하기
-            </a>
-            <span
-              style={
-                mode == "light"
-                  ? { border: "1px solid #ACB2CB", color: "#ACB2CB" }
-                  : { border: "1px solid #6F738E", color: "#6F738E" }
-              }
-              className={styles.btn}
-            >
-              전체보기
-              <HiChevronDown size={18} />
-            </span>
-          </div>
-        </div>
-        <table>
-          <thead
+      )}
+      <div className={isOpen === true ? styles.open_main : styles.hide_main}>
+        <div
+            className={styles.navbar}
             style={
               mode === "light"
-                ? { background: "#F3F5F7", color: "#ACB2CB" }
-                : { background: "#2B2E44", color: "#6F738E" }
+                ? { background: "#F3F5F7" }
+                : { background: "#2B2E44" }
             }
           >
-            <tr>
-              <td className={styles.checkBox}>
+            <div>
+              <Link
+                to="/"
+                style={
+                  mode === "light" ? { color: "#ACB2CB" } : { color: "#6F738E" }
+                }
+              >
                 <div>
-                  <input
-                    checked={fullChecked}
-                    onChange={onFullCheck}
-                    type="checkbox"
-                    id="ckeckBox"
-                  />
-                  <label
-                    htmlFor="ckeckBox"
-                    className={
-                      mode === "light" ? styles.light_ck : styles.dark_ck
-                    }
-                  >
-                    <HiCheck size={18} />
-                  </label>
+                  <FaChevronLeft size={24} />{" "}
                 </div>
-              </td>
-              <td className={styles.keys}>
-                기수
-              </td>
-              <td className={styles.name}>이름</td>
-              <td className={styles.area}>학과</td>
-              <td className={styles.id}>아이디</td>
-            </tr>
-            <tr>
-              <td className={styles.authority}>권한</td>
-              <td className={styles.teacher}>담당자</td>
-              <td className={styles.date}>신청일</td>
-            </tr>
-          </thead>
-          {items.map((item, index) => {
-            return (
-              <tbody key={index} style={ mode === "light" ? { color: "#ACB2CB" } : { color: "#6F738E" }}>
-                <tr>
-                  <td className={styles.checkBox}>
-                    <div>
-                      <input type="checkbox" onChange={onCheck(index)} checked={item.checked} id={index}/>
-                      <label htmlFor={index} className={ mode === "light" ? styles.light_ck : styles.dark_ck }>
-                        <HiCheck size={18} />
-                      </label>
-                    </div>
-                  </td>{" "}
-                  <td className={styles.keys} style={ mode === "light" ? { color: "#8993A7" } : { color: "#8C8EA0" }}>
-                    <span>{item.keys}</span>
-                  </td>
-                  <td className={styles.name}>{item.name}</td>
-                  <td className={styles.area}>{item.area}</td>
-                  <td className={styles.id}>
-                    {item.id}
-                  </td>
-                </tr>
-                <tr>
-                  <td className={styles.authority}>
-                    <span>
-                      {item.authority}
-                    </span>
-                  </td>
-                  <td className={styles.teacher}>
-                    <span>
-                      {item.teacher}
-                    </span>
-                  </td>
-                  <td className={styles.date}>
-                    <span>
-                      {item.date}
-                    </span>
-                  </td>
-                </tr>
-              </tbody>
-            );
-          })}
-        </table>
-      </div>
-    </>
-  );
-};
+                돌아가기
+              </Link>
+            </div>
+            <div>
+              <button 
+                onClick={onSubmit}
+                to="/submit"
+                style={
+                  mode === "light" ? { color: "#ACB2CB" } : { color: "#6F738E" }
+                }
+              >
+                <div>
+                  <FaChevronRight size={24} />{" "}
+                </div>
+                다음으로
+              </button>
+            </div>
+          </div> 
+        <form className={styles.listBox} onSubmit={(e) => onSubmit(e)}>
+          <div className={styles.Box} style={mode === 'light' ? {background: '#FFF', color: '#ACB2CB'} : {background: '#2F3146', color: '#6F738E'}}>
+            <div className={styles.listBoxHeader}>
+              <div style={mode === 'light' ? {color: '#191919'} : {color: '#FFF'}}>신청하기</div>
+            </div>
+            <div className={styles.category}>
+              <div>
+                <p>이름</p>
+                <input 
+                  required
+                  type="text" 
+                  placeholder="이름" 
+                  onChange={(e) => setName(e.value)}
+                  style={mode === 'light'
+                    ? {color: "#191919", background: '#F3F5F7', border: "1px solid #ACB2CB", padding: '8px', borderRadius: '5px' }
+                    : {color: '#6F738E', background: '#2B2E44', border: "1px solid #6F738E", padding: '8px', borderRadius: '5px'}
+                  } 
+                />
+                <p>기수</p>
+                <input 
+                  required
+                  type="number" 
+                  placeholder="기수" 
+                  onChange={(e) => setCardinal(e.value)}
+                  style={mode === 'light'
+                    ? {color: "#191919", background: '#F3F5F7', border: "1px solid #ACB2CB", padding: '8px', borderRadius: '5px' }
+                    : {color: '#6F738E', background: '#2B2E44', border: "1px solid #6F738E", padding: '8px', borderRadius: '5px'}
+                  } 
+                />
+                <p>전화번호</p>
+                <input 
+                  required
+                  type="text" 
+                  maxLength="13"
+                  onChange={(e) => setPhone(e.value)}
+                  pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
+                  placeholder="하이픈(-)을 포함하여 전화번호를 입력해주세요." 
+                  style={mode === 'light'
+                    ? {color: "#191919", background: '#F3F5F7', border: "1px solid #ACB2CB", padding: '8px', borderRadius: '5px' }
+                    : {color: '#6F738E', background: '#2B2E44', border: "1px solid #6F738E", padding: '8px', borderRadius: '5px'}
+                  } 
+                />
+                <p>학과 선택</p>
+                <Select
+                  styles={{
+                    control: (provided) => ({
+                      cursor: 'pointer',
+                      ...provided,
+                      ...(mode == "light"
+                        ? {
+                            border: "1px solid #ACB2CB",
+                            backgroundColor: "#F3F5F7",
+                          }
+                        : {
+                            border: "1px solid #6F738E",
+                            backgroundColor: "#2B2E44",
+                          }),
+                    }),
+                    singleValue: (provided) => ({
+                      ...provided,
+                      ...(mode == "light"
+                      ? { color: "#8993A7" }
+                      : { color: "#8C8EA0" }),
+                    }),
+                    menuList: (provided) => ({
+                      ...provided,
+                      ...(mode == "light"
+                        ? {
+                          border: "1px solid #ACB2CB",
+                        }
+                        : {
+                          border: "1px solid #6F738E",
+                        }),
 
-export default ScoringArea;
+                    }),
+                    menu: (provided) => ({
+                      ...provided,
+                      ...(mode == "light"
+                        ? {
+                          color: "black",
+                          backgroundColor: "#F3F5F7",
+                        }
+                        : {
+                          color: "white",
+                          backgroundColor: "#383850",
+                        }),
+                    }),
+                    option: (provided, state) => ({
+                      ...provided,
+                      zIndex: 50,
+                      ...(mode == "light"
+                        ? {
+                          color: state.isFocused ? 'white' : "black",
+                          backgroundColor: state.isFocused ? 'rgb(6, 132, 196)' :  "#F3F5F7",
+                        }
+                        : {
+                          color: state.isFocused ? 'white' : "white",
+                          backgroundColor: state.isFocused ? 'rgb(6, 132, 196)' : "#383850",
+                        }),
+                    }),
+                    placeholder: (provided) => ({
+                      ...provided,
+                      ...(mode == "light"
+                        ? {
+                          color: '#8993A7'
+                        }
+                        : {
+                          color: '#8C8EA0'
+                        }),
+                    }),
+                    container: (provided) => ({
+                      ...provided,
+                      zIndex: 50,
+                    }),
+                  }}
+                  isSearchable={false}
+                  onChange={(e) => setDepart(e.value)}
+                  options={departs?.map((v) => ({ value: v.depid, label: v.desc })) || []}
+                  placeholder="학과를 선택하세요."/>
+              </div>
+            </div>
+            <p style={{
+              ...(mode == "light"
+              ? {
+                color: 'black'
+              }
+              : {
+                color: 'white'
+              })
+            }}>
+            {message}
+            </p>
+            <button type="submit" style={{ cursor: 'pointer', alignSelf: 'center', border: 'none', backgroundColor: 'rgb(6, 132, 196)', color: 'white', padding: 10, fontSize: 16, borderRadius: 4}}>
+              제출
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+export default AccountAdd

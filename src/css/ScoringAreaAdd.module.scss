@@ -1,3 +1,156 @@
 * {
-  
+  body {
+    .open_main {
+      position: absolute;
+      right: 24px;
+      bottom: 70px;
+      width: calc((100% - 256px) - 48px);
+      height: calc((100% - 134px));
+      min-width: 260px;
+    }
+
+    .hide_main {
+      position: absolute;
+      right: 24px;
+      bottom: 70px;
+      width: calc(100% - 48px);
+      height: calc((100% - 134px));
+      min-width: 260px;
+    }
+
+    .navbar { 
+      position: absolute;
+      width: 100%;
+      height: 64px;
+      bottom: 0;
+      display: none;
+      >div {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        >a {
+          display: block;
+          text-align: center;
+        }
+        >button {
+          border: none;
+          outline: none;
+          background: transparent;
+        }
+      }
+    }
+
+    .listHeader {
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .title {
+        font-size: 22px;
+        font-weight: 700;
+
+        span {
+          font-size: 22px;
+        }
+      }
+
+      .btn {
+        display: flex;
+        margin-left: 20px;
+
+        .left {
+          margin-right: 10px;
+        }
+
+        label {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 24px;
+          height: 24px;
+          border-radius: 3px;
+        }
+      }
+    }
+
+    .listBox {
+      height: calc((100% - 70px));
+      border-radius: 4px;
+
+      .navbar { 
+        position: absolute;
+        width: 100%;
+        height: 64px;
+        bottom: 0;
+        display: none;
+        >div {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          >a {
+            display: block;
+            text-align: center;
+          }
+        }
+      }
+
+      .Box {
+        width: 100%;
+        height: 100%;
+        padding: 0 24px;
+        border-radius: 4px;
+
+        .btn {
+          position: relative;
+          top: 48px;
+          display: flex;
+          justify-content: flex-end;
+        }
+
+        .listBoxHeader {
+          height: 62px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          div:nth-child(1) {
+            font-weight: 500;
+          }
+
+          .div {
+            display: flex;
+            align-items: center;
+            >div {
+              span {
+                display: none;
+              }
+              >div {
+                box-shadow: none; 
+              }
+            }
+
+            a { 
+              color: #0684c4;
+              margin-right: 24px;
+              display: flex;
+              align-items: center;
+            }
+
+            .btn {
+              display: inline-block;
+              width: 100px;
+              height: 36px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 3px;
+            }
+          }
+        }
+      }
+    }
+  }
 }

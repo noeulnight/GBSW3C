@@ -59,8 +59,8 @@ const SubmitPage = ({ mode, page, depart, setPage }) => {
     setItems(res.data.posts.map((post) => ({
       number: post.postId,
       name: post.user.name,
-      classification1: post.subCategory.parent.label,
-      classification2: post.subCategory.label,
+      classification1: post.subCategory?.parent?.label || '삭제된 영역입니다.',
+      classification2: post.subCategory?.label || '삭제된 영역입니다.',
       files: post.files, 
       closed: post.closed,
       date: moment(post.createdAt).format('YYYY-MM-DD'),

@@ -156,23 +156,76 @@
           padding: 0 24px;
           border-radius: 4px;
   
-          .category {
-            display: flex;
-            >div {
-              flex: 1;
-              p {
-                margin-bottom: 5px;
-              }
-              >div {
-                margin-bottom: 20px;
-                >div {
-                  height: 40px;
-                }
-              }
+          
+        }
+      }
+    }
+  }
+}
+
+
+@media (max-width: 1480px) {
+  body {
+    .open_main {
+      position: absolute;
+      right: 24px;
+      bottom: 70px;
+      width: calc((100% - 48px));
+      height: calc((100% - 134px));
+    }
+
+    .hide_main {
+      position: absolute;
+      right: 24px;
+      bottom: 70px;
+      width: calc((100% - 48px));
+      height: calc((100% - 134px));
+    }
+  }
+}
+
+@media (max-width: 720px) {
+  * {
+    body {
+      .open_main {
+        width: 100%;
+        height: calc(100% - 64px);
+        left: 0;
+        bottom: 0;
+      }
+
+      .hide_main {
+        width: 100%;
+        height: calc(100% - 64px);
+        left: 0;
+        bottom: 0;
+      }
+
+      .navbar {
+        display: flex;
+      }
+
+      .listHeader {
+        height: 42px;
+        padding: 0 24px;
+        .title {
+          font-size: 14px;
+          span {
+            font-size: 14px;
+          }
+        }
+      }
+
+      .listBox {
+        .Box {
+          .listBoxHeader {
+            div {
+              display: none;
             }
-            >div:nth-child(1) {
-              margin-right: 40px;
-            }
+          }
+
+          .btn {
+            display: none;
           }
         }
       }

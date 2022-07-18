@@ -56,12 +56,12 @@ const ScoringArea = ({ mode, isOpen }) => {
     <>
       <div className={styles.navbar} style={mode === 'light' ? {background: '#F3F5F7'} : {background: '#2B2E44'}}>
         <div>
-          <a href="" style={mode === 'light' ? {color: '#ACB2CB'} : {color: '#6F738E'}}>
+          <Link to="/ScoringAreaAdd" style={mode === 'light' ? {color: '#ACB2CB'} : {color: '#6F738E'}}>
             <div>
               <FaPlus style={{ position: "relative", top: "3px" }} size={22} />{" "}
             </div>
             학생 등록하기
-          </a>
+          </Link>
           <a href="" style={mode === 'light' ? {color: '#ACB2CB'} : {color: '#6F738E'}}>
             <div>
               <FaTrashAlt style={ { position: "relative", top: "3px" }} size={22} />{" "}
@@ -84,13 +84,13 @@ const ScoringArea = ({ mode, isOpen }) => {
             점수 영역관리
           </div>
           <div className={styles.div}>
-            <a href="">
+            <Link to="/ScoringAreaAdd">
               <HiPlus
                 style={{ position: "relative", top: "2px" }}
                 size={18}
               />{" "}
               추가하기
-            </a>
+            </Link>
             <a href="">
               <HiPencil
                 style={{ position: "relative", top: "2px" }}

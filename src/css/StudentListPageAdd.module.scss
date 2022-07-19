@@ -12,15 +12,19 @@
     }
     .open_main {
       position: absolute;
-      width: 100%;
-      height: 100%;
+      right: 24px;
+      bottom: 70px;
+      width: calc((100% - 256px) - 48px);
+      height: calc((100% - 134px));
       min-width: 260px;
     }
 
     .hide_main {
       position: absolute;
+      right: 24px;
+      bottom: 70px;
       width: calc(100% - 48px);
-      height: 100%;
+      height: calc((100% - 134px));
       min-width: 260px;
     }
 
@@ -39,7 +43,7 @@
           display: block;
           text-align: center;
         }
-        >button, >a {
+        >button {
           border: none;
           outline: none;
           background: transparent;
@@ -47,91 +51,11 @@
       }
     }
 
-    .listHeader {
-      height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      .title {
-        font-size: 22px;
-        font-weight: 700;
-
-        span {
-          font-size: 22px;
-        }
-      }
-
-      .page {
-        display: flex;
-        align-items: center;
-
-        .light_page {
-          color: #8993A7;
-        }
-
-        .dark_page {
-          color: #6F738E;
-        }
-
-        span {
-          margin-right: 12px;
-        }
-
-        input {
-          width: 36px;
-          height: 24px;
-          border: none;
-          outline: none;
-          border-radius: 3px;
-          text-align: center;
-          margin-right: 5px;
-        }
-      }
-
-      .btn {
-        display: flex;
-        margin-left: 20px;
-
-        .left {
-          margin-right: 10px;
-        }
-
-        label {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 24px;
-          height: 24px;
-          border-radius: 3px;
-        }
-      }
-    }
 
     .listBox {
-      height: calc((100% - 70px));
+      height: 100%;
       border-radius: 4px;
 
-      .navbar { 
-        position: absolute;
-        width: 100%;
-        height: 64px;
-        bottom: 0;
-        display: none;
-        >div {
-          flex: 1;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          >a, >button {
-            display: block;
-            text-align: center;
-            border: none;
-            outline: none;
-            background: transparent;
-          }
-        }
-      }
       .Box {
         position: relative;
         width: 100%;
@@ -139,33 +63,75 @@
         padding: 0 24px;
         border-radius: 4px;
 
+        .listHeader {
+          height: 70px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+    
+          .title {
+            font-size: 22px;
+            font-weight: 700;
+    
+            span {
+              font-size: 22px;
+            }
+          }
+    
+          .btn {
+            display: flex;
+            margin-left: 20px;
+    
+            .left {
+              margin-right: 10px;
+            }
+    
+            label {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 24px;
+              height: 24px;
+              border-radius: 3px;
+            }
+          }
+        }
+        .checkedName {
+          margin-bottom: 20px;
+          >p {
+            padding: 5px;
+            display: inline-flex;
+            border-radius: 4px;
+            height: 38px;
+            align-items: center;
+            justify-content: center;
+          }
+        }
         .category {
           display: flex;
           >div {
-            display: flex;
+            flex: 1;
             width: 100%;
-            >div {
-              flex: 1;
-              p {
-                margin-bottom: 5px;
-              }
-              >div {
-                >input {
-                  height: 38px;
-                  width: 100%;
-                  margin-bottom: 20px;
-                  &:focus-visible {
-                    outline: 1px solid #0684c4;
-                  }
-                }
-              }
+            p {
+              margin-bottom: 5px;
             }
             >div:nth-child(1) {
               margin-right: 40px;
             }
+            >input {
+              height: 38px;
+              width: 100%;
+              margin-bottom: 20px;
+              &:focus-visible {
+                outline: 1px solid #0684c4;
+              }
+            }
+          }
+          >div:nth-child(1) {
+            margin-right: 40px;
           }
         }
-
+        
         .btn {
           position: absolute;
           bottom: 24px;
@@ -224,14 +190,18 @@
   body {
     .open_main {
       position: absolute;
-      width: 100%;
-      height: 100%;
+      right: 24px;
+      bottom: 70px;
+      width: calc((100% - 48px));
+      height: calc((100% - 134px));
     }
 
     .hide_main {
       position: absolute;
-      width: 100%;
-      height: 100%;
+      right: 24px;
+      bottom: 70px;
+      width: calc((100% - 48px));
+      height: calc((100% - 134px));
     }
   }
 }
@@ -270,32 +240,40 @@
 
       .listBox {
         .Box {
+          height: auto;
           .listBoxHeader {
             div {
               display: none;
             }
           }
-          .category {
-            display: flex;
-            >div {
-              display: block;
-              width: 100%;
-              >div {
-                >div {
-                  >input {
-                    width: 100%;
-                    margin-bottom: 20px;
-                  }
-                }
-              }
-              >div:nth-child(1) {
-                margin-right: 0px;
-              }
-            }
-          }
 
           .btn {
             display: none;
+          }
+
+          .category {
+            display: block;
+            >div {
+              flex: 1;
+              width: 100%;
+              p {
+                margin-bottom: 5px;
+              }
+              >div:nth-child(1) {
+                margin-right: 40px;
+              }
+              >input {
+                height: 38px;
+                width: 100%;
+                margin-bottom: 20px;
+                &:focus-visible {
+                  outline: 1px solid #0684c4;
+                }
+              }
+            }
+            >div:nth-child(1) {
+              margin-right: 40px;
+            }
           }
         }
       }

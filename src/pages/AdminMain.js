@@ -24,7 +24,7 @@ import StudentListPageAdd from './sub/StudentListPageAdd';
 import ScoringAreaAdd from './ScoringAreaEdit'
 import RoleList from './RoleList'
 
-const TeacherMain = ({ mode, isOpen, selectPage, onChangePage }) => {
+const TeacherMain = ({ mode, isOpen, selectPage, setSelectPage, onChangePage }) => {
   const [active, setActive] = useSessionStorage("active")
   const [page, setPage] = useState(0)
 
@@ -108,7 +108,7 @@ const TeacherMain = ({ mode, isOpen, selectPage, onChangePage }) => {
           { selectPage === 5 && <AccountList page={selectPage} onChangePage={onChangePage} mode={mode} isOpen={isOpen} /> }
           { selectPage === 6 && <ScoringArea page={selectPage} onChangePage={onChangePage} mode={mode} isOpen={isOpen} /> }
           { selectPage === 7 && <PasswordChange mode={mode}/> }
-          { selectPage === 8 && <AccountAdd  onChangePage={onChangePage} mode={mode} isOpen={isOpen} /> }
+          { selectPage === 8 && <AccountAdd  onChangePage={onChangePage} mode={mode} isOpen={isOpen} setSelectPage={setSelectPage} /> }
           { selectPage === 9 && <StudentListPageAdd mode={mode} isOpen={isOpen} />}
           { selectPage === 10 && <ScoringAreaAdd mode={mode} isOpen={isOpen} />}
           { selectPage === 11 && <RoleList mode={mode} isOpen={isOpen} />}

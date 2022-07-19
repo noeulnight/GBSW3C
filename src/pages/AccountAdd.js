@@ -9,7 +9,7 @@ import Select from 'react-select'
 import { useNavigate, Link } from "react-router-dom";
 
 import styles from "../css/AccountAdd.module.scss"
-const AccountAdd = ({ mode, isOpen,  onChangePage }) => {
+const AccountAdd = ({ mode, isOpen,  onChangePage, setSelectPage }) => {
   const editor = createRef()
   const [loading, setLoading] = useState(true)
   const [departs, setDeparts] = useState(null)
@@ -54,7 +54,7 @@ const AccountAdd = ({ mode, isOpen,  onChangePage }) => {
     setLoading(false)
     setMessage('오류가 발생했습니다! 모두 입력했는지 확인한 후 다시 시도해 보세요')
   }
-// 킹무일 (짱)
+
   return (
       <>
       {loading && (
@@ -83,6 +83,7 @@ const AccountAdd = ({ mode, isOpen,  onChangePage }) => {
                 style={
                   mode === "light" ? { color: "#ACB2CB" } : { color: "#6F738E" }
                 }
+                onClick={() => setActivePage(5)}
               >
                 <div>
                   <FaChevronLeft size={24} />{" "}
@@ -268,9 +269,14 @@ const AccountAdd = ({ mode, isOpen,  onChangePage }) => {
             }}>
             {message}
             </p>
-            <button className={styles.btn} type="submit" style={{ cursor: 'pointer', alignSelf: 'center', border: 'none', backgroundColor: 'rgb(6, 132, 196)', color: 'white', padding: 10, fontSize: 16, borderRadius: 4}}>
-              제출
-            </button>
+            <div className={styles.btn}>
+              <Link to="/" style={{ cursor: 'pointer', alignSelf: 'center', border: 'none', backgroundColor: 'gray', color: 'white', padding: 10, fontSize: 16, borderRadius: 4}} onClick={() => setActivePage(5)}>
+                뒤로
+              </Link>
+              <button type="submit" style={{ cursor: 'pointer', alignSelf: 'center', border: 'none', backgroundColor: 'rgb(6, 132, 196)', color: 'white', padding: 10, fontSize: 16, borderRadius: 4, marginLeft: 10}}>
+                제출
+              </button>
+            </div>
           </div>
         </form>
       </div>

@@ -23,7 +23,6 @@ import ScoringArea from './pages/ScoringArea'
 import AccountList from './pages/AccountList'
 import Account from './pages/sub/ScoringAreaAdd'
 import ScoringAreaAdd from "./pages/sub/ScoringAreaAdd";
-import ScoringAreaAddSecond from "./pages/sub/ScoringAreaAddSecond";
 import StudentListPageAdd from "./pages/sub/StudentListPageAdd";
 import TeacherSubmitView from "./pages/sub/TeacherSubmitView";
 
@@ -92,7 +91,7 @@ function App () {
       return (
         <div>
           <Routes>
-            <Route path="/" element={<AdminMain selectPage={activePage} onChangePage={onChangePage} mode={mode} isOpen={isOpen} />} />
+            <Route path="/" element={<AdminMain selectPage={activePage} setSelectPage={setActivePage} onChangePage={onChangePage} mode={mode} isOpen={isOpen} />} />
             <Route path="/stat" element={<Statistic page={activePage} mode={mode} isOpen={isOpen} />} />
             <Route path="/acc" element={<AccountList page={activePage} mode={mode} isOpen={isOpen} />} />
             <Route path="/area" element={<ScoringArea page={activePage} mode={mode} isOpen={isOpen} />} />
@@ -101,7 +100,6 @@ function App () {
             <Route path="/account" element={<Account mode={mode} isOpen={isOpen} />} />
             <Route path="/posts/:id" element={<TeacherSubmitView mode={mode} isOpen={isOpen} />} />
             <Route path="/ScoringAreaAdd" element={<ScoringAreaAdd mode={mode} isOpen={isOpen} />} />
-            <Route path="/ScoringAreaAddSecond" element={<ScoringAreaAddSecond mode={mode} isOpen={isOpen} />} />
           </Routes>
           <Header mode={mode} setMode={setMode} isOpen={isOpen} setMenu={setMenu} />
           <Navigation grade={grade} mode={mode} isOpen={isOpen} page={activePage} onChangePage={onChangePage} />

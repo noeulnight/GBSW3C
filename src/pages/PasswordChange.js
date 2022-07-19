@@ -50,31 +50,33 @@ const PasswordChange = ({isOpen, mode, onChangePage}) => {
   }
 
   return (
-    <form onSubmit={onSubmit} className={styles.form} style={mode === 'light' ? {background: '#FFFFFF'} : {background: '#2F3146'}}>
-      {loading && (
-        <div style={{
-          position: 'absolute',
-          top: 0, left: 0,
-          width: '100vw', height: '100vh',
-          zIndex: 999999999, backgroundColor: '#00000099', 
-          display: 'flex', justifyContent: 'center', 
-          alignItems: 'center', color: 'white' }}>
-          처리중입니다...
+    <div style={{width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+      <form onSubmit={onSubmit} className={styles.form} style={mode === 'light' ? {background: '#FFFFFF'} : {background: '#2F3146'}}>
+        {loading && (
+          <div style={{
+            position: 'absolute',
+            top: 0, left: 0,
+            width: '100vw', height: '100vh',
+            zIndex: 999999999, backgroundColor: '#00000099', 
+            display: 'flex', justifyContent: 'center', 
+            alignItems: 'center', color: 'white' }}>
+            처리중입니다...
+          </div>
+        )}
+        <div className={styles.title} style={mode === 'light' ? {color: "#191919"} : {color: "#fff"}}>
+          비밀번호 재설정
         </div>
-      )}
-      <div className={styles.title} style={mode === 'light' ? {color: "#191919"} : {color: "#fff"}}>
-        비밀번호 재설정
-      </div>
-      <div className={styles.inputForm}>
-        <input className={mode === 'light' ? styles.light_inp : styles.dark_inp} type='password' placeholder='현재 비밀번호 입력' onChange={(e) => setPassword(e.target.value)} style={mode === 'light' ? {borderColor: '#ACB2CB', color: '#191919', background: '#F3F5F7'} : {borderColor: '#6F738E', color: '#fff', background: '#2B2E44'}}/>
-        <input className={mode === 'light' ? styles.light_inp : styles.dark_inp} type='password' placeholder='새로운 비밀번호 입력' onChange={(e) => setNewPassword(e.target.value)} style={mode === 'light' ? {borderColor: '#ACB2CB', color: '#191919', background: '#F3F5F7'} : {borderColor: '#6F738E', color: '#fff', background: '#2B2E44'}}/>
-        <input className={mode === 'light' ? styles.light_inp : styles.dark_inp} type='password' placeholder='새로운 비밀번호 입력 (확인)' onChange={(e) => setCheckPassword(e.target.value)} style={mode === 'light' ? {borderColor: '#ACB2CB', color: '#191919', background: '#F3F5F7'} : {borderColor: '#6F738E', color: '#fff', background: '#2B2E44'}}/>
-      </div>
-      <p>{message}</p>
-      <div className={styles.btn}>
-        <input type='submit' value="변경하기" />
-      </div>
-    </form>
+        <div className={styles.inputForm}>
+          <input className={mode === 'light' ? styles.light_inp : styles.dark_inp} type='password' placeholder='현재 비밀번호 입력' onChange={(e) => setPassword(e.target.value)} style={mode === 'light' ? {borderColor: '#ACB2CB', color: '#191919', background: '#F3F5F7'} : {borderColor: '#6F738E', color: '#fff', background: '#2B2E44'}}/>
+          <input className={mode === 'light' ? styles.light_inp : styles.dark_inp} type='password' placeholder='새로운 비밀번호 입력' onChange={(e) => setNewPassword(e.target.value)} style={mode === 'light' ? {borderColor: '#ACB2CB', color: '#191919', background: '#F3F5F7'} : {borderColor: '#6F738E', color: '#fff', background: '#2B2E44'}}/>
+          <input className={mode === 'light' ? styles.light_inp : styles.dark_inp} type='password' placeholder='새로운 비밀번호 입력 (확인)' onChange={(e) => setCheckPassword(e.target.value)} style={mode === 'light' ? {borderColor: '#ACB2CB', color: '#191919', background: '#F3F5F7'} : {borderColor: '#6F738E', color: '#fff', background: '#2B2E44'}}/>
+        </div>
+        <p>{message}</p>
+        <div className={styles.btn}>
+          <input type='submit' value="변경하기" />
+        </div>
+      </form>
+    </div>
   )
 }
 

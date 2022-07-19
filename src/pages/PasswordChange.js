@@ -66,13 +66,13 @@ const PasswordChange = ({isOpen, mode, onChangePage}) => {
         비밀번호 재설정
       </div>
       <div className={styles.inputForm}>
-        <input type='password' placeholder='현재 비밀번호 입력' onChange={(e) => setPassword(e.target.value)} style={mode === 'light' ? {borderColor: '#ACB2CB', color: '#191919', background: '#F3F5F7'} : {borderColor: '#6F738E', color: '#fff', background: '#2B2E44'}}/>
-        <input type='password' placeholder='새로운 비밀번호 입력' onChange={(e) => setNewPassword(e.target.value)} style={mode === 'light' ? {borderColor: '#ACB2CB', color: '#191919', background: '#F3F5F7'} : {borderColor: '#6F738E', color: '#fff', background: '#2B2E44'}}/>
-        <input type='password' placeholder='새로운 비밀번호 입력 (확인)' onChange={(e) => setCheckPassword(e.target.value)} style={mode === 'light' ? {borderColor: '#ACB2CB', color: '#191919', background: '#F3F5F7'} : {borderColor: '#6F738E', color: '#fff', background: '#2B2E44'}}/>
+        <input className={mode === 'light' ? styles.light_inp : styles.dark_inp} type='password' placeholder='현재 비밀번호 입력' onChange={(e) => setPassword(e.target.value)} style={mode === 'light' ? {borderColor: '#ACB2CB', color: '#191919', background: '#F3F5F7'} : {borderColor: '#6F738E', color: '#fff', background: '#2B2E44'}}/>
+        <input className={mode === 'light' ? styles.light_inp : styles.dark_inp} type='password' placeholder='새로운 비밀번호 입력' onChange={(e) => setNewPassword(e.target.value)} style={mode === 'light' ? {borderColor: '#ACB2CB', color: '#191919', background: '#F3F5F7'} : {borderColor: '#6F738E', color: '#fff', background: '#2B2E44'}}/>
+        <input className={mode === 'light' ? styles.light_inp : styles.dark_inp} type='password' placeholder='새로운 비밀번호 입력 (확인)' onChange={(e) => setCheckPassword(e.target.value)} style={mode === 'light' ? {borderColor: '#ACB2CB', color: '#191919', background: '#F3F5F7'} : {borderColor: '#6F738E', color: '#fff', background: '#2B2E44'}}/>
       </div>
       <p>{message}</p>
       <div className={styles.btn}>
-        <input type='submit' value="변경" />
+        <input type='submit' value="변경하기" />
       </div>
     </form>
   )

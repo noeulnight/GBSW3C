@@ -1,5 +1,15 @@
 * {
   body {
+    .light_inp {
+      &::placeholder {
+        color: #8993A7;
+      }
+    }
+    .dark_inp {
+      &::placeholder {
+        color: #8C8EA0;
+      }
+    }
     .open_main {
       position: absolute;
       width: 100%;
@@ -138,6 +148,7 @@
               }
               >div {
                 >input {
+                  height: 38px;
                   width: 100%;
                   margin-bottom: 20px;
                   &:focus-visible {

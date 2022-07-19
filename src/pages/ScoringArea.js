@@ -152,7 +152,7 @@ const ScoringArea = ({ mode, isOpen, onChangePage }) => {
               </td>
               <td className={styles.classification}>
                 분류
-              </td>
+              </td> 
               <td className={styles.type}>종류</td>
               <td className={styles.area}>영역</td>
               <td className={styles.score}>점수</td>

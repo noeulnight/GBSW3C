@@ -60,7 +60,7 @@ const AccountAdd = ({ mode, isOpen,  onChangePage }) => {
       {loading && (
         <div style={{
           position: 'absolute',
-          top: '-64px', left: '-286px',
+          top: '0', left: '0',
           width: '100vw', height: '100vh',
           zIndex: 1000, backgroundColor: '#00000099', 
           display: 'flex', justifyContent: 'center', 
@@ -116,6 +116,7 @@ const AccountAdd = ({ mode, isOpen,  onChangePage }) => {
                   <div>
                     <p>이름</p>
                     <input 
+                      className={mode === 'light' ? styles.light_inp : styles.dark_inp}
                       required
                       type="text" 
                       placeholder="이름" 
@@ -129,6 +130,7 @@ const AccountAdd = ({ mode, isOpen,  onChangePage }) => {
                   <div>
                     <p>기수</p>
                     <input 
+                      className={mode === 'light' ? styles.light_inp : styles.dark_inp}
                       required
                       type="number" 
                       placeholder="기수" 
@@ -144,6 +146,7 @@ const AccountAdd = ({ mode, isOpen,  onChangePage }) => {
                   <div>
                     <p>전화번호</p>
                     <input 
+                      className={mode === 'light' ? styles.light_inp : styles.dark_inp}
                       required
                       type="text" 
                       maxLength="13"
@@ -235,6 +238,16 @@ const AccountAdd = ({ mode, isOpen,  onChangePage }) => {
                           ...provided,
                           zIndex: 50,
                         }),
+                        placeholder: (provided) => ({
+                          ...provided,
+                          ...(mode == "light"
+                            ? {
+                              color: '#8993A7'
+                            }
+                            : {
+                              color: '#8C8EA0'
+                            }),
+                        })
                       }}
                       isSearchable={false}
                       onChange={(e) => setDepart(e.value)}

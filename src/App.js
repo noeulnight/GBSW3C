@@ -55,7 +55,7 @@ function App () {
       </div>
     )
   } else if(login) {
-    if(grade == 0){ // grade에 따라서 바꾸기
+    if(grade == 0){
       return (
         <div>
             <Routes>

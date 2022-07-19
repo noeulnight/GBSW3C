@@ -35,12 +35,12 @@ const HallOfFame = ({ mode, isOpen }) => {
               </tr>
             </thead>
             {items === null && (
-              <tbody style={{display: "flex", justifyContent: "center", paddingTop: 10}}>
+              <tbody style={mode === 'light' ? {color: '#8993A7'} : {color: '#8C8EA0'}}>
                 <HiRefresh /> 랭킹을 불러오는 중입니다.
               </tbody>
             )}
             {items !== null && items?.length < 1 && (
-              <tbody style={{display: "flex", justifyContent: "center", paddingTop: 10}}>
+              <tbody style={mode === 'light' ? {color: '#8993A7'} : {color: '#8C8EA0'}}>
                 랭킹이 등록되지 않았습니다. (랭킹은 1년마다 갱신됩니다.)
               </tbody>
             )}

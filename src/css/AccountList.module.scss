@@ -202,7 +202,6 @@
       .listHeader {
         height: 42px;
         padding: 0 24px;
-
         .title {
           font-size: 14px;
 
@@ -233,6 +232,7 @@
           }
 
           .div {
+            display: none;
             a {
               display: none;
             }

@@ -26,7 +26,6 @@ const Profile = ({ mode, isOpen, page }) => {
               <div className={styles.context}>
                 <div style={mode === 'light' ? {color: '#8993A7'} : {color: '#8C8EA0'}}>
                   <h4 style={mode === 'light' ? {color: '#ACB2CB'} : {color: '#6F738E'}}>기본정보</h4>
-                  <div>이름: 김무일</div>
                   <div>학과: 소프트웨어개발과</div>
                   <div>아이디: sw2_02</div>
                   <div>전화번호: 010-1234-5678</div>

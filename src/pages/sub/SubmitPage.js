@@ -27,7 +27,7 @@ const SubmitPage = ({ mode, page, depart, setPage }) => {
 
   useEffect(() => {
     fetchData(filterStr);
-  }, []);
+  }, [page]);
 
   function onFilterChange(e) {
     setFilterStr(e.value);

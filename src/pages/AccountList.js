@@ -27,7 +27,7 @@ const ScoringArea = ({ mode, isOpen, page, onChangePage }) => {
 
   useEffect(() => {
     fetchData()
-  }, [])
+  }, [page])
   
   const fetchData = async () => {
     const res = await fetch('/api/auth/v1/users')

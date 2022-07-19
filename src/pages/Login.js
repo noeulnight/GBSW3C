@@ -36,7 +36,7 @@ const Login = ({ isLogin, setGrade }) => {
     const me = await fetch("/api/auth/v1/@me").then((res) => res.status === 403 ? (sessionStorage.clear() || window.location.reload()) : res.json());
     if (me.data.permissions.includes("ADMINISTRATOR")) {
       setGrade(2);
-    } else if (me.data.permissions.includes("VIEW_REQUESTS")) {
+    } else if (me.data.permissions.includes("TEACHER")) {
       setGrade(1);
     } else {
       setGrade(0);

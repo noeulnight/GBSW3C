@@ -1,60 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useSessionStorag, useEffect } from "react";
 import ProgressBar from "@ramonak/react-progress-bar";
 import {
   HiChevronLeft,
   HiChevronRight,
   HiChevronDown,
   HiPlus,
+  HiX,
   HiCheck,
 } from "react-icons/hi";
-import styles from "../css/TeacherMain.module.scss";
+import { FaCheck, FaPlus } from "react-icons/fa";
+import styles from "../css/AdminMain.module.scss";
+import SubmitPage from "./sub/SubmitPage";
+import StudentListPage from "./sub/StudentListPage";
+import HallOfFame from './HallOfFame'
+import Introduce from './3C_Introduce'
+import Statistics from './Statistics'
+import ScoringArea from './ScoringArea'
+import AccountAdd from './AccountAdd'
+import AccountList from './AccountList'
+import PasswordChange from './PasswordChange'
+import useSessionStorage from "../components/UseSessionStorage";
+import StudentListPageAdd from './sub/StudentListPageAdd';
+import ScoringAreaAdd from './ScoringAreaEdit'
+import RoleList from './RoleList'
 
-const TeacherMain = ({ mode, isOpen }) => {
-  const [fullCheched, setFullchecked] = useState(false);
-  const [items, setItems] = useState([
-    {
-      name: "2204김무일",
-      department: "소프트웨어개발과",
-      area: "실무역량",
-      classification1: "자격증",
-      classification2: "정보처리기능사",
-      achievement_rate: 25,
-      date: "2022-04-25",
-      checked: false,
-    },
-    {
-      name: "2204김무일",
-      department: "소프트웨어개발과",
-      area: "실무역량",
-      classification1: "자격증",
-      classification2: "정보처리기능사",
-      achievement_rate: 25,
-      date: "2022-04-25",
-      checked: false,
-    },
-    {
-      name: "2204김무일",
-      department: "소프트웨어개발과",
-      area: "실무역량",
-      classification1: "자격증",
-      classification2: "정보처리기능사",
-      achievement_rate: 40,
-      file: 1,
-      date: "2022-04-25",
-      checked: false,
-    },
-  ]);
+const TeacherMain = ({ mode, isOpen, selectPage, onChangePage }) => {
+  const [active, setActive] = useSessionStorage("active")
+  const [page, setPage] = useState(0)
 
-  const onCheck = (index) => () => {
-    items[index].checked = !items[index].checked;
-    setItems([...items]);
-    setFullchecked(false);
-  };
+  useEffect(() => {
+    console.log('active page', selectPage);
+    setActive(selectPage)
+  }, [selectPage])
 
-  const onFullCheck = () => {
-    setItems([...items.map((v) => ({ ...v, checked: !fullCheched }))]);
-    setFullchecked(!fullCheched);
-  };
+  const setPageFn = (v) => {
+    setPage(v)
+  }
 
   return (
     <div>
@@ -65,43 +46,42 @@ const TeacherMain = ({ mode, isOpen }) => {
         >
           <div className={styles.title}>
             교사 페이지/
-            <span style={{ color: "#0684c4" }}>신청 리스트</span>
+            <span style={{ color: "#0684c4" }}>
+              {selectPage === 1 && "신청 리스트"}
+              {selectPage === 2 && "학생 점수부여"}
+              {selectPage === 3 && "명예의 전당"}
+              {selectPage === 4 && "3C 인증제"}
+              {/* {selectPage === 5 && "통계분석"} */}
+              {selectPage === 5 && "계정관리"}
+              {selectPage === 6 && "점수 영역관리"}
+              {selectPage === 7 && "비밀번호 재설정"}
+              {selectPage === 8 && "계정관리/추가"}
+              {selectPage === 9 && "학생 점수부여/점수부여"}
+              {selectPage === 11 && "역할관리"}
+            </span>
           </div>
-          <div className={styles.page}>
+          {selectPage < 3 && <div className={styles.page}>
             <div
               className={
                 mode === "light" ? styles.light_page : styles.dark_page
               }
             >
               <span>페이지</span>
-              <input
-                maxLength={3}
-                style={
-                  mode === "light"
-                    ? {
-                        background: "#FFFFFF",
-                        border: "1px solid #ACB2CB",
-                        color: "#8993A7",
-                      }
-                    : {
-                        background: "#2F3146",
-                        border: "1px solid #6F738E",
-                        color: "#6F738E",
-                      }
-                }
-                type="text"
-                defaultValue="1"
-              />{" "}
-              / 1
+              {page + 1}
             </div>
             <div className={styles.btn}>
               <label
                 style={
-                  mode === "light"
-                    ? { backgroundColor: "#FFFFFF", color: "#ACB2CB" }
-                    : { backgroundColor: "#2F3146", color: "#6F738E" }
+                  page < 1
+                    ? mode === "light"
+                      ? { backgroundColor: "#FFFFFF", color: "#ACB2CB" }
+                      : { backgroundColor: "#2F3146", color: "#6F738E" }
+                    : mode === "light"
+                      ? { backgroundColor: "#0684c4", color: "#F3F5F7" }
+                      : { backgroundColor: "#0684c4", color: "#2B2E44" }
                 }
                 className={styles.left}
+                onClick={() => page < 1 ? undefined : setPageFn(page - 1)}
               >
                 <HiChevronLeft size={24} />
               </label>
@@ -112,18 +92,26 @@ const TeacherMain = ({ mode, isOpen }) => {
                     : { backgroundColor: "#0684c4", color: "#2B2E44" }
                 }
                 className={styles.right}
+                onClick={() => setPageFn(page + 1)}
               >
                 <HiChevronRight size={24} />
               </label>
             </div>
-          </div>
+          </div>}
         </div>
         <div className={styles.listBox}>
-          <StudentSubmitPage key={page} depart={depart} page={page} mode={mode}/>
+          { selectPage === 1 && <SubmitPage mode={mode} key={page} page={page} setPage={setPage}/> }
+          { selectPage === 2 && <StudentListPage mode={mode}key={page} page={page} setPage={setPage} onChangePage={onChangePage}/> }
+          { selectPage === 3 && <HallOfFame mode={mode}/> }
+          { selectPage === 4 && <Introduce mode={mode}/> }
+          {/* { selectPage === 5 && <Statistics mode={mode}/> } */}
+          { selectPage === 5 && <AccountList page={selectPage} onChangePage={onChangePage} mode={mode} isOpen={isOpen} /> }
+          { selectPage === 6 && <ScoringArea page={selectPage} onChangePage={onChangePage} mode={mode} isOpen={isOpen} /> }
+          { selectPage === 7 && <PasswordChange mode={mode}/> }
+
         </div>
       </div>
     </div>
   );
 };
-
 export default TeacherMain;

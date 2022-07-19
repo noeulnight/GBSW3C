@@ -25,7 +25,7 @@ const TeacherSubmitPage = ({mode, page, depart}) => {
   ];
   useEffect(() => {
     fetchData(filterStr);
-  }, []);
+  }, [page]);
 
   function onFilterChange(e) {
     setFilterStr(e.value);

@@ -37,7 +37,7 @@ const [fullChecked, setFullchecked] = useState(false);
         phone: v.phone
       })))
     })()
-  }, [])
+  }, [page])
 
   const onCheck = (index) => () => {
     items[index].checked = !items[index].checked;

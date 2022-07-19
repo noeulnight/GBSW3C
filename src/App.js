@@ -76,14 +76,16 @@ function App () {
       )
     } else if (grade == 1) {
         return (
-          <div>
+        <div>
           <Routes>
-            <Route path="/" element={<TeacherMain mode={mode} isOpen={isOpen} />} />
+            <Route path="/" element={<AdminMain selectPage={activePage} onChangePage={onChangePage} mode={mode} isOpen={isOpen} />} />
+            <Route path="/sco" element={<StudentListPageAdd page={activePage} mode={mode} isOpen={isOpen} />} />
             <Route path="/logout" element={<Logout isLogin={isLogin} />} />
-              <Route path="/posts/:id" element={<TeacherSubmitView mode={mode} isOpen={isOpen} />} />
+            <Route path="/account" element={<Account mode={mode} isOpen={isOpen} />} />
+            <Route path="/posts/:id" element={<TeacherSubmitView mode={mode} isOpen={isOpen} />} />
           </Routes>
           <Header mode={mode} setMode={setMode} isOpen={isOpen} setMenu={setMenu} />
-          <Navigation grade={grade} mode={mode} isOpen={isOpen} />
+          <Navigation grade={grade} mode={mode} isOpen={isOpen} page={activePage} onChangePage={onChangePage} />
         </div>
       )
     } else if (grade == 2) {

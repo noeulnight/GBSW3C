@@ -303,14 +303,18 @@ const StudentSubmitPostPage = ({ mode, isOpen }) => {
                 placeholder={category !== null ? "여기를 눌러주세요." : "카테고리 먼저 선택해주세요."}/>
               </div>
             </div>
+            <div style={{ marginBottom: 10, color: 'black' }}>
+              <p>프로젝트 제출 서류 양식은 <a href="http://school.gyo6.net/gbsw/203672/board/203244/197243465">학교 홈페이지 (클릭)</a>에서 다운로드 받으실 수 있습니다.</p>
+            </div>
             <div className={styles.editor}>
               <p>간단한 설명 (선택)</p>
-              <div style={{height: '100%'}} className={mode === 'light' ? styles.light_edit : styles.dark_edit}>
+              <div style={{height: '100%', minHeight: '300px'}} className={mode === 'light' ? styles.light_edit : styles.dark_edit}>
 
                 <Editor
                   usageStatistics={false}
                   ref={editor}
                   hooks={{ addImageBlobHook }}
+                  minHeight="2000px"
                   initialEditType="wysiwyg"
                   hideModeSwitch height="100%"
                   key={mode} theme={mode !== 'light' ? 'dark' : undefined} 
